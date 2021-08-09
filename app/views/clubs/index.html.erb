@@ -1,0 +1,56 @@
+<div class='main'>
+
+  <div class='top-contents'>
+    <h1 class='concept'>
+      さぁ 羽を追いかけよう
+    </h1>
+    <%= form_with local: true do |f| %>
+    <div class="search-form">
+      <div class="search-prefecture">
+        <p class="select-text">都道府県</p>
+        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"club-prefecture"}) %>
+      </div>
+      <%= f.submit "検索する" ,class:"search-btn" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class='club-contents'>
+    <h2 class='title'>新規サークル</h2>
+    <div class="subtitle" >
+      New!
+    </div>
+    <ul class='club-lists'>
+      <%# @clubs.each do |club| %>
+      <li class='list'>
+        <%#= link_to "#" do %>
+        <div class='club-info'>
+          <div class="created-date">
+          <%#=%>
+          </div>
+          <h3 class="club-name">
+          <%#=%>
+          </h3>
+          <div class="club-place">
+            <div class="club-prefecture">
+            <%#=%>
+            </div>
+            <div class="club-city">
+            <%#=%>
+            </div>
+          </div>
+        </div>
+        <div class="club-img-content">
+          <%#= image_tag , class: "club-img" %>
+        </div>
+        <div class="club-comment">
+          <%#=%>
+        </div>
+        <div class='star-btn'>
+          <%#= image_tag "star.png", class:"star-icon" %>
+          <span class='star-count'>0</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
