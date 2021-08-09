@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-root to: "clubs#index"
-resources :club, only: [:index]
-
-
+  devise_for :users
+  root to: "clubs#index"
+  resources :club, only: [:index]
 end
