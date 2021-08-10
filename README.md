@@ -7,10 +7,10 @@
 | nickname            | string  | null: false               |
 | email               | string  | null: false, unique: true |
 | encrypted_password  | string  | null: false               |
+| prefecture_id       | integer |                           |
 | gender_id           | integer |                           |
 | career              | string  |                           |
-| prefecture_id       | integer | null: false               |
-| profile             | text    | null: false               |
+| profile             | text    |                           |
 
 ### Association
 
