@@ -9,7 +9,7 @@
     <%= form_with local: true do |f| %>
     <div class="search-form">
       <div class="search-prefecture">
-        <p class="select-text">探したい都道府県を入力</p>
+        <p class="select-text">探したい地域を入力してください</p>
         <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"club-prefecture"}) %>
       </div>
       <%= f.submit "検索する" ,class:"search-btn" %>

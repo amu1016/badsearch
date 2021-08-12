@@ -1,0 +1,151 @@
+.user-show-main {
+  width: 100%;
+  min-width: 800px;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.user-show-wrap {
+  width: 80%;
+  background-color: whitesmoke;
+}
+
+.user-show-header {
+  width: 100%;
+  height: 120px;
+  margin: 30px 20px 30px 20px;
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-show-header-left {
+  width: 60%;
+}
+
+.user-show-header-right {
+  text-align: center;
+  width: 30%;
+}
+
+.user-show-header-text {
+  margin: 10px 0 25px ;
+  line-height: 16px;
+  border-bottom: 1px solid #f5f5f5;
+  font-weight: bold;
+}
+
+.user-show-profile {
+  margin: 0 20px;
+}
+
+.user-show-title {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.profile-groupe {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.user-information {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-show-action {
+  margin: 40px 20px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.form-group {
+  width: 66%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.form-group:first-child {
+  padding: 0;
+}
+
+.form-text-wrap {
+  width: 100%;
+  height: 20%;
+}
+
+.form-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input-default {
+  width: 100%;
+  margin-top: 5px;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+}
+
+.info-text {
+  color: #888;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.register-btn {
+  width: 30%;
+  margin: 90px auto 0px;
+}
+
+.register-orange-btn {
+  width: 100%;
+  background: #eb6100;
+  border: 2px solid #b84c00;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.indispensable {
+  font-size: 13px;
+  padding: 2px;
+  background-color: #ec5353;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
