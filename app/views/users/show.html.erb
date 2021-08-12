@@ -40,27 +40,27 @@
       </div>
       <div class="profile-groupe">
         都道府県：
-        <%# if current_user.prefecture.present?%>
-        <%#= current_user.prefecture %>
-        <%# end %>
+        <% if current_user.prefecture_id.present?%>
+        <%= current_user.prefecture.name %>
+        <% end %>
       </div>
       <div class="profile-groupe">
         性別：
-        <%# if current_user.gender.present?%>
-        <%#= current_user.gender %>
-        <%# end %>
+        <% if current_user.gender_id.present?%>
+        <%= current_user.gender.name %>
+        <% end %>
       </div>
       <div class="profile-groupe">
         経験年数：
-        <%# if current_user.career.present?%>
-        <%#= current_user.career %>
-        <%# end %>
+        <% if current_user.career.present?%>
+        <%= current_user.career %>
+        <% end %>
       </div>
       <div class="user-information">
-        自己紹介<br>あいうえおあいうえお
-        <%# if current_user.profile.present?%>
-        <%#= current_user.profile %>
-        <%# end %>
+        自己紹介<br>
+        <% if current_user.profile.present?%>
+        <%= current_user.profile %>
+        <% end %>
       </div>
     </div>
 

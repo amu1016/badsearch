@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(_resource)
-    redirect_to user_path
+    user_path(current_user.id)
   end
 
   def configure_account_update_params
