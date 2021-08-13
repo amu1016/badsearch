@@ -1,8 +1,8 @@
-<%= form_with model: @club, url: clubs_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
-      サークル情報登録
+      新規登録
     </h1>
   </div>
 
@@ -10,7 +10,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
-      <label class="form-text">サークルネーム</label>
+      <label class="form-text">ニックネーム</label>
     </div>
     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>

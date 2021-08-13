@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_090550) do
+ActiveRecord::Schema.define(version: 2021_08_12_064519) do
+
+  create_table "clubs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "status_id", null: false
+    t.integer "since_year", null: false
+    t.integer "since_month", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "gym", null: false
+    t.string "gender_ratio", null: false
+    t.string "beginner_ratio", null: false
+    t.string "age_range", null: false
+    t.string "purpose", null: false
+    t.string "homepage"
+    t.text "information", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_clubs_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", default: "", null: false
@@ -29,4 +49,5 @@ ActiveRecord::Schema.define(version: 2021_08_09_090550) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clubs", "users"
 end

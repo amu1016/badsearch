@@ -27,12 +27,12 @@
 | since_month        | integer    | null: false                     |
 | prefecture_id      | integer    | null: false                     |
 | city               | string     | null: false                     |
-| gim                | string     | null: false                     |
+| gym                | string     | null: false                     |
 | gender_ratio       | string     | null: false                     |
 | beginner_ratio     | string     | null: false                     |
 | age_range          | string     | null: false                     |
 | purpose            | string     | null: false                     |
-| homepage           | string     | null: false                     |
+| homepage           | string     |                                 |
 | information        | string     | null: false                     |
 | user               | references | null: false, foreign_key: true  |
 
