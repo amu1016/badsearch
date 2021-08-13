@@ -12,14 +12,14 @@
       <span class="indispensable">必須</span>
       <label class="form-text">ニックネーム</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :name, class:"input-default", id:"kname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
-      <label class="form-text">メールアドレス</label>
+      <label class="form-text">募集状況</label>
     </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+    <%= f.text_area :status_id, class:"input-default", id:"status_id", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
