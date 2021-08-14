@@ -7,12 +7,24 @@
   </div>
 
   <%= render 'shared/error_messages', model: f.object %>
+  <div class="img-upload">
+      <div class="weight-bold-text">
+        紹介画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">サークルネーム</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :name, class:"input-default", id:"name", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -25,14 +37,14 @@
       <span class="indispensable">必須</span>
       <label class="form-text">創設時期(年)</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :since_year, class:"input-default", id:"since_year", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">創設時期(月)</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :since_month, class:"input-default", id:"since_month", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -46,55 +58,55 @@
       <span class="indispensable">必須</span>
       <label class="form-text">市区町村</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :city, class:"input-default", id:"city", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">使用体育館</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :gym, class:"input-default", id:"gym", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">男女比</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :gender_ratio, class:"input-default", id:"gender_ratio", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div><div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">初心者：経験者</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :beginner_ratio, class:"input-default", id:"beginner_ratio", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">年齢層</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :age_range, class:"input-default", id:"age_range", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
-      <label class="form-text">目的</label>
+      <label class="form-text">サークル目標</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :age_range, class:"input-default", id:"age_range", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">ホームページURL</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :homepage, class:"input-default", id:"homepage", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">特徴</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
+    <%= f.text_area :information, class:"input-default", id:"information", placeholder:"例) バド太郎", maxlength:"40", autofocus: true %>
   </div>
   
   <div class='register-btn'>
