@@ -10,7 +10,7 @@
     <div class="search-form">
       <div class="search-prefecture">
         <p class="select-text">探したい地域を入力してください</p>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"club-prefecture"}) %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box-top", id:"club-prefecture"}) %>
       </div>
       <%= f.submit "検索する" ,class:"search-btn" %>
     </div>

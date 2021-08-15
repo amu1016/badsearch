@@ -40,14 +40,14 @@
         <span class="indispensable">必須</span>
         <label class="form-text">創設時期(年)</label>
       </div>
-      <%= f.text_area :since_year, class:"input-default-since", id:"since_year", placeholder:"例) 2019", maxlength:"4", autofocus: true %>
+      <%= f.text_area :since_year, class:"input-default-since", id:"since-year", placeholder:"例) 2019", maxlength:"4", autofocus: true %>
     </div>
     <div class="form-group-since">
       <div class='form-text-wrap'>
         <span class="indispensable">必須</span>
         <label class="form-text">創設時期(月)</label>
       </div>
-      <%= f.text_area :since_month, class:"input-default-since", id:"since_month", placeholder:"例) 1", maxlength:"2", autofocus: true %>
+      <%= f.text_area :since_month, class:"input-default-since", id:"since-month", placeholder:"例) 1", maxlength:"2", autofocus: true %>
     </div>
   </div>
 
@@ -99,11 +99,10 @@
       <span class="indispensable">必須</span>
       <label class="form-text">サークル目標</label>
     </div>
-    <%= f.text_area :age_range, class:"input-default", id:"age_range", placeholder:"例) 区の大会で入賞", maxlength:"40", autofocus: true %>
+    <%= f.text_area :purpose, class:"input-default", id:"purpose", placeholder:"例) 区の大会で入賞", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
-      <span class="indispensable">必須</span>
       <label class="form-text">ホームページURL</label>
     </div>
     <%= f.text_area :homepage, class:"input-default", id:"homepage", placeholder:"例) https:~", maxlength:"40", autofocus: true %>
