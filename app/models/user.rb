@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :clubs
+  has_one :club
 
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :prefecture

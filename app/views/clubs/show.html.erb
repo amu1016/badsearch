@@ -1,0 +1,87 @@
+<%= render "shared/header" %>
+
+<div class="club-show-main">
+  <div class="club-show-wrap">
+    <div class="club-show-header">
+      <div class="club-show-header-left">
+        <h1>
+          <%= "#{@club.name}"%>
+        </h1>
+        <%# if current_user.club}.present?%>
+        <%#<div class="user-show-header-left-text">%>
+        <%# "#{current_user.club}を運営しています"%>
+        <%#</div>%>
+        <%# end %>
+      </div>
+      <div class="user-show-header-right">
+        <div class="user-show-header-text">
+          <%= link_to "プロフィール編集", edit_user_registration_path, class: "user-show-link" %>
+        </div>
+        <%# if current_user.club}.present?%>
+        <%#<div class="user-show-header-text">
+          <%#= link_to "サークル編集", "#", class: "user-show-link" %>
+        <%#</div>
+        <%# else %>
+        <div class="user-show-header-text">
+          <%= link_to "メンバーを募集する", new_club_path, class: "user-show-link" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-show-profile">
+      <h2 class="user-show-title">
+        プロフィール
+      </h2>
+      <div class="profile-groupe">
+        ニックネーム：<%= current_user.nickname%>
+      </div>
+      <div class="profile-groupe">
+        email：<%= current_user.email%>
+      </div>
+      <div class="profile-groupe">
+        都道府県：
+        <% if current_user.prefecture_id.present?%>
+        <%= current_user.prefecture.name %>
+        <% end %>
+      </div>
+      <div class="profile-groupe">
+        性別：
+        <% if current_user.gender_id.present?%>
+        <%= current_user.gender.name %>
+        <% end %>
+      </div>
+      <div class="profile-groupe">
+        経験年数：
+        <% if current_user.career.present?%>
+        <%= current_user.career %>
+        <% end %>
+      </div>
+      <div class="user-information">
+        自己紹介<br>
+        <% if current_user.profile.present?%>
+        <%= current_user.profile %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="user-show-action">
+      <div class="action-groupe">
+        <h2 class="user-show-title">
+        閲覧履歴
+        </h2>
+        <%# 閲覧履歴新しい順に5件表示%>
+      </div>
+      <div class="action-groupe">
+        <h2 class="user-show-title">
+        イイネ一覧
+        </h2>
+        <%# イイネしたクラブ新しい順に5件表示%>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
