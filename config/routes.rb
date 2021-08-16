@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "clubs#index"
-  resources :clubs, only: [:index, :new, :create]
+  resources :clubs, only: [:index, :new, :create, :show]
   resources :users, only: [:show, :edit]
 end

@@ -68,6 +68,7 @@
   height: 30vh;
   background-color: white;
   border-radius: 3px;
+  border: 1px solid red;
 }
 
 .club-top {
@@ -139,4 +140,10 @@
 
 .star-count {
   font-size: 13px;
+}
+
+.link {
+  text-decoration: none;
+  width: 100%;
+  color: rgb(51, 48, 48);
 }
