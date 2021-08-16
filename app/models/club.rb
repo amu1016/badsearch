@@ -5,6 +5,12 @@ class Club < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :prefecture
 
+    
+    validates :content, presence: true, unless: :was_attached?
+
+    def was_attached?
+      self.image.attached?
+    end
 
   with_options presence: true do
     validates :name

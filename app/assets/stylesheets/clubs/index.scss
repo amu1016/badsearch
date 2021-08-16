@@ -42,3 +42,101 @@
   color: #fff;
   background: #f56500;
 }
+
+
+.club-contents {
+  background-color: whitesmoke;
+}
+
+.club-content-title {
+  text-align: center;
+  padding-top: 15px;
+  height: 70px;
+  background-color: rgb(235, 184, 150);
+  font-weight: bold;
+}
+
+.club-lists {
+  margin: 25px 20px 30px;
+  padding-bottom: 30px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25vw;
+  height: 30vh;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.club-top {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  padding-left: 10px;
+}
+
+.club-bottom {
+  width: 100%;
+  height: 50%;
+  padding: 8px 10px 0;
+}
+
+.club-info {
+  width: 40%;
+}
+
+.created-date {
+  height: 20%;
+  font-size: 8px;
+  padding-top: 5px;
+}
+
+.club-name {
+  height: 30%;
+  font-size: 15px;
+}
+
+.club-place {
+  height: 30%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.club-image-content {
+  width: 60%;
+  height: 100%;
+  padding: 5px;
+  margin: 5px 5px 0 0;
+  display: flex;
+  position: relative;
+}
+
+.club-image {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 90%;
+  height: 90%;
+}
+
+.club-comment {
+  padding-top: 5px;
+  height: 85%;
+}
+
+.star-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.star-icon {
+  height: 2vh;
+  width: 2vh;
+  margin-right: 0.3vw;
+}
+
+.star-count {
+  font-size: 13px;
+}
