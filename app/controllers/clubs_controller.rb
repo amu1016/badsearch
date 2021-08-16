@@ -5,6 +5,7 @@ class ClubsController < ApplicationController
 
 
   def index
+    @clubs = Club.includes(:user).order("created_at DESC")
   end
 
   def new
