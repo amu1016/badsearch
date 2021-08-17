@@ -4,11 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :clubs
+  has_one :club
 
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :prefecture
     belongs_to :gender
+
 
   def update_without_current_password(params, *options)
     params.delete(:current_password)

@@ -1,0 +1,122 @@
+<%= render "shared/header" %>
+
+<div class="club-show-wrap">
+  <div class="club-show-content">
+    <div class="club-show-top">
+      <div class="club-show-date">
+        <div class="club-show-new-date">
+          募集開始日：<%= @club.created_at %>
+        </div>
+        <div class="club-show-update">
+          最終更新日：<%= @club.updated_at %>
+        </div>
+      </div>
+      <div class="club-show-content-title">
+        <h1><%= @club.name%></h1>
+      </div>
+      <div class="club-show-content-status">
+        <%= @club.status.name%>
+      </div>
+    </div>
+
+    <div class="club-show-image-content">
+      <%= image_tag @club.image, class: "club-show-image" %>
+    </div>
+
+    <div class="club-show-detail-label">
+      サークル情報
+    </div>
+
+    <div class="club-show-detail">
+      <table class="club-show-detail-table">
+      <tbody>
+        <tr>
+          <th class="club-show-detail-item">創設時期</th>
+          <td class="club-show-detail-value"><%= "#{@club.since_year}年#{@club.since_month}月" %></td>
+        </tr>
+         <tr>
+          <th class="club-show-detail-item">活動地域</th>
+          <td class="club-show-detail-value"><%= "#{@club.prefecture.name} #{@club.city}" %></td>
+        </tr>
+         <tr>
+          <th class="club-show-detail-item">使用体育館</th>
+          <td class="club-show-detail-value"><%= @club.gym %></td>
+        </tr>
+         <tr>
+          <th class="club-show-detail-item">年齢構成</th>
+          <td class="club-show-detail-value"><%= @club.age_range %></td>
+        </tr>
+         <tr>
+          <th class="club-show-detail-item">男女比</th>
+          <td class="club-show-detail-value"><%= @club.gender_ratio %></td>
+        </tr>
+         <tr>
+          <th class="club-show-detail-item">初心者：経験者</th>
+          <td class="club-show-detail-value"><%= @club.beginner_ratio %></td>
+        </tr>
+         <tr>
+          <th class="club-show-detail-item">サークル目標</th>
+          <td class="club-show-detail-value"><%= @club.purpose %></td>
+        </tr>
+         <tr>
+          <th class="club-show-detail-item">サークルホームページ</th>
+          <td class="club-show-detail-value">
+            <% if @club.homepage.present? %>
+            <%= @club.homepage %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="club-show-information">
+      <div class="club-show-information-label">
+        サークル説明 〜アピールポイント・特徴〜
+      </div>
+      <div class="club-show-information-text">
+      <%= @club.information%>
+      </div>
+    </div>
+
+    <% if @club.user_id == current_user.id%>
+    <div class="club-show-contact-wrap">
+      <div class="club-show-contact">
+        <div class="chat-contact-btn">
+        <%= link_to edit_club_path, class: "show-link" do %>
+          <span>サークル情報の編集</span>
+        </div>
+        <% end%>
+        <div class="mail-contact-btn">
+        <%= link_to club_path, method: :delete, class: "show-link" do %>
+          <span>サークル募集の削除</span>
+        <% end %>
+        </div>
+        <div class="club-show-like">
+          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+          <span>お気に入り 0</span>
+        </div>
+      </div>
+    </div>
+    <% else %>
+    <div class="club-show-contact-wrap">
+      <div class="club-show-contact">
+        <div class="chat-contact-btn">
+          <%#<%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+          <span>チャットで問い合わせる</span>
+        </div>
+        <div class="mail-contact-btn">
+          <%#<%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+          <span>メールで問い合わせる</span>
+        </div>
+        <div class="like-btn">
+          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+          <span>お気に入り 0</span>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+  </div>
+</div>
