@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :set_club, only: :show
+  before_action :set_club, only: [:show, :edit, :update, :destroy]
 
 
 
@@ -28,6 +28,11 @@ class ClubsController < ApplicationController
   end
 
   def update
+    if @club.update(club_params)
+      redirect_to club_path
+    else
+      render :edit
+    end
   end
 
   def destroy
