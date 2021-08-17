@@ -1,7 +1,7 @@
 class ClubsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_club, only: [:show, :edit, :update, :destroy]
-
+  before_action :move_to_index, only: [:edit, :update, :destroy]
 
 
   def index
@@ -36,6 +36,8 @@ class ClubsController < ApplicationController
   end
 
   def destroy
+    @club.destroy
+    redirect_to root_path
   end
 
   private
@@ -45,6 +47,10 @@ class ClubsController < ApplicationController
 
   def set_club
     @club = Club.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to action: :index if current_user.id != @club.user_id
   end
 
 
