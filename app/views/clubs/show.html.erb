@@ -79,6 +79,26 @@
       </div>
     </div>
 
+    <% if @club.user_id == current_user.id%>
+    <div class="club-show-contact-wrap">
+      <div class="club-show-contact">
+        <div class="chat-contact-btn">
+        <%= link_to edit_club_path, class: "show-link" do %>
+          <span>サークル情報の編集</span>
+        </div>
+        <% end%>
+        <div class="mail-contact-btn">
+        <%= link_to club_path, method: :delete, class: "show-link" do %>
+          <span>サークル募集の削除</span>
+        <% end %>
+        </div>
+        <div class="club-show-like">
+          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+          <span>お気に入り 0</span>
+        </div>
+      </div>
+    </div>
+    <% else %>
     <div class="club-show-contact-wrap">
       <div class="club-show-contact">
         <div class="chat-contact-btn">
@@ -95,6 +115,7 @@
         </div>
       </div>
     </div>
+    <% end %>
 
 
   </div>
