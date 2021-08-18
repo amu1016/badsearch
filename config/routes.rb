@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root to: "clubs#index"
   resources :clubs
   resources :users, only: [:show, :edit]
+  resources :rooms, only: [:index, :new, :create]
 end
