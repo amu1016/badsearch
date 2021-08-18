@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :club
   has_many :room_users
   has_many :rooms, through: :room_users
+  has_many :messages
 
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :prefecture

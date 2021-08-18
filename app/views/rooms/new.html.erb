@@ -14,7 +14,7 @@
     <div class="btn-content-wrap">
       <div class="btn-content">
         <div class='chat-start-btn'>
-        <%= link_to rooms_path, method: :post do %>
+        <%= link_to rooms_path(user_id: params[:user_id], club_id: params[:club_id]), method: :post do %>
           <span class="chat-start-btn-text">Chatを始める</span>
         <% end %>
         </div>
