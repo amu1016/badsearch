@@ -14,21 +14,7 @@
 
 <div id="chats">
   <%= render @messages %>
-  <%#<% @messages.each do |message|%>
-    <%#<%if message.user_id == current_user.id%>
-      <%#<div class="mycomment">
-        <%#<p><%=message.content%><%#</p>
-      <%#</div>
-    <%else%>
-      <%#<div class="fukidasi">
-        <div class="chatting">
-          <div class="says">
-            <p><%=message.content%><%#</p>
-          </div>
-        </div>
-      </div>
-    <%end%>
-  <%#<%end%>
+
 </div>
 
 <%= label_tag :content, 'Say something:' %>
