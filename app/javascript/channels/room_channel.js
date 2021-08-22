@@ -8,17 +8,18 @@ const chatChannel = consumer.subscriptions.create("RoomChannel", {
     // Called when the subscription has been terminated by the server
   },
   received: function(data) {
+    return alert(data["message"]);
     //画面を開いているのがチャット送信者だった場合
     if (data["isCurrent_user"]==true){
-      content=`<div class='mycomment'><p>${data["message"]}</p></div>`;
+      var content=`<div class='mycomment'><p>${data["message"]}</p></div>`;
     }
     //画面を開いているのがチャット受信者だった場合
     else{
-      content=`<div class='fukidasi'>
+      var content=`<div class='fukidasi'>
       <div class='chatting'><div class='says'><p>${data["message"]}</p>
       </div></div></div>`;
     }
-    $('#chats').append(content);
+    $('#chats').append(data["message"]));
   },
   speak: function(message) {
     var currentUserId = $("#current_user_id").val();
