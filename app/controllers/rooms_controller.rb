@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
   
   def index
-    
+    @rooms = Room.includes(:user).order("created_at DESC")
+    @the_other = User.where.not(id: current_user.id)
   end
 
   def new
@@ -20,7 +21,6 @@ class RoomsController < ApplicationController
   end
 
   def show
-
     @room = Room.find(params[:id])
     @the_other = User.find(room_partner_id)
     @messages_by_myself = Message.where(user_id: current_user.id,room_id: @room.id)
