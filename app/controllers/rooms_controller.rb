@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   
   def index
-    @room = Room.find(params[:format])
+    
   end
 
   def new
@@ -20,11 +20,11 @@ class RoomsController < ApplicationController
   end
 
   def show
-    
+
     @room = Room.find(params[:id])
     @the_other = User.find(room_partner_id)
-    @messages_by_myself=Message.where(user_id: current_user.id,room_id: @room.id)
-    @messages_by_the_other=Message.where(user_id: @the_other.id,room_id: @room.id)
+    @messages_by_myself = Message.where(user_id: current_user.id,room_id: @room.id)
+    @messages_by_the_other = Message.where(user_id: @the_other.id,room_id: @room.id)
     @messages = @messages_by_myself.or(@messages_by_the_other)
     @messages = @messages.order(:created_at)
   end

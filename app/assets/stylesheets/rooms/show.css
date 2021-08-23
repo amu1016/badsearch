@@ -34,8 +34,8 @@
 
 .chat-end a {
   text-decoration: none;
-  border: 1px solid darkred;
-  color: darkred;
+  border: 1px solid white;
+  color: whitesmoke;
   padding: 20px;
 }
 
@@ -64,37 +64,23 @@
   color: #434a54;
 }
 
-
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  height: 90px;
+  width: 100%;
+  padding: 0 10%;
+}
 
 .message-form {
-  height: 90px;
+  width: 300px;
+  height: 50px;
   background-color: #dddddd;
   padding: 20px 40px;
-  display: flex;
 }
 
-.form-input {
- width: 100%;
- background-color: white;
- display: flex;
-}
-
-.form-message {
-  border: none;
-  height: 50px;
-  width: 100%;
-  padding-left: 10px;
-}
-
-.form-submit {
-  font-size: 16px;
-  background-color: #38aef0;
-  color: white;
-  border: none;
-  height: 50px;
-  margin-left: 15px;
-  padding: 0 20px;
-}
 
 
 
@@ -148,6 +134,8 @@
   padding: 0;
 }
 .mycomment {
+  display: flex;
+  justify-content: flex-end;
   margin: 10px 0;
 }
 .mycomment p {
@@ -170,7 +158,6 @@
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
 }
-
 
 #content {
   width: 100%;
