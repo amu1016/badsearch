@@ -20,6 +20,7 @@
   <%= text_field_tag :content, nil, class: "message-form", data: { behavior: 'room_speaker' } %>
   <input id="current_user_id" type="hidden" value= "<%= current_user.id %>">
   <input id="room_id" type="hidden" value= "<%= @room.id %>">
+  <input id="the_other_id" type="hidden" value= "<%= @the_other.id %>">
 </div>
 
 
