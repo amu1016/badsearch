@@ -1,0 +1,28 @@
+<div class="main-top">
+  <div class="main-top-left">
+    <div class="room-name">
+     <%= @room.name %>
+    </div>
+  </div>
+  <div class="message-main-top-right">
+    <div class="chat-end">
+      <%= link_to "チャット一覧に戻る",rooms_path %>
+    </div>
+  </div>
+</div>
+
+
+<div id="chats">
+  <%= render @messages %>
+</div>
+
+<div class="form">
+  <%= text_field_tag :content, nil, class: "message-form", data: { behavior: 'room_speaker' } %>
+  <input id="current_user_id" type="hidden" value= "<%= current_user.id %>">
+  <input id="room_id" type="hidden" value= "<%= @room.id %>">
+</div>
+
+
+
+
+

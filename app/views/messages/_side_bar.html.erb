@@ -1,0 +1,13 @@
+<div class="rooms-top">
+  <div class="user-name">
+    <%= link_to current_user.nickname, user_path(current_user) %>
+    <span>さんのチャット一覧</span>
+  </div>
+</div>
+<div class="rooms-content">
+    <div class="chat-room">
+      <% current_user.rooms.each do |room| %>
+      <%= link_to room.name, room_path(room) %>
+      <% end %>
+    </div>
+</div>

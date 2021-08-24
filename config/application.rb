@@ -10,6 +10,9 @@ module Badsearch
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
+    config.action_cable.mount_path = '/websocket'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

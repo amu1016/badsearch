@@ -102,8 +102,10 @@
     <div class="club-show-contact-wrap">
       <div class="club-show-contact">
         <div class="chat-contact-btn">
+        <%= link_to new_room_path(user_id: current_user.id, club_id: params[:id]), class: "show-link" do%>
           <%#<%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
           <span>チャットで問い合わせる</span>
+        <% end %>
         </div>
         <div class="mail-contact-btn">
           <%#<%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
