@@ -1,0 +1,6 @@
+<%= link_to club_likes_path(club), method: :post, class: "link", remote: true do %>
+  <div class='favorite-btn'>
+    <i class="far fa-heart"></i>
+    <span><%= club.likes.count%></span>
+  </div>
+<% end %>
