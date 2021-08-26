@@ -23,10 +23,11 @@
       <% @clubs.each do |club| %>
         <li class='list'>
           <%= link_to club_path(club.id), class: "link" do %>
+          <div class="club-content-wrap">
             <div class="club-top">
               <div class='club-info'>
                 <div class="created-date">
-                <%= club.created_at%>
+                <%= club.created_at.to_s(:datetime_jp)%>
                 </div>
                 <h3 class="club-name">
                 <%= club.name%>
@@ -66,6 +67,7 @@
                 <% end %>
               <% end %> 
             </div>
+          </div>
           <% end %>
         </li>
       <% end %>
