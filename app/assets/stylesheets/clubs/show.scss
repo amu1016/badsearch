@@ -119,33 +119,6 @@
   width: 80%;
 }
 
-.chat-contact-btn {
-  border-radius: 40px;
-  width: 15vw;
-  min-width: 200px;
-  border: 2px solid #ffb340;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.favorite-star-icon {
-  margin-right: 5px;
-}
-
-.mail-contact-btn {
-  border-radius: 40px;
-  width: 15vw;
-  min-width: 200px;
-  padding: 1vh 0;
-  color: black;
-  border: 2px solid #2d2d2d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .like-btn {
   border-radius: 40px;
   width: 15vw;
@@ -155,7 +128,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
+}
+
+.like-btn-fake {
+  border-radius: 40px;
+  width: 15vw;
+  min-width: 200px;
+  border: 2px solid #ffb340;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .club-show-like {
@@ -165,10 +147,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
 }
 
-.show-link {
+.chat-contact-link {
   text-decoration: none;
-  color: rgb(51, 48, 48);
+  border-radius: 40px;
+  width: 15vw;
+  min-width: 200px;
+  padding: 1vh 0;
+  border: 2px solid #30e852;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.mail-contact-link {
+  text-decoration: none;
+  border-radius: 40px;
+  width: 15vw;
+  min-width: 200px;
+  padding: 1vh 0;
+  color: black;
+  border: 2px solid #2d2d2d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
