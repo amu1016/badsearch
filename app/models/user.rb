@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :room_users
   has_many :rooms, through: :room_users
   has_many :messages, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_clubs, through: :likes, source: :club
 
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :prefecture
@@ -25,5 +27,22 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+  end
+
+
+  def own?(object)
+    id == object.user_id
+  end
+
+  def like(club)
+    likes.find_or_create_by(club: club)
+  end
+
+  def like?(club)
+    like_clubs.include?(club)
+  end
+
+  def unlike(club)
+    like_clubs.delete(club)
   end
 end

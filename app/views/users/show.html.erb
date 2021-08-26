@@ -73,16 +73,63 @@
     <div class="user-show-action">
       <div class="action-groupe">
         <h2 class="user-show-title">
-        閲覧履歴
-        </h2>
-        <%# 閲覧履歴新しい順に5件表示%>
-      </div>
-      <div class="action-groupe">
-        <h2 class="user-show-title">
         イイネ一覧
         </h2>
         <%# イイネしたクラブ新しい順に5件表示%>
       </div>
+      <ul class='club-lists'>
+      <% @clubs.each do |club| %>
+        <li class='list'>
+          <%= link_to club_path(club.id), class: "link" do %>
+          <div class="club-content-wrap">
+            <div class="club-top">
+              <div class='club-info'>
+                <div class="created-date">
+                <%= club.created_at.to_s(:datetime_jp)%>
+                </div>
+                <h3 class="club-name">
+                <%= club.name%>
+                </h3>
+                <div class="club-place">
+                  <div class="club-prefecture">
+                  <%= club.prefecture.name%>
+                  </div>
+                  <div class="club-city">
+                  <%= club.city%>
+                  </div>
+                </div>
+              </div>
+              <div class="club-image-content">
+                <%= image_tag club.image, class: "club-image" if club.image.attached? %>
+              </div>
+            </div>
+            <div class="club-bottom">
+              <div class="club-comment">
+                <%= club.information %>
+              </div>
+              <% if user_signed_in? %>
+                <% if current_user.own?(club) %>
+                  <%= link_to edit_club_path(club), class: "link" do %>
+                    <div class='favorite-btn'>
+                      <i class="far fa-edit"></i>
+                    </div>
+                  <% end%>
+                <% else %>
+                  <div id="like-button-<%= club.id %>">
+                  <% if current_user&.like?(club) %>
+                    <%= render partial: 'likes/unlike_button', locals: {club: club}%>
+                  <% else %>
+                    <%= render partial: 'likes/like_button', locals: {club: club}%>
+                  <% end%>
+                  </div>
+                <% end %>
+              <% end %> 
+            </div>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
     </div>
 
 

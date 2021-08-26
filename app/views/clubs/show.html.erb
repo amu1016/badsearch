@@ -79,46 +79,61 @@
       </div>
     </div>
 
-    <% if @club.user_id == current_user.id%>
+    <% if user_signed_in? && @club.user_id == current_user.id%>
     <div class="club-show-contact-wrap">
       <div class="club-show-contact">
-        <div class="chat-contact-btn">
-        <%= link_to edit_club_path, class: "show-link" do %>
-          <span>サークル情報の編集</span>
-        </div>
+        <%= link_to edit_club_path, class: "chat-contact-link" do %>
+            <i class="far fa-edit"></i>
+            <span>サークル情報の編集</span>
         <% end%>
-        <div class="mail-contact-btn">
-        <%= link_to club_path, method: :delete, class: "show-link" do %>
-          <span>サークル募集の削除</span>
+        <%= link_to club_path, method: :delete, class: "mail-contact-link" do %>
+            <i class="far fa-trash-alt"></i>
+            <span>サークル募集の削除</span>
         <% end %>
-        </div>
-        <div class="club-show-like">
-          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-          <span>お気に入り 0</span>
+        <div class="like-btn">
+          <i class="fas fa-heart red"></i> 
+          <span><%= "お気に入り #{@club.likes.count}"%></span>
         </div>
       </div>
     </div>
+    <% elsif user_signed_in? %>
+    <div class="club-show-contact-wrap">
+      <div class="club-show-contact">
+        <%= link_to new_room_path(user_id: current_user.id, club_id: params[:id]), class: "chat-contact-link" do%>
+          <i class="far fa-comments"></i>
+          <span>チャットで問い合わせる</span>
+        <% end %>
+        <%= link_to "#", class: "mail-contact-link" do%>
+          <i class="far fa-envelope"></i>
+          <span>メールで問い合わせる</span>
+        <% end %>
+        <div class="like-btn-fake">
+          <span>お気に入り</span>
+          <div id="like-button-<%= @club.id %>">
+            <% if current_user&.like?(@club) %>
+              <%= render partial: 'likes/unlike_button', locals: {club: @club}%>
+            <% else %>
+              <%= render partial: 'likes/like_button', locals: {club: @club}%>
+            <% end%>
+          </div>
+        </div>
     <% else %>
     <div class="club-show-contact-wrap">
       <div class="club-show-contact">
-        <div class="chat-contact-btn">
-        <%= link_to new_room_path(user_id: current_user.id, club_id: params[:id]), class: "show-link" do%>
-          <%#<%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <%= link_to new_user_session_path, class: "chat-contact-link" do%>
+          <i class="far fa-comments"></i>
           <span>チャットで問い合わせる</span>
         <% end %>
-        </div>
-        <div class="mail-contact-btn">
-          <%#<%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <%= link_to new_user_session_path, class: "mail-contact-link" do%>
+          <i class="far fa-envelope"></i>
           <span>メールで問い合わせる</span>
-        </div>
+        <% end %>
         <div class="like-btn">
-          <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-          <span>お気に入り 0</span>
+          <i class="fas fa-heart red"></i> 
+          <span><%= "お気に入り #{@club.likes.count}"%></span>
         </div>
       </div>
     </div>
     <% end %>
-
-
   </div>
 </div>

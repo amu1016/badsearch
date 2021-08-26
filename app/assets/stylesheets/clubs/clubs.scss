@@ -1,3 +1,22 @@
 // Place all the styles related to the clubs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.fas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2px;
+}
+
+.far {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+}
+
+.red {
+  color: rgb(252, 79, 79);
+}
