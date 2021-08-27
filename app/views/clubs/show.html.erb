@@ -5,10 +5,10 @@
     <div class="club-show-top">
       <div class="club-show-date">
         <div class="club-show-new-date">
-          募集開始日：<%= @club.created_at %>
+          募集開始日：<%= @club.created_at.to_s(:datetime_jp) %>
         </div>
         <div class="club-show-update">
-          最終更新日：<%= @club.updated_at %>
+          最終更新日：<%= @club.updated_at.to_s(:datetime_jp) %>
         </div>
       </div>
       <div class="club-show-content-title">
