@@ -34,49 +34,62 @@
       </div>
     </div>
 
-    <div class="user-show-profile">
-      <h2 class="user-show-title">
-        プロフィール
-      </h2>
-      <div class="profile-groupe">
-        ニックネーム：<%= @user.nickname%>
+
+    <div class="show-detail-label">
+      プロフィール
+    </div>
+
+    <div class="club-show-detail">
+      <table class="club-show-detail-table">
+        <tbody>
+          <tr>
+            <th class="club-show-detail-item">ニックネーム</th>
+            <td class="club-show-detail-value"><%=  @user.nickname%></td>
+          </tr>
+          <tr>
+            <th class="club-show-detail-item">email</th>
+            <td class="club-show-detail-value"><%= @user.email%></td>
+          </tr>
+          <tr>
+            <th class="club-show-detail-item">都道府県</th>
+            <% if @user.prefecture_id.present?%>
+              <td class="club-show-detail-value"><%= @user.prefecture.name %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <th class="club-show-detail-item">性別</th>
+            <% if @user.gender_id.present?%>
+              <td class="club-show-detail-value"><%= @user.gender.name %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <th class="club-show-detail-item">経験年数</th>
+            <% if @user.career.present?%>
+              <td class="club-show-detail-value"><%= @user.career %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="club-show-information">
+      <div class="club-show-information-label">
+        自己紹介
       </div>
-      <div class="profile-groupe">
-        email：<%= @user.email%>
-      </div>
-      <div class="profile-groupe">
-        都道府県：
-        <% if @user.prefecture_id.present?%>
-        <%= @user.prefecture.name %>
-        <% end %>
-      </div>
-      <div class="profile-groupe">
-        性別：
-        <% if @user.gender_id.present?%>
-        <%= @user.gender.name %>
-        <% end %>
-      </div>
-      <div class="profile-groupe">
-        経験年数：
-        <% if @user.career.present?%>
-        <%= @user.career %>
-        <% end %>
-      </div>
-      <div class="user-information">
-        自己紹介<br>
-        <% if @user.profile.present?%>
+      <div class="club-show-information-text">
+      <% if @user.profile.present?%>
         <%= @user.profile %>
-        <% end %>
+      <% end %>
       </div>
     </div>
 
+    <div class="show-detail-label">
+      いいね一覧
+    </div>
+
+    
     <div class="user-show-action">
-      <div class="action-groupe">
-        <h2 class="user-show-title">
-        イイネ一覧
-        </h2>
-        <%# イイネしたクラブ新しい順に5件表示%>
-      </div>
+    <% if @clubs.present? %>
       <ul class='club-lists'>
       <% @clubs.each do |club| %>
         <li class='list'>
@@ -129,12 +142,15 @@
           <% end %>
         </li>
       <% end %>
-    </ul>
+      </ul>
+    <% else %>
+      <div class="no-likes-content">
+        <div class="no-likes-text">
+          お気に入り登録したサークルがありません
+        </div>
+      </div>
+    <% end %>
     </div>
-
-
-
-
 
   </div>
 </div>
