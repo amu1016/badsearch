@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :clubs do
     resource :likes, only: [:create, :destroy]
   end
+  resources :events, only: :index
 
   resources :users, only: [:show, :edit]
   resources :rooms, only: [:index, :new, :create, :show] do
