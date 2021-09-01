@@ -8,7 +8,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery');
-require('../calendar')
+require('./calendar/event')
 
 
 
