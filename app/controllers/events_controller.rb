@@ -12,14 +12,11 @@ class EventsController < ApplicationController
     render plain: render_to_string(partial: 'form_new', layout: false, locals: { event: @event })
   end
 
-  def edit
-  end
-
   def create
     @event = Event.new(params_event)
     if @event.save
       respond_to do |format|
-        format.html { redirect_to root_path } 
+        format.html { redirect_to events_path } 
         format.js  #create.js.erbを探してその中の処理を実行する
       end
     else
@@ -28,6 +25,12 @@ class EventsController < ApplicationController
         #登録にエラーが起きたときはerror.js.erbを実行する
       end
     end
+  end
+
+
+  def edit
+    @event = Event.find(params[:id])
+    render plain: render_to_string(partial: 'form_edit', layout: false, locals: { event: @event })
   end
 
   def update
