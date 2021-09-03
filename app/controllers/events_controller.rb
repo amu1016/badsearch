@@ -34,6 +34,17 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find(params[:id])
+    if @event.update(params_event)
+      respond_to do |format|
+        format.html { redirect_to events_path } 
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.js {render partial: "error" }
+      end
+    end
   end
 
   def destroy
