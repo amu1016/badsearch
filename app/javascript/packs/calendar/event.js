@@ -63,8 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     eventClick: function(info){
       var eventObj = info.event;
-      var eventId = eventObj.id;
-      console.log(eventObj.start.getDate());
+      var eventId = Number(eventObj.id);
         //クリックした日付の情報を取得
 
       //ajaxでevents/newを着火させ、htmlを受け取ります
@@ -82,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
           $('#event_start_3i').val(eventObj.start.getDate());
 
           $('#event_end_1i').val(eventObj.end.getFullYear());
-          $('#event_end_2i').val(eventObj.end.getMonth());
+          $('#event_end_2i').val(eventObj.end.getMonth() + 1);
           $('#event_end_3i').val(eventObj.end.getDate());
 
           //ここのidはevents/newのurlにアクセスするとhtmlがコードとして表示されるので、
