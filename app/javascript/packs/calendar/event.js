@@ -1,6 +1,7 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { event } from 'jquery';
 
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
@@ -11,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     timeZone: 'local',
     firstDay: 1,
     headerToolbar: {
-      start: '',
+      start: 'prev',
       center: 'title',
-      end: 'today prev,next' 
+      end: 'next' 
     },
     expandRows: true,
     stickyHeaderDates: true,
@@ -23,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     allDayText: '終日',
     height: "auto",
     editable: true,
-    events: '/events.json',
+    events: `${location.pathname}.json`,
+    
 
     dateClick: function(info){
       //クリックした日付の情報を取得
@@ -34,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
       //ajaxでevents/newを着火させ、htmlを受け取ります
       $.ajax({
           type: 'GET',
-          url:  '/events/new',
+          url:  `${location.pathname}/new`,
       }).done(function (res) {
           // 成功処理
           // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入します
@@ -69,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
       //ajaxでevents/newを着火させ、htmlを受け取ります
       $.ajax({
           type: 'GET',
-          url:  `/events/${eventId}/edit`,
+          url:  `${location.pathname}/${eventId}/edit`,
       }).done(function (res) {
           // 成功処理
           // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入します

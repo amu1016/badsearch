@@ -57,8 +57,10 @@ ActiveRecord::Schema.define(version: 2021_08_31_140944) do
     t.datetime "start"
     t.datetime "end"
     t.string "place"
+    t.bigint "club_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["club_id"], name: "index_events_on_club_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -115,6 +117,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_140944) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clubs", "users"
+  add_foreign_key "events", "clubs"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "room_users", "rooms"

@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   root to: "clubs#index"
   resources :clubs do
     resource :likes, only: [:create, :destroy]
+    resources :events
   end
-  resources :events, except: :show
+  
 
   resources :users, only: [:show, :edit]
   resources :rooms, only: [:index, :new, :create, :show] do

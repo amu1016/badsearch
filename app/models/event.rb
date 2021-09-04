@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+
+  belongs_to :club
+
   default_scope -> { order(start: :asc) }
 
    validate  :start_end_check

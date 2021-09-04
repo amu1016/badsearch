@@ -21,7 +21,7 @@ class EventsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.js {render partial: "error" }
+        format.js {render partial: "events/error" }
         #登録にエラーが起きたときはerror.js.erbを実行する
       end
     end
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if @event.update(params_event)
       respond_to do |format|
-        format.html { redirect_to events_path } 
+        format.html { redirect_to club_events_path } 
         format.js
       end
     else
@@ -50,13 +50,13 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to events_path
+    redirect_to club_events_path
   end
 
 
 
   private
   def params_event
-    params.require(:event).permit(:id, :start, :end, :place)
+    params.require(:event).permit(:start, :end, :place).merge(club_id: params[:club_id])
   end
 end

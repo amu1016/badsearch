@@ -3,6 +3,7 @@ class Club < ApplicationRecord
   has_one_attached :image
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
+  has_many :events, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :prefecture

@@ -1,5 +1,5 @@
 <div class="row">
-      <%= form_with(model: @event, url: events_path, remote: true) do |f| %>
+      <%= form_with model: [@club, @event], url: club_events_path(club_id: params[:club_id]), remote: true do |f| %>
         <%= render 'shared/event_error_messages', object: f.object %>
 
         <%= f.label :place, "場所"%>

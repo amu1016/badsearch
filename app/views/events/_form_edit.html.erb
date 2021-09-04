@@ -1,12 +1,12 @@
 <div class="row">
 
-      <%= link_to event_path(@event), method: :delete, class: "link" do %>
+      <%= link_to club_event_path(@event), method: :delete, class: "link" do %>
         <div class='favorite-btn'>
           <i class="far fa-trash-alt"></i>
         </div>
       <% end%>
 
-      <%= form_with(model: @event, url: event_path, remote: true) do |f| %>
+      <%= form_with(model: @event, url: club_event_path, remote: true) do |f| %>
         <%= render 'shared/event_error_messages', object: f.object %>
 
         <%= f.label :place, "場所"%>
