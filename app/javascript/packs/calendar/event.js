@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
       today: '今日'
     }, 
     allDayText: '終日',
+    slotMinutes: 30,
+    eventTimeFormat: { hour: 'numeric', minute: '2-digit' },
     height: "auto",
     editable: true,
     events: `${location.pathname}.json`,
