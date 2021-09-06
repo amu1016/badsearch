@@ -91,8 +91,35 @@ th.fc-day-sun {
   height: 30px;
 }
 
-.btn-wrap {
+.event-btn-wrap {
   display: flex;
   justify-content: center;
   margin: 20px 0;
+}
+
+.event-show-detail {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.event-show-detail-table {
+  margin: 30px 0;
+  width: 85%;
+  text-align: center;
+}
+
+.event-show-detail-item {
+  width: 20%;
+  background-color: #eee;
+  border: 1px solid #dedede;
+  font-size: 14px;
+  text-align: center;
+}
+
+.event-show-detail-value {
+  width: 80%;
+  padding: 20px;
+  border: 1px solid #dedede;
+  font-size: 14px;
 }

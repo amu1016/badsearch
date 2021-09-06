@@ -1,5 +1,6 @@
 <div class="modal-wrapper">
   <div class="row">
+  <% if current_user.id == @club.user_id %>
     <div class="schedule-form-label">予定編集</div>
     <div class="schedule-form-content">
     <%= link_to club_event_path(@event), method: :delete, class: "link" do %>
@@ -27,5 +28,27 @@
         </div>
       <% end %>
     </div>
+  <% else %>
+    <div class="schedule-form-label">活動予定日詳細</div>
+    <div class="event-show-detail">
+      <table class="event-show-detail-table">
+      <tbody>
+        <tr>
+          <th class="event-show-detail-item">　場所　</th>
+          <td class="event-show-detail-value"><%= @event.place %></td>
+        </tr>
+        <tr>
+          <th class="event-show-detail-item">開始時刻</th>
+          <td class="event-show-detail-value"><%= l @event.start, format: :short %></td>
+        </tr>
+        <tr>
+          <th class="event-show-detail-item">終了時刻</th>
+          <td class="event-show-detail-value"><%= l @event.end, format: :short %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  <% end %>
   </div>
-</div>  
+</div>
+

@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @club = Club.find(params[:club_id])
     render plain: render_to_string(partial: 'form_new', layout: false, locals: { event: @event })
   end
 
@@ -30,6 +31,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @club = Club.find(params[:club_id])
     render plain: render_to_string(partial: 'form_edit', layout: false, locals: { event: @event })
   end
 
