@@ -23,7 +23,7 @@
       <%= image_tag @club.image, class: "club-show-image" %>
     </div>
 
-    <div class="club-show-detail-label">
+    <div class="show-detail-label">
       サークル情報
     </div>
 
@@ -135,5 +135,12 @@
       </div>
     </div>
     <% end %>
+
+    <div class="show-detail-label">
+      活動予定日
+    </div>
+
+    <%= link_to "カレンダー", club_events_path(club_id: params[:id]) %>
+
   </div>
 </div>
