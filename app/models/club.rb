@@ -1,6 +1,6 @@
 class Club < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  has_manv_attached :images
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
   has_many :events, dependent: :destroy
