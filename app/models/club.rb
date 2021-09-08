@@ -1,6 +1,6 @@
 class Club < ApplicationRecord
   belongs_to :user
-  has_manv_attached :images
+  has_many_attached :images
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
   has_many :events, dependent: :destroy
@@ -12,7 +12,7 @@ class Club < ApplicationRecord
     validates :content, presence: true, unless: :was_attached?
 
     def was_attached?
-      self.image.attached?
+      self.images.attached?
     end
 
   with_options presence: true do

@@ -10,7 +10,7 @@ require("channels")
 require('jquery')
 require('./calendar/event')
 require('../clubs/preview')
-
+require('../clubs/slider')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
