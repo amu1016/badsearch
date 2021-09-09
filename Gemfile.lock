@@ -96,6 +96,11 @@ GEM
       momentjs-rails (>= 2.9.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    gon (6.4.0)
+      actionpack (>= 3.0.20)
+      i18n (>= 0.7)
+      multi_json
+      request_store (>= 1.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -128,6 +133,7 @@ GEM
       railties (>= 3.1)
     msgpack (1.4.2)
     msgpack (1.4.2-java)
+    multi_json (1.15.0)
     mysql2 (0.5.3)
     mysql2 (0.5.3-x64-mingw32)
     mysql2 (0.5.3-x86-mingw32)
@@ -194,6 +200,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -277,6 +285,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise
   fullcalendar-rails
+  gon
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails

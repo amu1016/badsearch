@@ -6,6 +6,7 @@ class ClubsController < ApplicationController
 
   def index
     @clubs = Club.includes(:user).order("created_at DESC")
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
   end
 
   def new
