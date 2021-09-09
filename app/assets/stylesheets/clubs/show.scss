@@ -38,7 +38,7 @@
 }
 
 
-.club-show-image-content {
+.slider {
   display: flex;
   justify-content: center;
   background-color: rgb(223, 221, 221);
@@ -46,8 +46,8 @@
 
 .club-show-image {
   margin: 20px auto;
-  width: 90%;
-  height: 90%;
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .show-detail-label {

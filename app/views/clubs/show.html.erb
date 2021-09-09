@@ -15,12 +15,16 @@
         <h1><%= @club.name%></h1>
       </div>
       <div class="club-show-content-status">
-        <%= @club.status.name%>
+        <%= @club.status.name %>
       </div>
     </div>
 
-    <div class="club-show-image-content">
-      <%= image_tag @club.image, class: "club-show-image" %>
+    <div class="slider" id="slider-content">
+      <% @club.images.each do |image| %>
+        <div>
+          <%= image_tag image, class: "club-show-image" %>
+        </div>
+      <% end %>
     </div>
 
     <div class="show-detail-label">
@@ -117,6 +121,8 @@
             <% end%>
           </div>
         </div>
+      </div>
+    </div>
     <% else %>
     <div class="club-show-contact-wrap">
       <div class="club-show-contact">

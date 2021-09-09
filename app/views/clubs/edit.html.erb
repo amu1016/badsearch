@@ -23,8 +23,10 @@
       <p>
         クリックしてファイルをアップロード
       </p>
-      <%= f.file_field :image,class: "image-file", id:"club-image" %>
+      <%= f.file_field :images, name: 'club[images][]', class: "image-file", id:"club-image" %>
+      <div id="image-list"></div>
     </div>
+
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -115,7 +117,7 @@
     <%= f.text_area :information, class:"input-default-high", id:"information", placeholder:"例) 初心者の方大歓迎です。", maxlength:"40", autofocus: true %>
   </div>
   
-  <div class='register-btn'>
+  <div class='register-new-btn'>
     <%= f.submit "編集する" ,class:"register-orange-btn" %>
   </div>
 </div>

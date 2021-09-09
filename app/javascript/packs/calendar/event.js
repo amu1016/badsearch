@@ -4,6 +4,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { event } from 'jquery';
 
 document.addEventListener('DOMContentLoaded', function() {
+  if ( document.getElementById('calender')){
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new Calendar(calendarEl, {
@@ -110,4 +111,5 @@ document.addEventListener('DOMContentLoaded', function() {
   $(".error").click(function(){
     calendar.refetchEvents();
 });
+};
 });
