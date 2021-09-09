@@ -113,7 +113,7 @@
                 </div>
               </div>
               <div class="club-image-content">
-                <%= image_tag club.image, class: "club-image" if club.image.attached? %>
+                <%= image_tag club.images[0], class: "club-image" if club.images.attached? %>
               </div>
             </div>
             <div class="club-bottom">
