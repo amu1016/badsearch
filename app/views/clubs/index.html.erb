@@ -6,11 +6,12 @@
     <h1 class='concept'>
       さぁ 羽を追いかけよう
     </h1>
-    <%= form_with local: true do |f| %>
+    <%= form_with id: 'example_form' do |f| %>
     <div class="search-form">
       <div class="search-prefecture">
         <p class="select-text">探したい地域を入力してください</p>
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box-top", id:"club-prefecture"}) %>
+        <%= f.select :prefecture, [] %>
+        <%= f.select :city, [] %>
       </div>
       <%= f.submit "検索する" ,class:"search-btn" %>
     </div>
