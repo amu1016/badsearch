@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_clubs, through: :likes, source: :club
+  belongs_to :prefecture
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :prefecture
     belongs_to :gender
 
 

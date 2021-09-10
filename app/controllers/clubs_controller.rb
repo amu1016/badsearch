@@ -11,6 +11,7 @@ class ClubsController < ApplicationController
 
   def new
     @club = Club.new
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
   end
 
   def create
@@ -26,6 +27,7 @@ class ClubsController < ApplicationController
   end
 
   def edit
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
   end
 
   def update

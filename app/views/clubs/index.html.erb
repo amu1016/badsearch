@@ -6,12 +6,18 @@
     <h1 class='concept'>
       さぁ 羽を追いかけよう
     </h1>
-    <%= form_with id: 'example_form' do |f| %>
+    <%= form_with class: 'prefecture-city' do |f| %>
     <div class="search-form">
       <div class="search-prefecture">
         <p class="select-text">探したい地域を入力してください</p>
-        <%= f.select :prefecture, [] %>
-        <%= f.select :city, [] %>
+        <%= f.select :prefecture, nil, {class:"select-box-top" },{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
+          <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
+            {{prefecture.name}}
+          </option>
+        <% end %>
+        <%= f.select :city, class:"select-box-top" do %>
+        <option v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</option>
+        <% end %>
       </div>
       <%= f.submit "検索する" ,class:"search-btn" %>
     </div>
