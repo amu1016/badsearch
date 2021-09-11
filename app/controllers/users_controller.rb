@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
   end
 
   def update
