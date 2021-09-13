@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_prefectures_on_name", unique: true
   end
 
   create_table "room_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -116,7 +117,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.bigint "prefecture_id"
+    t.integer "prefecture_id"
     t.integer "gender_id"
     t.string "career"
     t.text "profile"
@@ -125,7 +126,6 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -136,5 +136,4 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
   add_foreign_key "messages", "users"
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"
-  add_foreign_key "users", "prefectures"
 end

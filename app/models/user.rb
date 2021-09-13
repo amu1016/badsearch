@@ -4,17 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :club, dependent: :destroy
+  has_one :club
   has_many :room_users
   has_many :rooms, through: :room_users
   has_many :messages, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_clubs, through: :likes, source: :club
-  belongs_to :prefecture
-
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-    
+    belongs_to :prefecture
     belongs_to :gender
 
 

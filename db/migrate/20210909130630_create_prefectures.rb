@@ -6,18 +6,6 @@ class CreatePrefectures < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    
-
-    def up
-      remove_index :prefectures, :name
-      add_index :prefectures, :name, unique: true
-    end
-
-    def down
-      
-      remove_index :prefectures, :name
-      add_index :prefectures, :name
-    end
-
+    add_index :prefectures, :name, unique: true
   end
 end
