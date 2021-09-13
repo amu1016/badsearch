@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :nickname,           null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.integer :prefecture_id
+      t.references :prefecture,     foreign_key: true
       t.integer :gender_id
       t.string  :career
       t.text :profile
@@ -52,6 +52,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     end
 
     def down
+      remove_foreign_key :users, :prefecture
       remove_index :users, :email
       remove_index :users, :reset_password_token
       add_index :users, :email
