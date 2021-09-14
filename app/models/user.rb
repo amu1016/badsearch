@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable
 
   has_one :club
   has_many :room_users
@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_clubs, through: :likes, source: :club
+  belongs_to :prefecture
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :prefecture
     belongs_to :gender
 
 

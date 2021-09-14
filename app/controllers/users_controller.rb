@@ -5,10 +5,4 @@ class UsersController < ApplicationController
     @clubs = @user.like_clubs
   end
 
-  def edit
-    gon.prefectures = Prefecture.all.to_json only: %i[id name]
-  end
-
-  def update
-  end
 end

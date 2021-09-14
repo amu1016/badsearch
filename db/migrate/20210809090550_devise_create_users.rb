@@ -57,6 +57,5 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       add_index :users, :email
       add_index :users, :reset_password_token
     end
-
   end
 end

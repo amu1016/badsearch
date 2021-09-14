@@ -22,7 +22,7 @@ class Club < ApplicationRecord
     validates :since_year
     validates :since_month
     validates :prefecture_id
-    validates :city_id
+    validates :city
     validates :gym
     validates :gender_ratio
     validates :beginner_ratio
