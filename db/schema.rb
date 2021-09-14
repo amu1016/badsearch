@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.integer "status_id", null: false
     t.integer "since_year", null: false
     t.integer "since_month", null: false
-    t.integer "prefecture_id", null: false
-    t.string "city", null: false
+    t.bigint "prefecture_id", null: false
+    t.bigint "city_id", null: false
     t.string "gym", null: false
     t.string "gender_ratio", null: false
     t.string "beginner_ratio", null: false
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_clubs_on_city_id"
+    t.index ["prefecture_id"], name: "index_clubs_on_prefecture_id"
     t.index ["user_id"], name: "index_clubs_on_user_id"
   end
 
@@ -117,7 +119,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "prefecture_id"
+    t.bigint "prefecture_id"
     t.integer "gender_id"
     t.string "career"
     t.text "profile"
@@ -126,16 +128,18 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cities", "prefectures"
+  add_foreign_key "clubs", "cities"
+  add_foreign_key "clubs", "prefectures"
   add_foreign_key "clubs", "users"
   add_foreign_key "events", "clubs"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"
+  add_foreign_key "users", "prefectures"
 end
