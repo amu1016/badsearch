@@ -58,7 +58,7 @@
       <span class="indispensable">必須</span>
       <label class="form-text">都道府県</label>
     </div>
-      <%= f.select :prefecture, nil, {class:"select-box-top" },{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
+      <%= f.select :prefecture_id, nil, {class:"select-box-top" },{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
        <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
         {{prefecture.name}}
       </option>
@@ -70,7 +70,7 @@
       <span class="indispensable">必須</span>
       <label class="form-text">市区町村</label>
     </div>
-    <%= f.select :city, class:"select-box-top" do %>
+    <%= f.select :city_id, class:"select-box-top" do %>
       <option v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</option>
     <% end %>
   </div>
