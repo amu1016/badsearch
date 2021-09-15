@@ -9,6 +9,12 @@ class ClubsController < ApplicationController
     gon.prefectures = Prefecture.all.to_json only: %i[id name]
   end
 
+  def search
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
+    @q = Club.ransack(params[:q])
+    @clubs = @q.result(distinct: true)
+  end
+
   def new
     @club = Club.new
     gon.prefectures = Prefecture.all.to_json only: %i[id name]

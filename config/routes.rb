@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :clubs do
     resource :likes, only: [:create, :destroy]
     resources :events
+    collection do
+      get 'search'
+    end
   end
   
 

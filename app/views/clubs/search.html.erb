@@ -1,0 +1,76 @@
+<%= form_with class: 'prefecture-city' do |f| %>
+    <div class="search-form">
+      <div class="search-prefecture">
+        <p class="select-text">探したい地域を入力してください</p>
+        <%= f.select :prefecture, nil, {class:"select-box-top" },{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
+          <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
+            {{prefecture.name}}
+          </option>
+        <% end %>
+        <%= f.select :city, class:"select-box-top" do %>
+        <option v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</option>
+        <% end %>
+      </div>
+      <%= f.submit "検索する" ,class:"search-btn" %>
+    </div>
+    <% end %>
+    <%= javascript_pack_tag 'hello_vue' %>
+
+
+<div class='club-contents'>
+    <h2 class='club-content-title'>新規サークル一覧</h2>
+    <ul class='club-lists'>
+      <% @clubs.each do |club| %>
+        <li class='list'>
+          <%= link_to club_path(club.id), class: "link" do %>
+          <div class="club-content-wrap">
+            <div class="club-top">
+              <div class='club-info'>
+                <div class="created-date">
+                <%= club.created_at.to_s(:datetime_jp)%>
+                </div>
+                <h3 class="club-name">
+                <%= club.name%>
+                </h3>
+                <div class="club-place">
+                  <div class="club-prefecture">
+                  <%= club.prefecture.name%>
+                  </div>
+                  <div class="club-city">
+                  <%= club.city.name%>
+                  </div>
+                </div>
+              </div>
+              <div class="club-image-content">
+                <%= image_tag club.images[0], class: "club-image" if club.images.attached? %>
+              </div>
+            </div>
+            <div class="club-bottom">
+              <div class="club-comment">
+                <%= club.information %>
+              </div>
+              <% if user_signed_in? %>
+                <% if current_user.own?(club) %>
+                  <%= link_to edit_club_path(club), class: "link" do %>
+                    <div class='favorite-btn'>
+                      <i class="far fa-edit"></i>
+                    </div>
+                  <% end%>
+                <% else %>
+                  <div id="like-button-<%= club.id %>">
+                  <% if current_user&.like?(club) %>
+                    <%= render partial: 'likes/unlike_button', locals: {club: club}%>
+                  <% else %>
+                    <%= render partial: 'likes/like_button', locals: {club: club}%>
+                  <% end%>
+                  </div>
+                <% end %>
+              <% end %> 
+            </div>
+          </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
