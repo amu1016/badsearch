@@ -1,7 +1,8 @@
 class ClubsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_club, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :move_to_show, only: :new
 
 
   def index
@@ -62,5 +63,8 @@ class ClubsController < ApplicationController
     redirect_to action: :index if current_user.id != @club.user_id
   end
 
+  def move_to_show
+    redirect_to club_path(current_user.club) if user_signed_in? &&  current_user.club.present?
+  end
 
 end

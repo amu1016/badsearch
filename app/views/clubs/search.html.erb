@@ -1,20 +1,59 @@
-<%= form_with class: 'prefecture-city' do |f| %>
-    <div class="search-form">
-      <div class="search-prefecture">
-        <p class="select-text">探したい地域を入力してください</p>
-        <%= f.select :prefecture, nil, {class:"select-box-top" },{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
-          <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
-            {{prefecture.name}}
-          </option>
-        <% end %>
-        <%= f.select :city, class:"select-box-top" do %>
-        <option v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</option>
-        <% end %>
+<%= render "shared/header" %>
+
+<div class="search-form-wrap">
+  <div class="search-form-header">
+    サークル検索
+  </div>
+  <div class="search-place-title">
+    都道府県選択
+  </div>
+  <div class="search-place">
+    <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
+      <div class="search-form">
+        <div class="search-prefecture">
+          <%= f.select :prefecture_id, nil, {class:"search-box-top" },{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
+            <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
+              {{prefecture.name}}
+            </option>
+          <% end %>
+          <%= f.select :city_id, class:"search-box-top" do %>
+          <option v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</option>
+          <% end %>
+        </div>
+        <%= f.submit "検索" ,class:"search-btn" %>
+        <div class="city-accordion-label">
+          <i class="fas fa-sliders-h"></i>
+          <span>市区町村で絞り込む </span>
+          <i class="fas fa-angle-down city-down"></i>
+        </div>
       </div>
-      <%= f.submit "検索する" ,class:"search-btn" %>
-    </div>
     <% end %>
+    <div class="city-accordion">
+      <div class="city-accordion-body">
+        選択された都道府県に対応する市区町村一覧をチェックボックス形式で表示する
+      <div>
+    </div>
     <%= javascript_pack_tag 'hello_vue' %>
+    <%= stylesheet_pack_tag 'hello_vue' %>
+  </div>
+</div>
+
+  <div class="search-accordion-label">
+    <div class="search-accordion-label-left">
+      <%= "検索結果：#{@clubs.count} 件"%>
+    </div>
+    <div class="search-accordion-label-right">
+      <i class="fas fa-sliders-h"></i>
+      <span>絞り込み </span>
+      <i class="fas fa-angle-down search-down"></i>
+    </div>
+  </div>
+  <div class="search-accordion">
+    <div class="search-accordion-body">
+    ここに検索条件を追加していく
+    </div>
+  </div>
+
 
 
 <div class='club-contents'>

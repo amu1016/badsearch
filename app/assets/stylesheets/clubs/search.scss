@@ -1,7 +1,18 @@
+.search-form-wrap {
+  padding: 10px;
+}
+
+.search-form-header {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+
 .search-form {
   display: flex;
   padding: 0 auto;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
@@ -16,7 +27,6 @@
 }
 
 .search-btn {
-  margin: 33px 13px 13px;
   padding: 5px 15px;
   color: #fff;
   background-color: #eb6100;
@@ -29,6 +39,78 @@
   background: #f56500;
 }
 
+.city-accordion-label {
+  margin-left: 10px;
+  padding: 0 10px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.city-accordion-label:hover {
+  cursor: pointer;
+  background-color: rgb(209, 209, 209);
+}
+
+.city-accordion {
+  display: none;
+}
+
+.city-accordion-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+}
+
+.search-accordion-label {
+  padding: 0 10px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.search-accordion-label-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-accordion-label-right:hover {
+  cursor: pointer;
+  background-color: rgb(209, 209, 209);
+}
+
+.fa-sliders-h {
+  margin-right: 5px;
+}
+
+.fa-angle-down {
+  margin-left: 20px;
+  transform: rotate(0deg); 
+  transition: transform .3s;
+}
+
+.rotate {
+  transform: rotate(180deg); 
+  transition: transform .3s;
+}
+
+.search-accordion {
+  display: none;
+}
+
+.search-accordion-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
 
 .club-contents {
   background-color: whitesmoke;

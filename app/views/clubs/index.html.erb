@@ -11,11 +11,20 @@
     </div>
     <div class="top-link-wrap">
       <div class="top-link-left">
-        <%= link_to new_club_path, class: "link" do%>
-          <div class="alter-center">
-            <i class="fas fa-users"></i>
-            <span class="top-link-btn">メンバー募集</span>
-          </div>
+        <% if user_signed_in? &&  current_user.club.present? %>
+          <%= link_to club_path(current_user.club), class: "link" do%>
+            <div class="alter-center">
+              <i class="fas fa-users"></i>
+              <span class="top-link-btn">運営サークル</span>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to new_club_path, class: "link" do%>
+            <div class="alter-center">
+              <i class="fas fa-users"></i>
+              <span class="top-link-btn">メンバー募集</span>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <div class="top-link-right">
