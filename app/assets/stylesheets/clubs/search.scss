@@ -112,91 +112,107 @@
   height: 150px;
 }
 
-.club-contents {
+.search-club-contents {
   background-color: whitesmoke;
 }
 
-.club-content-title {
+.search-club-content-title {
   text-align: center;
   padding-top: 15px;
   height: 70px;
   background-color: rgb(235, 184, 150);
+  font-size: 25px;
   font-weight: bold;
 }
 
-.club-lists {
+
+.search-club-lists {
   margin: 25px 20px 30px;
-  padding-bottom: 30px;
+  padding-bottom: 35px;
 }
 
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  width: 25vw;
-  height: 30vh;
+.search-list {
+  width: 100%;
+  height: 180px;
   background-color: white;
   border-radius: 3px;
 }
 
-.club-content-wrap {
+.search-club-content-wrap {
+  display: flex;
   width: 100%;
   height: 100%;
 }
 
-.club-top {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  padding-left: 10px;
-}
-
-.club-bottom {
-  width: 100%;
-  height: 50%;
-  padding: 8px 10px 0;
-}
-
-.club-info {
-  width: 40%;
-}
-
-.created-date {
-  height: 20%;
-  font-size: 8px;
-  padding-top: 5px;
-}
-
-.club-name {
-  height: 30%;
-  font-size: 15px;
-}
-
-.club-place {
-  height: 30%;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.club-image-content {
-  width: 60%;
+.search-club-content-left {
+  width: 250px;
   height: 100%;
-  padding: 5px;
-  margin: 5px 5px 0 0;
-  display: flex;
-  position: relative;
 }
 
-.club-image {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.search-club-image-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-club-image {
   width: 90%;
   height: 90%;
 }
 
-.club-comment {
-  padding-top: 5px;
-  height: 85%;
+.search-club-content-right {
+  padding: 5px 0 5px;
+  width: calc(100% - 250px);
+}
+
+.search-club-content-right-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-club-name {
+  font-size: 23px;
+}
+
+.search-club-place {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.fa-map-marker-alt {
+  margin-right: 8px;
+}
+
+.search-club-content-right-bottom {
+  padding-top: 3px;
+  height: calc(100% - 80px);
+}
+
+
+.edit-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+}
+
+.search-club-icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.updated-data {
+  margin-right: 10px;
+}
+
+.like-button{
+  margin-right: 8px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }
 
 .favorite-btn {
