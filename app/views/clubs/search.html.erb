@@ -16,24 +16,13 @@
               {{prefecture.name}}
             </option>
           <% end %>
-          <%= f.select :city_id, class:"search-box-top" do %>
-            <option v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</option>
-          <% end %>
+          <div class="city-index" v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</div>
         </div>
-        <%= f.submit "検索" ,class:"search-btn" %>
-        <div class="city-accordion-label">
-          <i class="fas fa-sliders-h"></i>
-          <span>市区町村で絞り込む </span>
-          <i class="fas fa-angle-down city-down"></i>
-        </div>
-        <%= javascript_pack_tag 'hello_vue' %>
       </div>
+      
+    <%= f.submit "検索" ,class:"search-btn" %>
     <% end %>
-    <div class="city-accordion">
-      <div class="city-accordion-body">
-        選択された都道府県に対応する市区町村一覧をチェックボックス形式で表示する
-      <div>
-    </div>
+    <%= javascript_pack_tag 'hello_vue' %>
   </div>
 </div>
 
