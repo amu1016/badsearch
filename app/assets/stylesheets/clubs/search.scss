@@ -26,9 +26,21 @@
   height: 35px;
 }
 
-.city-index {
+.city-lists-content {
   display: flex;
-  
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.city-list {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.city-lists-content input[type=checkbox]:hover {
+  border-color: #0171bd;
 }
 
 .search-btn {

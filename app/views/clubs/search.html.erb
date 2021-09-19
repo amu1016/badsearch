@@ -16,7 +16,12 @@
               {{prefecture.name}}
             </option>
           <% end %>
-          <div class="city-index" v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</div>
+          <div class="city-lists-content" >
+            <div class="city-list" v-for="city in cities" :key="city.name" :value="city.id">
+              <%= f.check_box :city_id_eq_any , { multiple: true, checked: "{{city.id}}", disabled: nil, include_hidden: false }, "{{city.id}}", nil %>
+              <%= f.label :city_id, "{{city.name}}"%>
+            </div>
+          </div>
         </div>
       </div>
       
