@@ -4,7 +4,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { event } from 'jquery';
 
 document.addEventListener('DOMContentLoaded', function() {
-  if ( document.getElementById('calender')){
+  if ( document.getElementById('calendar')){
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new Calendar(calendarEl, {

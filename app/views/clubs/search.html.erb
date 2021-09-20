@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
 
-<div class="search-form-wrap">
+
+
   <div class="search-form-header">
     サークル検索
   </div>
@@ -11,51 +12,69 @@
     <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
       <div class="search-form">
         <div class="search-prefecture">
-          <%= f.select :prefecture_id, nil, {class:"search-box-top" },{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
+          <%= f.select :prefecture_id_eq, nil, {},{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
             <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
               {{prefecture.name}}
             </option>
           <% end %>
           <div class="city-lists-content" >
             <div class="city-list" v-for="city in cities" :key="city.name" :value="city.id">
-              <%= f.check_box :city_id_eq_any , { multiple: true, checked: "{{city.id}}", disabled: nil, include_hidden: false }, "{{city.id}}", nil %>
-              <%= f.label :city_id, "{{city.name}}"%>
+              <input type="checkbox" v-bind="city" :value="city.id" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
+              <label for="q_city_id">{{city.name}}</label>
             </div>
           </div>
         </div>
       </div>
-      
-    <%= f.submit "検索" ,class:"search-btn" %>
+      <%= f.submit "検索" ,class:"search-btn" %>
     <% end %>
-    <%= javascript_pack_tag 'hello_vue' %>
   </div>
-</div>
 
-
-<div class="search-accordion-wrap">
-  <div class="search-accordion-label">
-    <div class="search-accordion-label-left">
-      <%= "検索結果：#{@clubs.count} 件"%>
+  <div class="search-accordion-wrap">
+    <div class="search-accordion-label">
+      <div class="search-accordion-label-left">
+        <%= "検索結果：#{@clubs.count} 件"%>
+      </div>
+      <div class="search-accordion-label-right">
+        <div class="date-sort hover-action">
+          <i class="far fa-calendar-alt"></i>
+          <span>日時で絞り込む </span>
+          <i class="fas fa-angle-down date-down"></i>
+        </div>
+        <div class="search-sort hover-action">
+          <i class="fas fa-sliders-h"></i>
+          <span>条件で絞り込む </span>
+          <i class="fas fa-angle-down search-down"></i>
+        </div>
+      </div>
     </div>
-    <div class="search-accordion-label-right">
-      <i class="fas fa-sliders-h"></i>
-      <span>絞り込み </span>
-      <i class="fas fa-angle-down search-down"></i>
+    <div class="date-accordion">
+      <div class="date-accordion-body">
+        ここに検索条件を追加していく
+      </div>
+    </div>
+    <div class="search-accordion">
+      <div class="search-accordion-body">
+        ここに検索条件を追加していく
+      </div>
     </div>
   </div>
-  <div class="search-accordion">
-    <div class="search-accordion-body">
-    ここに検索条件を追加していく
-    </div>
-  </div>
-</div>
 
 
 <div class='search-club-contents'>
-    <h2 class='search-club-content-title'>検索結果</h2>
-    <div class='search-club-lists'>
-      <% @clubs.each do |club| %>
-        <%= render partial: 'clubs/search_club' , locals: {  club: club } %>
-      <% end %>
+  <h2 class='search-club-content-title'>検索結果</h2>
+  <% if @clubs.present? %>
+  <ul class='search-club-lists'>
+    <% @clubs.each do |club| %>
+      <%= render partial: 'clubs/search_club' , locals: {  club: club } %>
+    <% end %>
+  </ul>
+  <% else%>
+  <div class="search-no-result">
+    <div class="no-result-text">
+      条件に一致するサークルがありません
     </div>
   </div>
+  <% end %>
+</div>
+
+<%= javascript_pack_tag 'hello_vue' %>

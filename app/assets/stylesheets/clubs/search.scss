@@ -1,13 +1,17 @@
-.search-form-wrap {
-  padding: 10px;
-}
 
 .search-form-header {
   font-size: 30px;
   font-weight: bold;
+  padding: 10px;
 }
 
+.search-place-title {
+  padding: 10px;
+}
 
+.search-place {
+  padding: 10px;
+}
 
 .search-form {
   display: flex;
@@ -98,7 +102,34 @@
   align-items: center;
 }
 
-.search-accordion-label-right:hover {
+.open {
+  font-weight: bold;
+  color: #0171bd;
+}
+
+.date-sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.fa-calendar-alt {
+  margin-right: 5px;
+}
+
+.hover-action:hover {
+  cursor: pointer;
+  background-color: rgb(209, 209, 209);
+}
+
+.search-sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-sort:hover {
   cursor: pointer;
   background-color: rgb(209, 209, 209);
 }
@@ -108,7 +139,7 @@
 }
 
 .fa-angle-down {
-  margin-left: 20px;
+  margin-left: 10px;
   transform: rotate(0deg); 
   transition: transform .3s;
 }
@@ -116,6 +147,17 @@
 .rotate {
   transform: rotate(180deg); 
   transition: transform .3s;
+}
+
+.date-accordion {
+  display: none;
+}
+
+.date-accordion-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
 }
 
 .search-accordion {
@@ -210,7 +252,7 @@
 }
 
 
-.edit-button {
+.search-club-status {
   display: flex;
   justify-content: flex-end;
   margin-right: 5px;
@@ -246,5 +288,15 @@
 .link {
   text-decoration: none;
   width: 100%;
+  color: rgb(51, 48, 48);
+}
+
+.no-result-text {
+  padding: 30px;
+  text-align: center;
+}
+
+.club-link {
+  text-decoration: none;
   color: rgb(51, 48, 48);
 }

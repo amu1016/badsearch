@@ -1,4 +1,4 @@
-#q_prefecture_id,#q_city_id  {
+#q_prefecture_id,#q_city_id, #q_prefecture_id_eq {
   height: 35px;
   width: 200px;
   margin-right: 10px;
