@@ -195,6 +195,7 @@
   height: 180px;
   background-color: white;
   border-radius: 3px;
+  margin-bottom: 15px;
 }
 
 .search-club-content-wrap {
@@ -251,7 +252,6 @@
   height: calc(100% - 80px);
 }
 
-
 .search-club-status {
   display: flex;
   justify-content: flex-end;
@@ -274,9 +274,10 @@
   align-items: center;
 }
 
-.favorite-btn {
+.favorite-button {
   display: flex;
   justify-content: flex-end;
+  margin-right: 8px;
 }
 
 .star-icon {

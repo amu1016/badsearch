@@ -1,5 +1,5 @@
 <%= link_to club_likes_path(club_id: club.id, id: current_user.likes.find_by(club: club).id), method: :delete, class: "link", remote: true do %>
-  <div class='favorite-btn'>
+  <div class='favorite-button'>
     <i class="fas fa-heart red"></i>
     <span><%= club.likes.count%></span>
   </div>

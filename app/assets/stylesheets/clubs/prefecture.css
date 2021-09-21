@@ -3,3 +3,13 @@
   width: 200px;
   margin-right: 10px;
 }
+
+#club_prefecture_id, #club_city_id {
+  height: 35px;
+  width: 200px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  padding: 0 10px;
+}
