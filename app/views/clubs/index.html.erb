@@ -1,4 +1,4 @@
-<%= render "shared/header" %>
+<%= render "shared/top_header" %>
 
 <div class='main'>
   <div class='top-contents'>
@@ -10,7 +10,7 @@
     </div>
     <div class="top-link-wrap">
       <div class="top-link-left">
-        <% if user_signed_in? &&  current_user.club.present? %>
+        <% if user_signed_in? && current_user.club.present? %>
           <%= link_to club_path(current_user.club), class: "link" do%>
             <div class="alter-center">
               <i class="fas fa-users"></i>

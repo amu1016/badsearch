@@ -98,7 +98,7 @@
             <div class="club-top">
               <div class='club-info'>
                 <div class="created-date">
-                <%= club.created_at.to_s(:datetime_jp)%>
+                <%=  l club.updated_at, format: :long %>
                 </div>
                 <h3 class="club-name">
                 <%= club.name%>
@@ -108,7 +108,7 @@
                   <%= club.prefecture.name%>
                   </div>
                   <div class="club-city">
-                  <%= club.city%>
+                  <%= club.city.name%>
                   </div>
                 </div>
               </div>

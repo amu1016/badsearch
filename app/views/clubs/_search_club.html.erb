@@ -27,7 +27,7 @@
         </div>
         <div class="search-club-icon">
           <div class="updated-data">
-            <%= club.updated_at.to_s(:datetime_jp) %>
+            <%=  l club.updated_at, format: :long  %>
           </div>
           <% if user_signed_in? && current_user.own?(club) %>
             <div class="like-button">
