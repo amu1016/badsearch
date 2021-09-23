@@ -103,7 +103,7 @@
     <% elsif user_signed_in? %>
     <div class="club-show-contact-wrap">
       <div class="club-show-contact">
-        <%= link_to new_room_path(user_id: current_user.id, club_id: params[:id]), class: "chat-contact-link" do%>
+        <%= link_to '#' , class: "chat-contact-link js-modal-open" do%>
           <i class="far fa-comments"></i>
           <span>チャットで問い合わせる</span>
         <% end %>
@@ -121,6 +121,10 @@
             <% end%>
           </div>
         </div>
+      </div>
+      <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+            <%= render partial: 'rooms/new', locals: {club: @club} %>
       </div>
     </div>
     <% else %>

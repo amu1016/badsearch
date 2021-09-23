@@ -1,0 +1,30 @@
+  <div class='modal__content'>
+    <div class='close-btn'>
+      <%= link_to "#", class: "js-modal-close room-link" do %>
+        <i class="fas fa-times"></i>
+      <% end %>
+    </div>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+        チャットで問い合わせる
+      </h1>
+    </div>
+    <div class="room-start-text">
+    <%= "#{club.name}の運営者にチャットで質問や相談をしてみましょう"%>
+    </div>
+
+    <div class="btn-content-wrap">
+      <div class="btn-content">
+        <div class='chat-start-btn'>
+        <%= link_to rooms_path(user_id: params[:user_id], club_id: params[:id]), method: :post, class: "room-link" do %>
+          <span class="chat-start-btn-text">チャットを始める</span>
+        <% end %>
+        </div>
+        <div class='back-btn'>
+        <%= link_to "#", class: "js-modal-close room-link" do %>
+          <span class="back-btn-text">閉じる</span>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
