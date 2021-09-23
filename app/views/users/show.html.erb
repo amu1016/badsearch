@@ -89,50 +89,50 @@
 
     
     <div class="user-show-action">
-    <% if @clubs.present? %>
+    <% if @likes.present? %>
       <ul class='club-lists'>
-      <% @clubs.each do |club| %>
+      <% @likes.each do |like| %>
         <li class='list'>
-          <%= link_to club_path(club.id), class: "link" do %>
+          <%= link_to club_path(like.club.id), class: "link" do %>
           <div class="club-content-wrap">
             <div class="club-top">
               <div class='club-info'>
                 <div class="created-date">
-                <%=  l club.updated_at, format: :long %>
+                <%=  l like.club.updated_at, format: :long %>
                 </div>
                 <h3 class="club-name">
-                <%= club.name%>
+                <%= like.club.name%>
                 </h3>
                 <div class="club-place">
                   <div class="club-prefecture">
-                  <%= club.prefecture.name%>
+                  <%= like.club.prefecture.name%>
                   </div>
                   <div class="club-city">
-                  <%= club.city.name%>
+                  <%= like.club.city.name%>
                   </div>
                 </div>
               </div>
               <div class="club-image-content">
-                <%= image_tag club.images[0], class: "club-image" if club.images.attached? %>
+                <%= image_tag like.club.images[0], class: "club-image" if like.club.images.attached? %>
               </div>
             </div>
             <div class="club-bottom">
               <div class="club-comment">
-                <%= club.information %>
+                <%= like.club.information %>
               </div>
               <% if user_signed_in? %>
-                <% if current_user.own?(club) %>
-                  <%= link_to edit_club_path(club), class: "link" do %>
+                <% if current_user.own?(like.club) %>
+                  <%= link_to edit_club_path(like.club), class: "link" do %>
                     <div class='favorite-btn'>
                       <i class="far fa-edit"></i>
                     </div>
                   <% end%>
                 <% else %>
-                  <div id="like-button-<%= club.id %>">
-                  <% if current_user&.like?(club) %>
-                    <%= render partial: 'likes/unlike_button', locals: {club: club}%>
+                  <div id="like-button-<%= like.club.id %>">
+                  <% if current_user&.like?(like.club) %>
+                    <%= render partial: 'likes/unlike_button', locals: {club: like.club}%>
                   <% else %>
-                    <%= render partial: 'likes/like_button', locals: {club: club}%>
+                    <%= render partial: 'likes/like_button', locals: {club: like.club}%>
                   <% end%>
                   </div>
                 <% end %>

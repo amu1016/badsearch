@@ -175,14 +175,16 @@
 
 .club-lists {
   margin: 25px 20px 30px;
-  padding-bottom: 30px;
+  height: 300px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  width: 25vw;
-  height: 30vh;
+  display: inline-block;
+  width: 250px;
+  height: 80%;
   background-color: white;
   border-radius: 3px;
 }
@@ -263,4 +265,12 @@
   text-decoration: none;
   width: 100%;
   color: rgb(51, 48, 48);
+}
+
+.like-more {
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-right: 8px;
 }
