@@ -3,6 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { event } from 'jquery';
 
+//events#index用
 document.addEventListener('DOMContentLoaded', function() {
   if ( document.getElementById('calendar')){
   var calendarEl = document.getElementById('calendar');
@@ -99,11 +100,59 @@ document.addEventListener('DOMContentLoaded', function() {
           alert("failed");
       });
     },
+  });
+
+  calendar.render();
+
+  $(".error").click(function(){
+    calendar.refetchEvents();
+});
+};
 
 
-    eventClassNames: function(arg){
-        //表示されたイベントにclassをcss用に追加する(詳しくは次回の記事へ)
-    }
+// clubs#show用
+if ( document.getElementById('club-calendar')){
+  var calendarEl = document.getElementById('club-calendar');
+
+  var calendar = new Calendar(calendarEl, {
+    plugins: [ dayGridPlugin, interactionPlugin ],
+    locale: 'ja',
+    timeZone: 'local',
+    firstDay: 1,
+    headerToolbar: {
+      start: 'prev',
+      center: 'title',
+      end: 'next' 
+    },
+    expandRows: true,
+    stickyHeaderDates: true,
+    buttonText: {
+      today: '今日'
+    }, 
+    allDayText: '終日',
+    eventTimeFormat: { hour: 'numeric', minute: '2-digit' },
+    height: "auto",
+    editable: true,
+    events: `${location.pathname}/events.json`,
+    
+
+    eventClick: function(info){
+      var eventObj = info.event;
+      var eventId = Number(eventObj.id);
+      $.ajax({
+          type: 'GET',
+          url:  `${location.pathname}/events/${eventId}`,
+      }).done(function (res) {
+          // 成功処理
+          // 受け取ったhtmlをさっき追加したmodalのbodyの中に挿入します
+          $('.modal-body').html(res);
+
+          $('#modal').fadeIn();
+
+      }).fail(function (result) {
+          alert("failed");
+      });
+    },
   });
 
   calendar.render();

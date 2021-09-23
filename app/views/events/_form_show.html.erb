@@ -1,0 +1,24 @@
+<div class="modal-wrapper">
+  <div class="row">
+    <div class="schedule-form-label">活動予定日詳細</div>
+    <div class="event-show-detail">
+      <table class="event-show-detail-table">
+      <tbody>
+        <tr>
+          <th class="event-show-detail-item">　場所　</th>
+          <td class="event-show-detail-value"><%= event.place %></td>
+        </tr>
+        <tr>
+          <th class="event-show-detail-item">開始時刻</th>
+          <td class="event-show-detail-value"><%= l event.start, format: :short %></td>
+        </tr>
+        <tr>
+          <th class="event-show-detail-item">終了時刻</th>
+          <td class="event-show-detail-value"><%= l event.end, format: :short %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+

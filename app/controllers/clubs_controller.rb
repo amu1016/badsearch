@@ -31,6 +31,7 @@ class ClubsController < ApplicationController
   end
 
   def show
+    @events = Event.where(club_id: params[:id])
   end
 
   def edit
