@@ -14,6 +14,16 @@ class ClubsController < ApplicationController
     gon.prefectures = Prefecture.all.to_json only: %i[id name]
     @q = Club.ransack(params[:q])
     @clubs = @q.result(distinct: true)
+    if @q.prefecture_id_eq.present?
+      @prefecture = Prefecture.find(@q.prefecture_id_eq)
+    end
+    @cities = []
+    if @q.city_id_eq_any.present?
+      @q.city_id_eq_any.each do |city_id|
+        @city = City.find(city_id)
+        @cities.push(@city)
+      end
+    end
   end
 
   def new

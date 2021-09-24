@@ -6,7 +6,7 @@
 }
 
 .search-place-title {
-  padding: 10px;
+  padding: 10px 10px 0;
 }
 
 .search-place {
@@ -184,6 +184,20 @@
   font-weight: bold;
 }
 
+.place-tag {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.fa-chevron-right {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.fa-ellipsis-h {
+  margin-left: 5px;
+}
 
 .search-club-lists {
   margin: 25px 20px 30px;
@@ -202,6 +216,43 @@
   display: flex;
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+.search-club-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+}
+
+.status-ribbon {
+  display: inline-block;
+  position: absolute;
+  padding: 5px 0;
+  left: -24px;
+  top: 20px;
+  width: 160px;
+  text-align: center;
+  line-height: 16px;
+  color: #fff;
+  letter-spacing: 0.05em;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.orange {
+  font-size: 18px;
+  background: #db7445;
+  box-shadow: 0 0 0 2px #db7445;
+}
+
+.glay {
+  font-size: 14px;
+  background: #808080;
+  box-shadow: 0 0 0 2px #808080;
 }
 
 .search-club-content-left {
@@ -252,11 +303,10 @@
   height: calc(100% - 80px);
 }
 
-.search-club-status {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 5px;
-}
+
+
+
+
 
 .search-club-icon {
   display: flex;

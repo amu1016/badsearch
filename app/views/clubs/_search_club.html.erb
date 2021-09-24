@@ -2,6 +2,14 @@
 <li class='search-list'>
   <%= link_to club_path(club.id), class: "club-link" do %>
     <div class="search-club-content-wrap">
+      <div class='search-club-status'>
+        <% if club.status_id == 1%>
+        <span class="status-ribbon orange"><%= club.status.name %></span>
+        <% end %>
+        <% if club.status_id == 2 %>
+        <span class="status-ribbon glay"><%= club.status.name %></span>
+        <% end %>
+      </div>
       <div class="search-club-content-left">
         <div class="search-club-image-content">
           <%= image_tag club.images[0], class: "search-club-image"%>
@@ -12,9 +20,7 @@
           <div class="search-club-name">
             <%= club.name%>
           </div>
-          <div class='search-club-status'>
-            <%= club.status.name %>
-          </div>
+
         </div>
         <div class="search-club-place">
           <i class="fas fa-map-marker-alt"></i>

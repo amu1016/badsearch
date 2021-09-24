@@ -6,7 +6,7 @@
     サークル検索
   </div>
   <div class="search-place-title">
-    都道府県選択
+    地域を選択してください
   </div>
   <div class="search-place">
     <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
@@ -67,10 +67,37 @@
 
 <div class='search-club-contents'>
   <h2 class='search-club-content-title'>検索結果</h2>
+  <div class="search-tag-wrap">
+    <div class="place-tag">
+      <% if @prefecture.present? %>
+      <div class="prefecture-tag"><%= "選択中の地域：#{@prefecture.name} "%></div>
+      <i class="fas fa-chevron-right"></i>
+        <% if @cities.size == 0%>
+          <span> 全域</span>
+        <% elsif @cities.size == 1%>
+          <span><%= "#{@cities[0].name}"%></span>
+        <% elsif @cities.size == 2%>
+          <span><%= "#{@cities[0].name}、#{@cities[1].name}"%></span>
+        <% elsif @cities.size == 3%>
+          <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
+        <% elsif @cities.size > 3%>
+          <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
+          <span class="ctiy-more"><i class="fas fa-ellipsis-h"></i></span>
+        <% end %>
+      <% else %>
+      <span>選択中の地域：全国</span>
+      <% end %>
+    </div>
+
+    <%# 検索条件
+    <div class="terms-tag"></div> 
+    %>
+
+  </div>
   <% if @clubs.present? %>
   <ul class='search-club-lists'>
     <% @clubs.each do |club| %>
-      <%= render partial: 'clubs/search_club' , locals: {  club: club } %>
+      <%= render partial: 'clubs/search_club' , locals: { club: club } %>
     <% end %>
   </ul>
   <% else%>
