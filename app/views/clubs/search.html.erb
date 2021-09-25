@@ -88,12 +88,11 @@
       <span>選択中の地域：全国</span>
       <% end %>
     </div>
-
     <%# 検索条件
     <div class="terms-tag"></div> 
     %>
-
   </div>
+
   <% if @clubs.present? %>
   <ul class='search-club-lists'>
     <% @clubs.each do |club| %>
@@ -108,5 +107,7 @@
   </div>
   <% end %>
 </div>
+
+<%= paginate @clubs %>
 
 <%= javascript_pack_tag 'hello_vue' %>
