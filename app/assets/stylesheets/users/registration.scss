@@ -74,7 +74,7 @@
 
 .register-btn {
   width: 30%;
-  margin: 90px auto 0px;
+  margin: 80px auto 0px;
 }
 
 .register-orange-btn {
@@ -95,4 +95,12 @@
   color: white;
   font-weight: bold;
   border-radius: 5px;
+}
+
+.sign-up-link {
+  width: 66%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+  padding-top: 20px;
 }
