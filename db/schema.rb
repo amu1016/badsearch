@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_130813) do
+ActiveRecord::Schema.define(version: 2021_09_27_070021) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -49,9 +49,12 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.bigint "prefecture_id", null: false
     t.bigint "city_id", null: false
     t.string "gym", null: false
+    t.string "action_time", null: false
+    t.integer "fee"
+    t.string "persons", null: false
+    t.string "age_range", null: false
     t.string "gender_ratio", null: false
     t.string "beginner_ratio", null: false
-    t.string "age_range", null: false
     t.string "purpose", null: false
     t.string "homepage"
     t.text "information", null: false
@@ -131,6 +134,16 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
     t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 
+  create_table "wants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "sex_id"
+    t.integer "level_ids"
+    t.integer "age_ids"
+    t.bigint "club_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["club_id"], name: "index_wants_on_club_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cities", "prefectures"
   add_foreign_key "clubs", "cities"
@@ -142,4 +155,5 @@ ActiveRecord::Schema.define(version: 2021_09_09_130813) do
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"
   add_foreign_key "users", "prefectures"
+  add_foreign_key "wants", "clubs"
 end

@@ -8,9 +8,12 @@ class CreateClubs < ActiveRecord::Migration[6.0]
       t.references :prefecture,          null: false, type: :bigint, foreign_key: true
       t.references :city,                null: false, type: :bigint, foreign_key: true
       t.string :gym,                     null: false
+      t.string :action_time,             null: false
+      t.integer :fee                    
+      t.string :persons,                 null: false
+      t.string :age_range,               null: false
       t.string :gender_ratio,            null: false
       t.string :beginner_ratio,          null: false
-      t.string :age_range,               null: false
       t.string :purpose,                 null: false
       t.string :homepage
       t.text :information,               null: false
