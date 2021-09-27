@@ -135,9 +135,9 @@ ActiveRecord::Schema.define(version: 2021_09_27_070021) do
   end
 
   create_table "wants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "sex_id"
-    t.integer "level_ids"
-    t.integer "age_ids"
+    t.integer "sex_id", null: false
+    t.integer "level_ids", null: false
+    t.integer "age_ids", null: false
     t.bigint "club_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -85,6 +85,34 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
+      <label class="form-text">活動時間</label>
+    </div>
+    <%= f.text_area :action_time, class:"input-default", id:"action_time", placeholder:"例) 月、金 19~21時", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
+      <label class="form-text">参加費</label>
+    </div>
+    <%= f.text_area :fee, class:"input-default", id:"fee", placeholder:"例) 200円", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
+      <label class="form-text">サークル人数</label>
+    </div>
+    <%= f.text_area :persons, class:"input-default", id:"persons", placeholder:"例) 30名程度", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
+      <label class="form-text">年齢層</label>
+    </div>
+    <%= f.text_area :age_range, class:"input-default", id:"age_range", placeholder:"例) 20~30歳代", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
       <label class="form-text">男女比</label>
     </div>
     <%= f.text_area :gender_ratio, class:"input-default", id:"gender_ratio", placeholder:"例) 1:1", maxlength:"40", autofocus: true %>
@@ -94,13 +122,6 @@
       <label class="form-text">初心者：経験者</label>
     </div>
     <%= f.text_area :beginner_ratio, class:"input-default", id:"beginner_ratio", placeholder:"例) 2:1", maxlength:"40", autofocus: true %>
-  </div>
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <span class="indispensable">必須</span>
-      <label class="form-text">年齢層</label>
-    </div>
-    <%= f.text_area :age_range, class:"input-default", id:"age_range", placeholder:"例) 20~30歳代", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>

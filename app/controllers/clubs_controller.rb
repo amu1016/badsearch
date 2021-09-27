@@ -35,7 +35,8 @@ class ClubsController < ApplicationController
   def create
     @club = Club.new(club_params)
     if @club.save
-      redirect_to root_path
+      @want = Want.create(sex_id: 0, level_ids: [1,2,3,4,5], age_ids: [1,2,3,4,5,6], club_id: @club.id)
+      redirect_to edit_club_want_path(club_id: @club.id, id: @want.id)
     else
       render :new
     end
@@ -64,7 +65,7 @@ class ClubsController < ApplicationController
 
   private
   def club_params
-    params.require(:club).permit({images: []} , :name, :status_id, :since_year, :since_month, :prefecture_id, :city_id, :gym, :gender_ratio, :beginner_ratio, :age_range, :purpose, :homepage, :information).merge(user_id: current_user.id)
+    params.require(:club).permit({images: []} , :name, :status_id, :since_year, :since_month, :prefecture_id, :city_id, :gym, :action_time, :fee, :persons, :age_range, :gender_ratio, :beginner_ratio, :purpose, :homepage, :information).merge(user_id: current_user.id)
   end
 
   def set_club
