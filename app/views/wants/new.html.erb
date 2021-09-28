@@ -1,4 +1,4 @@
-<%= form_with model: @want, url: club_want_path(club_id: params[:club_id], id: params[:id]), class: 'club-registration-main', local: true do |f| %>
+<%= form_with model: @want, url: club_wants_path(params[:club_id]), class: 'club-registration-main', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
@@ -12,7 +12,7 @@
       <label class="form-text">性別</label>
     </div>
     <%= f.collection_check_boxes(:sex_id, Sex.all, :id, :name, include_hidden: false) do |tag| %>
-        <%= tag.label do %>
+       <%= tag.label do %>
             <%= tag.check_box %>
             <%= tag.text %>
         <% end %>
@@ -24,7 +24,7 @@
     <div class='form-text-wrap'>
       <label class="form-text">年齢</label>
     </div>
-    <%= f.collection_check_boxes(:age_id, Age.all, :id, :name, multiple: true, include_hidden: false ) do |tag| %>
+    <%= f.collection_check_boxes(:age_id, Age.all, :id, :name, include_hidden: false) do |tag| %>
         <%= tag.label do %>
             <%= tag.check_box %>
             <%= tag.text %>
@@ -36,7 +36,7 @@
     <div class='form-text-wrap'>
       <label class="form-text">経験レベル</label>
     </div>
-    <%= f.collection_check_boxes(:level_id, Level.all, :id, :name, multiple: true, include_hidden: false) do |tag| %>
+    <%= f.collection_check_boxes(:level_id, Level.all, :id, :name, include_hidden: false) do |tag| %>
         <%= tag.label do %>
             <%= tag.check_box %>
             <%= tag.text %>

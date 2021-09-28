@@ -4,9 +4,6 @@ class Age < ActiveHash::Base
   ]
  
   include ActiveHash::Associations
-  has_many :want_ages
+  has_many :wants
 
-  def wants
-    want_ages.map(&:want)
-  end
 end

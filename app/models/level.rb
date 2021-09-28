@@ -4,9 +4,6 @@ class Level < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :want_levels
-  
-  def wants
-    want_levels.map(&:want)
-  end
+  has_many :wants
+
 end

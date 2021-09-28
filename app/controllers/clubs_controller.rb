@@ -35,8 +35,7 @@ class ClubsController < ApplicationController
   def create
     @club = Club.new(club_params)
     if @club.save
-      @want = Want.create(sex_id: 0, level_ids: [1,2,3,4,5], age_ids: [1,2,3,4,5,6], club_id: @club.id)
-      redirect_to edit_club_want_path(club_id: @club.id, id: @want.id)
+      redirect_to new_club_want_path(@club)
     else
       render :new
     end

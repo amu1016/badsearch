@@ -82,6 +82,8 @@
       <%= @club.information%>
       </div>
     </div>
+    <%= link_to "募集するメンバー像", edit_club_want_path(club_id: @club.id, id: @club.want.id)%>
+
 
     <div class="show-detail-label">
       活動予定日

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_070021) do
+ActiveRecord::Schema.define(version: 2021_09_27_142247) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -134,10 +134,28 @@ ActiveRecord::Schema.define(version: 2021_09_27_070021) do
     t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 
+  create_table "want_ages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "want_id"
+    t.bigint "age_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["age_id"], name: "index_want_ages_on_age_id"
+    t.index ["want_id"], name: "index_want_ages_on_want_id"
+  end
+
+  create_table "want_levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "want_id"
+    t.bigint "level_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["level_id"], name: "index_want_levels_on_level_id"
+    t.index ["want_id"], name: "index_want_levels_on_want_id"
+  end
+
   create_table "wants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "sex_id", null: false
-    t.integer "level_ids", null: false
-    t.integer "age_ids", null: false
+    t.integer "sex_id"
+    t.integer "level_id"
+    t.integer "age_id"
     t.bigint "club_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -155,5 +173,7 @@ ActiveRecord::Schema.define(version: 2021_09_27_070021) do
   add_foreign_key "room_users", "rooms"
   add_foreign_key "room_users", "users"
   add_foreign_key "users", "prefectures"
+  add_foreign_key "want_ages", "wants"
+  add_foreign_key "want_levels", "wants"
   add_foreign_key "wants", "clubs"
 end
