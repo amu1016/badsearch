@@ -4,6 +4,10 @@ class Level < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :wants
+  has_many :want_levels
+  has_many :wants, :through => :want_levels
 
+  def wantss
+    want_levels.map(&:want)
+  end
 end

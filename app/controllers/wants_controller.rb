@@ -5,7 +5,7 @@ class WantsController < ApplicationController
   end
 
   def create
-    @want = Want.new(sex_id: params[:sex_id].to_i, age_id: params[:age_id], level_id: params[:level_id],club_id: params[:club_id])
+    @want = Want.new(sex_id: params[:sex_id].to_i,club_id: params[:club_id])
     if @want.save
       redirect_to root_path
     else
@@ -19,7 +19,7 @@ class WantsController < ApplicationController
 
   def update
     @want = Want.find(params[:id])
-    if @want.update(sex_id: params[:sex_id].to_i, age_id: params[:age_id], level_id: params[:level_id],club_id: params[:club_id])
+    if @want.update(sex_id: params[:sex_id].to_i, club_id: params[:club_id])
       redirect_to root_path
     else
       render :edit
@@ -29,6 +29,6 @@ class WantsController < ApplicationController
 
   private
   def want_params
-    params.require(:want).permit(:sex_id,{ age_id: []},{ level_id: []}).merge(club_id: params[:club_id])
+    params.require(:want).permit(:sex_id, { ages: []}, { levels: []}).merge(club_id: params[:club_id])
   end
 end

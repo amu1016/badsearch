@@ -24,7 +24,7 @@
     <div class='form-text-wrap'>
       <label class="form-text">年齢</label>
     </div>
-    <%= f.collection_check_boxes(:age_id, Age.all, :id, :name, include_hidden: false) do |tag| %>
+    <%= f.collection_check_boxes(:ages, Age.all, :id, :name, include_hidden: false) do |tag| %>
         <%= tag.label do %>
             <%= tag.check_box %>
             <%= tag.text %>
@@ -36,7 +36,7 @@
     <div class='form-text-wrap'>
       <label class="form-text">経験レベル</label>
     </div>
-    <%= f.collection_check_boxes(:level_id, Level.all, :id, :name, include_hidden: false) do |tag| %>
+    <%= f.collection_check_boxes(:levels, Level.all, :id, :name, include_hidden: false) do |tag| %>
         <%= tag.label do %>
             <%= tag.check_box %>
             <%= tag.text %>
