@@ -1,17 +1,10 @@
 class Want < ApplicationRecord
   belongs_to :club
-  has_many :want_levels
-
-  def levels
-    want_levels.map(&:level)
-  end
-
-  has_many :want_ages
-
-  def ages
-    want_ages.map(&:age)
-  end
-
+  has_many :want_levels, dependent: :destroy
+  has_many :levels, through: :want_levels
+  has_many :want_ages, dependent: :destroy
+  has_many :ages, through: :want_ages
+  
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :sex

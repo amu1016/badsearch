@@ -18,3 +18,24 @@ cities_list.each do |prefecture, city|
   prefecture = Prefecture.find_by(name: prefecture)
   prefecture.cities.create(name: city)
 end
+
+levels = Level.create!(
+  [
+    { name: 'Level1' },
+    { name: 'Level2' },
+    { name: 'Level3' },
+    { name: 'Level4' },
+    { name: 'Level5' }
+  ]
+)
+
+ages = Age.create!(
+  [
+    { name: '10代' },
+    { name: '20代' },
+    { name: '30代' },
+    { name: '40代' },
+    { name: '50代' },
+    { name: '60代' }
+  ]
+)
