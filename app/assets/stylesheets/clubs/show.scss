@@ -126,6 +126,13 @@
   text-decoration: none;
 }
 
+.event-link {
+  margin-bottom: 5px;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .club-show-contact-wrap {
   width: 100%;
   display: flex;

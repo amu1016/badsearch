@@ -147,6 +147,9 @@
     <div class="show-detail-label">
       活動予定日
     </div>
+    <% if user_signed_in? && @club.user_id == current_user.id%>
+      <%= link_to "予定を追加する", club_events_path(club_id: @club.id), class: "event-link"%>
+    <% end %>
     <div id="club-calendar"></div>
     <div id="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">

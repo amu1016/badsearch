@@ -1,7 +1,5 @@
 <%= render "shared/header" %>
 
-
-
   <div class="search-form-header">
     サークル検索
   </div>
@@ -50,16 +48,21 @@
     <div class="date-accordion">
       <div class="date-accordion-body">
         <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
-        <%= f.date_field :events_start_gteq, include_blank: true, class: 'form-control'%>
-        〜
-        <%= f.date_field :events_start_lteq_end_of_day, include_blank: true, class: 'form-control'%>
-        <%= f.submit "検索" ,class:"search-btn" %>
+          <%= f.date_field :events_start_gteq, include_blank: true, class: 'form-control'%>
+          〜
+          <%= f.date_field :events_start_lteq_end_of_day, include_blank: true, class: 'form-control'%>
+          <%= f.submit "検索" ,class:"search-btn" %>
         <% end %>
       </div>
     </div>
     <div class="search-accordion">
       <div class="search-accordion-body">
-        ここに検索条件を追加していく
+        <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
+          <%= f.date_field :events_start_gteq, include_blank: true, class: 'form-control'%>
+          〜
+          <%= f.date_field :events_start_lteq_end_of_day, include_blank: true, class: 'form-control'%>
+          <%= f.submit "検索" ,class:"search-btn" %>
+        <% end %>
       </div>
     </div>
   </div>
