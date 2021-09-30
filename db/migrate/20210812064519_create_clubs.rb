@@ -16,6 +16,7 @@ class CreateClubs < ActiveRecord::Migration[6.0]
       t.string :beginner_ratio,          null: false
       t.string :purpose,                 null: false
       t.string :homepage
+      t.string :email,                   null: false, default: ""
       t.text :information,               null: false
       t.references :user,                null: false, foreign_key: true
 

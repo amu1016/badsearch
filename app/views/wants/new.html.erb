@@ -1,3 +1,5 @@
+<%= render "shared/header" %>
+
 <%= form_with model: @want, url: club_wants_path(params[:club_id]), class: 'club-registration-main', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
@@ -20,18 +22,28 @@
       <label class="form-text">年齢</label>
     </div>
     <% Age.all.each do |age| %>
+      <div class="check-box">
       <%= f.check_box :age_ids, { multiple: true, checked: @want.ages.find_by(id: age.id).present?, include_hidden: false }, age[:id] %>
       <label class='badge badge-secondary'><%= age.name %></label>
+      </div>
     <% end %>
   </div>
 
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">経験レベル</label>
+      <i class="far fa-question-circle js-modal-open"></i>
+    </div>
+    <div class="modal js-modal">
+      <div class="modal__bg js-modal-close">
+      </div>
+        <%= render partial: 'wants/level'%>
     </div>
     <% Level.all.each do |level| %>
-      <%= f.check_box :level_ids, { multiple: true, checked: @want.levels.find_by(id: level.id).present?, include_hidden: false }, level[:id] %>
-      <label class='badge badge-secondary'><%= level.name %></label>
+      <div class="check-box">
+        <%= f.check_box :level_ids, { multiple: true, checked: @want.levels.find_by(id: level.id).present?, include_hidden: false }, level[:id] %>
+        <label class='badge badge-secondary'><%= level.name %></label>
+       </div>
     <% end %>
   </div>
 

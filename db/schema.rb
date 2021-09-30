@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_09_29_155138) do
     t.string "beginner_ratio", null: false
     t.string "purpose", null: false
     t.string "homepage"
+    t.string "email", default: "", null: false
     t.text "information", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

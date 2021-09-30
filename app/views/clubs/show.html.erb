@@ -2,6 +2,14 @@
 
 <div class="club-show-wrap">
   <div class="club-show-content">
+    <div class="club-show-content-status">
+      <% if @club.status_id == 1%>
+        <span class="status-ribbon orange"><%= @club.status.name %></span>
+      <% end %>
+      <% if @club.status_id == 2 %>
+        <span class="status-ribbon gray"><%= @club.status.name %></span>
+      <% end %>
+    </div>
     <div class="club-show-top">
       <div class="club-show-date">
         <div class="club-show-new-date">
@@ -14,8 +22,7 @@
       <div class="club-show-content-title">
         <h1><%= @club.name%></h1>
       </div>
-      <div class="club-show-content-status">
-        <%= @club.status.name %>
+      <div class="club-top-right">
       </div>
     </div>
 
@@ -38,31 +45,43 @@
           <th class="club-show-detail-item">創設時期</th>
           <td class="club-show-detail-value"><%= "#{@club.since_year}年#{@club.since_month}月" %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">活動地域</th>
           <td class="club-show-detail-value"><%= "#{@club.prefecture.name} #{@club.city.name}" %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">使用体育館</th>
           <td class="club-show-detail-value"><%= @club.gym %></td>
         </tr>
-         <tr>
-          <th class="club-show-detail-item">年齢構成</th>
+        <tr>
+          <th class="club-show-detail-item">活動時間</th>
+          <td class="club-show-detail-value"><%= @club.action_time %></td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">参加費</th>
+          <td class="club-show-detail-value"><%= @club.fee %></td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">サークル人数</th>
+          <td class="club-show-detail-value"><%= @club.persons %></td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">年齢層</th>
           <td class="club-show-detail-value"><%= @club.age_range %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">男女比</th>
           <td class="club-show-detail-value"><%= @club.gender_ratio %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">初心者：経験者</th>
           <td class="club-show-detail-value"><%= @club.beginner_ratio %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">サークル目標</th>
           <td class="club-show-detail-value"><%= @club.purpose %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">サークルホームページ</th>
           <td class="club-show-detail-value">
             <% if @club.homepage.present? %>
@@ -82,7 +101,47 @@
       <%= @club.information%>
       </div>
     </div>
-    <%= link_to "募集するメンバー像", edit_club_want_path(club_id: @club.id, id: @club.want.id)%>
+
+    <div class="show-detail-label">
+      こんな人を募集しています！
+    </div>
+    <div class="club-show-detail">
+      <table class="club-show-detail-table">
+      <tbody>
+        <tr>
+          <th class="club-show-detail-item">性別</th>
+          <td class="club-show-detail-value"><%= @club.want.sex.name %></td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">年齢</th>
+          <td class="club-show-detail-value">
+            <% if @club.want.ages.size == 6  %>
+              制限なし
+            <% else %>
+              <% @club.want.ages.each do |age| %>
+                <%= age.name %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">経験レベル</th>
+          <td class="club-show-detail-value">
+            <% if @club.want.ages.size == 6  %>
+              制限なし
+            <% else %>
+              <% @club.want.levels.each do |level| %>
+                <%= level.name %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <% if user_signed_in? && @club.user_id == current_user.id%>
+      <%= link_to "編集する", edit_club_want_path(club_id: @club.id, id: @club.want.id), class: "edit-link"%>
+    <% end %>
 
 
     <div class="show-detail-label">

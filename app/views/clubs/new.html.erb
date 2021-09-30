@@ -132,6 +132,13 @@
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
+      <label class="form-text">メールアドレス<br>(サークル応募者からの問い合わせ先)</label>
+    </div>
+    <%= f.text_area :email, class:"input-default", id:"email", placeholder:"例) badminton@xxx.com", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
       <label class="form-text">ホームページURL</label>
     </div>
     <%= f.text_area :homepage, class:"input-default", id:"homepage", placeholder:"例) https:~", maxlength:"40", autofocus: true %>

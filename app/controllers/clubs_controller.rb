@@ -64,7 +64,7 @@ class ClubsController < ApplicationController
 
   private
   def club_params
-    params.require(:club).permit({images: []} , :name, :status_id, :since_year, :since_month, :prefecture_id, :city_id, :gym, :action_time, :fee, :persons, :age_range, :gender_ratio, :beginner_ratio, :purpose, :homepage, :information).merge(user_id: current_user.id)
+    params.require(:club).permit({images: []} , :name, :status_id, :since_year, :since_month, :prefecture_id, :city_id, :gym, :action_time, :fee, :persons, :age_range, :gender_ratio, :beginner_ratio, :purpose, :email, :homepage, :information).merge(user_id: current_user.id)
   end
 
   def set_club

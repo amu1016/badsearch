@@ -1,3 +1,35 @@
 // Place all the styles related to the wants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.check-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.check-box input{
+  margin-right: 5px;
+}
+
+.check-box-text-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.check-box-text-wrap label {
+  margin-right: 5px;
+}
+
+.level-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.level-text {
+  width: 300px;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
