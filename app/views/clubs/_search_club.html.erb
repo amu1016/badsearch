@@ -20,11 +20,14 @@
           <div class="search-club-name">
             <%= club.name%>
           </div>
-
         </div>
         <div class="search-club-place">
           <i class="fas fa-map-marker-alt"></i>
           <%= "#{club.prefecture.name} #{club.city.name}"%>
+        </div>
+        <div class="search-club-time">
+          <i class="far fa-clock"></i>
+          <%= club.action_time%>
         </div>
         <div class="search-club-content-right-bottom">
           <div class="search-club-comment">
