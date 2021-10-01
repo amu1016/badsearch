@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all 
+    @events = Event.where(club_id: params[:club_id])
   end
 
   def show
+    @event = Event.find(params[:id])
+    render plain: render_to_string(partial: 'form_show', layout: false, locals: { event: @event })
   end
 
   def new
@@ -23,7 +25,6 @@ class EventsController < ApplicationController
     else
       respond_to do |format|
         format.js {render partial: "events/error" }
-        #登録にエラーが起きたときはerror.js.erbを実行する
       end
     end
   end

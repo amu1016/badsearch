@@ -6,9 +6,15 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "clubs#index"
+  post 'set_cities', to: 'cities#set_cities'
+  
   resources :clubs do
     resource :likes, only: [:create, :destroy]
     resources :events
+    resources :wants
+    collection do
+      get 'search'
+    end
   end
   
 

@@ -1,30 +1,53 @@
 class ClubsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_club, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :move_to_show, only: :new
 
 
   def index
     @clubs = Club.includes(:user).order("created_at DESC")
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
+  end
+
+  def search
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
+    @q = Club.ransack(params[:q])
+    @clubs_result = @q.result(distinct: true)
+    @clubs = @clubs_result.page(params[:page])
+    if @q.prefecture_id_eq.present?
+      @prefecture = Prefecture.find(@q.prefecture_id_eq)
+    end
+    @cities = []
+    if @q.city_id_eq_any.present?
+      @q.city_id_eq_any.each do |city_id|
+        @city = City.find(city_id)
+        @cities.push(@city)
+      end
+    end
   end
 
   def new
     @club = Club.new
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
   end
 
   def create
     @club = Club.new(club_params)
     if @club.save
-      redirect_to root_path
+      redirect_to new_club_want_path(@club)
     else
       render :new
+      gon.prefectures = Prefecture.all.to_json only: %i[id name]
     end
   end
 
   def show
+    @events = Event.where(club_id: params[:id])
   end
 
   def edit
+    gon.prefectures = Prefecture.all.to_json only: %i[id name]
   end
 
   def update
@@ -32,6 +55,7 @@ class ClubsController < ApplicationController
       redirect_to club_path
     else
       render :edit
+      gon.prefectures = Prefecture.all.to_json only: %i[id name]
     end
   end
 
@@ -42,7 +66,7 @@ class ClubsController < ApplicationController
 
   private
   def club_params
-    params.require(:club).permit({images: []} , :name, :status_id, :since_year, :since_month, :prefecture_id, :city, :gym, :gender_ratio, :beginner_ratio, :age_range, :purpose, :homepage, :information).merge(user_id: current_user.id)
+    params.require(:club).permit({images: []} , :name, :status_id, :since_year, :since_month, :prefecture_id, :city_id, :gym, :action_time, :fee, :persons, :age_range, :gender_ratio, :beginner_ratio, :purpose, :email, :homepage, :information).merge(user_id: current_user.id)
   end
 
   def set_club
@@ -53,5 +77,8 @@ class ClubsController < ApplicationController
     redirect_to action: :index if current_user.id != @club.user_id
   end
 
+  def move_to_show
+    redirect_to club_path(current_user.club) if user_signed_in? &&  current_user.club.present?
+  end
 
 end

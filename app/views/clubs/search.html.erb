@@ -1,0 +1,164 @@
+<%= render "shared/header" %>
+
+  <div class="search-form-header">
+    サークル検索
+  </div>
+  <div class="search-place-title">
+    地域を選択してください
+  </div>
+  <div class="search-place">
+    <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
+      <div class="search-form">
+        <div class="search-prefecture">
+          <%= f.select :prefecture_id_eq, nil, {},{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
+            <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
+              {{prefecture.name}}
+            </option>
+          <% end %>
+          <div class="city-lists-content" >
+            <div class="city-list" v-for="city in cities" :key="city.name" :value="city.id">
+              <input type="checkbox" v-bind="city" :value="city.id" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
+              <label for="q_city_id">{{city.name}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= f.submit "検索" ,class:"btn-border" %>
+    <% end %>
+  </div>
+
+  <div class="search-accordion-wrap">
+    <div class="search-accordion-label">
+      <div class="search-accordion-label-left">
+        <%= "検索結果：#{@clubs.count} 件"%>
+      </div>
+      <div class="search-accordion-label-right">
+        <div class="date-sort hover-action">
+          <i class="far fa-calendar-alt"></i>
+          <span>日時で絞り込む </span>
+          <i class="fas fa-angle-down date-down"></i>
+        </div>
+        <div class="search-sort hover-action">
+          <i class="fas fa-sliders-h"></i>
+          <span>条件で絞り込む </span>
+          <i class="fas fa-angle-down search-down"></i>
+        </div>
+      </div>
+    </div>
+    <div class="date-accordion">
+      <div class="date-accordion-body">
+        <%= search_form_for @q, url: search_clubs_path, class:"date-search" do |f| %>
+          <div class="search-date-form">
+            <%= f.date_field :events_start_gteq, include_blank: true, class: 'form-control-start'%>
+            〜
+            <%= f.date_field :events_start_lteq_end_of_day, include_blank: true, class: 'form-control-end'%>
+          </div>
+          <div class="search-date-btn">
+          <%= f.submit "検索" ,class:"btn-border" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="search-accordion">
+      <div class="search-accordion-body">
+        <%= search_form_for @q, url: search_clubs_path, class:"search-detail" do |f| %>
+        <div class="accordion-top">
+          <div class="accordion-topic right-border">
+            <label class="accordion-title">募集状況</label>
+            <% Status.all.each do |status| %>
+              <div class="search-check-box">
+                <%= f.check_box :status_id_eq, { multiple: true, checked: true, include_hidden: false } %>
+                <label class='badge badge-secondary'><%= status.name %></label>
+              </div>
+            <% end %>
+          </div>
+          <div class="accordion-topic right-border">
+            <label class="accordion-title">性別</label>
+            <% Sex.all.each do |sex| %>
+              <div class="search-check-box">
+                <%= f.check_box :wants_sex_id_eq, { multiple: false, checked: true, include_hidden: false } %>
+                <label class='badge badge-secondary'><%= sex.name %></label>
+              </div>
+            <% end %>
+          </div>
+          <div class="accordion-topic right-border">
+            <label class="accordion-title">年齢</label>
+            <% Age.all.each do |age| %>
+              <div class="search-check-box">
+                <%= f.check_box :wants_age_ids_eq, { multiple: true, checked: true, include_hidden: false }, age[:id] %>
+                <label class='badge badge-secondary'><%= age.name %></label>
+              </div>
+            <% end %>
+          </div>
+          <div class="accordion-topic">
+            <div class="level-label">
+              <label class="accordion-title">経験レベル</label>
+              <i class="far fa-question-circle level-modal-open"></i>
+            </div>
+            <div class="modal level-modal">
+              <div class="modal__bg level-modal-close"></div>
+                <%= render partial: 'wants/level'%>
+            </div>
+            <% Level.all.each do |level| %>
+              <div class="search-check-box">
+                <%= f.check_box :wants_level_ids_eq, { multiple: true, checked: true, include_hidden: false }, level[:id] %>
+                <label class='badge badge-secondary'><%= level.name %></label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="search-detail-btn-wrap">
+          <%= f.submit "検索" ,class:"btn-border" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+<div class='search-club-contents'>
+  <h2 class='search-club-content-title'>検索結果</h2>
+  <div class="search-tag-wrap">
+    <div class="place-tag">
+      <% if @prefecture.present? %>
+      <div class="prefecture-tag"><%= "選択中の地域：#{@prefecture.name} "%></div>
+      <i class="fas fa-chevron-right"></i>
+        <% if @cities.size == 0%>
+          <span> 全域</span>
+        <% elsif @cities.size == 1%>
+          <span><%= "#{@cities[0].name}"%></span>
+        <% elsif @cities.size == 2%>
+          <span><%= "#{@cities[0].name}、#{@cities[1].name}"%></span>
+        <% elsif @cities.size == 3%>
+          <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
+        <% elsif @cities.size > 3%>
+          <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
+          <span class="ctiy-more"><i class="fas fa-ellipsis-h"></i></span>
+        <% end %>
+      <% else %>
+      <span>選択中の地域：全国</span>
+      <% end %>
+    </div>
+    <%# 検索条件
+    <div class="terms-tag"></div> 
+    %>
+  </div>
+
+  <% if @clubs.present? %>
+  <ul class='search-club-lists'>
+    <% @clubs.each do |club| %>
+      <%= render partial: 'clubs/search_club' , locals: { club: club } %>
+    <% end %>
+  </ul>
+  <% else%>
+  <div class="search-no-result">
+    <div class="no-result-text">
+      条件に一致するサークルがありません
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%= paginate @clubs %>
+
+<%= javascript_pack_tag 'hello_vue' %>

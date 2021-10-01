@@ -1,76 +1,39 @@
-<%= render "shared/header" %>
+<%= render "shared/top_header" %>
 
 <div class='main'>
-
   <div class='top-contents'>
+    <div class="catchcopy">
     <h1 class='concept'>
       さぁ 羽を追いかけよう
     </h1>
-    <%= form_with local: true do |f| %>
-    <div class="search-form">
-      <div class="search-prefecture">
-        <p class="select-text">探したい地域を入力してください</p>
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box-top", id:"club-prefecture"}) %>
-      </div>
-      <%= f.submit "検索する" ,class:"search-btn" %>
+    <p class="sub-concept">自分に合ったサークルがきっと見つかる</p>
     </div>
-    <% end %>
-  </div>
-
-  <div class='club-contents'>
-    <h2 class='club-content-title'>新規サークル一覧</h2>
-    <ul class='club-lists'>
-      <% @clubs.each do |club| %>
-        <li class='list'>
-          <%= link_to club_path(club.id), class: "link" do %>
-          <div class="club-content-wrap">
-            <div class="club-top">
-              <div class='club-info'>
-                <div class="created-date">
-                <%= club.created_at.to_s(:datetime_jp)%>
-                </div>
-                <h3 class="club-name">
-                <%= club.name%>
-                </h3>
-                <div class="club-place">
-                  <div class="club-prefecture">
-                  <%= club.prefecture.name%>
-                  </div>
-                  <div class="club-city">
-                  <%= club.city%>
-                  </div>
-                </div>
-              </div>
-              <div class="club-image-content">
-                <%= image_tag club.images[0], class: "club-image" if club.images.attached? %>
-              </div>
+    <div class="top-link-wrap">
+      <div class="top-link-left">
+        <% if user_signed_in? && current_user.club.present? %>
+          <%= link_to club_path(current_user.club), class: "link" do%>
+            <div class="alter-center">
+              <i class="fas fa-users"></i>
+              <span class="top-link-btn">運営サークル</span>
             </div>
-            <div class="club-bottom">
-              <div class="club-comment">
-                <%= club.information %>
-              </div>
-              <% if user_signed_in? %>
-                <% if current_user.own?(club) %>
-                  <%= link_to edit_club_path(club), class: "link" do %>
-                    <div class='favorite-btn'>
-                      <i class="far fa-edit"></i>
-                    </div>
-                  <% end%>
-                <% else %>
-                  <div id="like-button-<%= club.id %>">
-                  <% if current_user&.like?(club) %>
-                    <%= render partial: 'likes/unlike_button', locals: {club: club}%>
-                  <% else %>
-                    <%= render partial: 'likes/like_button', locals: {club: club}%>
-                  <% end%>
-                  </div>
-                <% end %>
-              <% end %> 
-            </div>
-          </div>
           <% end %>
-        </li>
-      <% end %>
-    </ul>
+        <% else %>
+          <%= link_to new_club_path, class: "link" do%>
+            <div class="alter-center">
+              <i class="fas fa-users"></i>
+              <span class="top-link-btn">メンバー募集</span>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="top-link-right">
+        <%= link_to search_clubs_path, class: "link" do%>
+          <div class="alter-center">
+            <i class="fas fa-search"></i>
+            <span class="top-link-btn">サークル検索</span>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

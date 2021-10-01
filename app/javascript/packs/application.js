@@ -11,7 +11,9 @@ require('jquery')
 require('./calendar/event')
 require('../clubs/preview')
 require('../clubs/slider')
-
+require('../clubs/search_accordion')
+require('../clubs/city_accordion')
+require('../clubs/modal')
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

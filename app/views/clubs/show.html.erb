@@ -2,20 +2,27 @@
 
 <div class="club-show-wrap">
   <div class="club-show-content">
+    <div class="club-show-content-status">
+      <% if @club.status_id == 1%>
+        <span class="status-ribbon orange"><%= @club.status.name %></span>
+      <% end %>
+      <% if @club.status_id == 2 %>
+        <span class="status-ribbon gray"><%= @club.status.name %></span>
+      <% end %>
+    </div>
     <div class="club-show-top">
       <div class="club-show-date">
         <div class="club-show-new-date">
-          募集開始日：<%= @club.created_at.to_s(:datetime_jp) %>
+          募集開始：<%= l @club.created_at, format: :long %>
         </div>
         <div class="club-show-update">
-          最終更新日：<%= @club.updated_at.to_s(:datetime_jp) %>
+          最終更新：<%= l @club.updated_at, format: :long %>
         </div>
       </div>
       <div class="club-show-content-title">
         <h1><%= @club.name%></h1>
       </div>
-      <div class="club-show-content-status">
-        <%= @club.status.name %>
+      <div class="club-top-right">
       </div>
     </div>
 
@@ -38,35 +45,47 @@
           <th class="club-show-detail-item">創設時期</th>
           <td class="club-show-detail-value"><%= "#{@club.since_year}年#{@club.since_month}月" %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">活動地域</th>
-          <td class="club-show-detail-value"><%= "#{@club.prefecture.name} #{@club.city}" %></td>
+          <td class="club-show-detail-value"><%= "#{@club.prefecture.name} #{@club.city.name}" %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">使用体育館</th>
           <td class="club-show-detail-value"><%= @club.gym %></td>
         </tr>
-         <tr>
-          <th class="club-show-detail-item">年齢構成</th>
+        <tr>
+          <th class="club-show-detail-item">活動時間</th>
+          <td class="club-show-detail-value"><%= @club.action_time %></td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">参加費</th>
+          <td class="club-show-detail-value"><%= @club.fee %></td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">サークル人数</th>
+          <td class="club-show-detail-value"><%= @club.persons %></td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">年齢層</th>
           <td class="club-show-detail-value"><%= @club.age_range %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">男女比</th>
           <td class="club-show-detail-value"><%= @club.gender_ratio %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">初心者：経験者</th>
           <td class="club-show-detail-value"><%= @club.beginner_ratio %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">サークル目標</th>
           <td class="club-show-detail-value"><%= @club.purpose %></td>
         </tr>
-         <tr>
+        <tr>
           <th class="club-show-detail-item">サークルホームページ</th>
           <td class="club-show-detail-value">
             <% if @club.homepage.present? %>
-            <%= @club.homepage %>
+            <%= link_to @club.homepage, url_with_protocol(@club.homepage), :target => '_blank' %>
             <% end %>
           </td>
         </tr>
@@ -82,6 +101,97 @@
       <%= @club.information%>
       </div>
     </div>
+
+    <div class="show-detail-label">
+      こんな人を募集しています！
+    </div>
+    <div class="club-show-detail">
+      <table class="club-show-detail-table">
+      <tbody>
+        <tr>
+          <th class="club-show-detail-item">性別</th>
+          <td class="club-show-detail-value"><%= @club.want.sex.name %></td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">年齢</th>
+          <td class="club-show-detail-value">
+            <% if @club.want.ages.size == 6  %>
+              制限なし
+            <% else %>
+              <% @club.want.ages.each do |age| %>
+                <%= age.name %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th class="club-show-detail-item">
+          <div class="level-justify"">
+            <div class="level-label">
+              <label class="">経験レベル</label>
+              <i class="far fa-question-circle level-modal-open"></i>
+            </div>
+            <div class="modal level-modal">
+              <div class="modal__bg level-modal-close"></div>
+                <%= render partial: 'wants/level'%>
+            </div>
+          </div>
+          </th>
+          <td class="club-show-detail-value">
+            <% if @club.want.ages.size == 6  %>
+              制限なし
+            <% else %>
+              <% @club.want.levels.each do |level| %>
+                <%= level.name %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <% if user_signed_in? && @club.user_id == current_user.id%>
+      <%= link_to "編集する", edit_club_want_path(club_id: @club.id, id: @club.want.id), class: "edit-link"%>
+    <% end %>
+
+
+    <div class="show-detail-label">
+      活動予定日
+    </div>
+    <% if user_signed_in? && @club.user_id == current_user.id%>
+      <%= link_to "予定を追加する", club_events_path(club_id: @club.id), class: "event-link"%>
+    <% end %>
+    <div id="club-calendar"></div>
+    <div id="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="response-modal" tabindex="0" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="error" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="response-modal-body">
+            </div>
+          </div>
+        </div>
+    </div>
+
 
     <% if user_signed_in? && @club.user_id == current_user.id%>
     <div class="club-show-contact-wrap">
@@ -103,11 +213,11 @@
     <% elsif user_signed_in? %>
     <div class="club-show-contact-wrap">
       <div class="club-show-contact">
-        <%= link_to new_room_path(user_id: current_user.id, club_id: params[:id]), class: "chat-contact-link" do%>
+        <%= link_to '#' , class: "chat-contact-link js-modal-open" do%>
           <i class="far fa-comments"></i>
           <span>チャットで問い合わせる</span>
         <% end %>
-        <%= link_to "#", class: "mail-contact-link" do%>
+        <%= link_to "#" , class: "mail-contact-link mail-modal-open" do%>
           <i class="far fa-envelope"></i>
           <span>メールで問い合わせる</span>
         <% end %>
@@ -121,6 +231,14 @@
             <% end%>
           </div>
         </div>
+      </div>
+      <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+            <%= render partial: 'rooms/new', locals: {club: @club} %>
+      </div>
+      <div class="modal mail-modal">
+        <div class="modal__bg js-modal-close"></div>
+            <%= render partial: 'clubs/mail', locals: {club: @club} %>
       </div>
     </div>
     <% else %>
@@ -142,11 +260,6 @@
     </div>
     <% end %>
 
-    <div class="show-detail-label">
-      活動予定日
-    </div>
-
-    <%= link_to "カレンダー", club_events_path(club_id: params[:id]) %>
 
   </div>
 </div>

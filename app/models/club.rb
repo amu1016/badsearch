@@ -4,9 +4,11 @@ class Club < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
   has_many :events, dependent: :destroy
+  has_one :want, dependent: :destroy
+  belongs_to :prefecture
+  belongs_to :city
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to :prefecture
     belongs_to :status
     
     validates :content, presence: true, unless: :was_attached?

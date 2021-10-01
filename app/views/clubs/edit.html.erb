@@ -1,4 +1,4 @@
-<%= form_with model: @club, url: club_path(params[:id]), class: 'club-registration-main', local: true do |f| %>
+<%= form_with model: @club, url: club_path(params[:id]), class: 'club-registration-main prefecture-city', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
@@ -26,7 +26,6 @@
       <%= f.file_field :images, name: 'club[images][]', class: "image-file", id:"club-image" %>
       <div id="image-list"></div>
     </div>
-
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -59,22 +58,57 @@
       <span class="indispensable">必須</span>
       <label class="form-text">都道府県</label>
     </div>
-    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+      <%= f.select :prefecture_id, nil, {class:"select-box-top" },{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
+       <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
+        {{prefecture.name}}
+      </option>
+      <% end %>
   </div>
-  
+
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">市区町村</label>
     </div>
-    <%= f.text_area :city, class:"input-default", id:"city", placeholder:"例) 新宿区", maxlength:"40", autofocus: true %>
+    <%= f.select :city_id, class:"select-box-top" do %>
+      <option v-for="city in cities" :key="city.name" :value="city.id">{{city.name}}</option>
+    <% end %>
   </div>
+
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
       <label class="form-text">使用体育館</label>
     </div>
     <%= f.text_area :gym, class:"input-default", id:"gym", placeholder:"例) 新宿体育館", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
+      <label class="form-text">活動時間</label>
+    </div>
+    <%= f.text_area :action_time, class:"input-default", id:"action_time", placeholder:"例) 月、金 19~21時", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
+      <label class="form-text">参加費</label>
+    </div>
+    <%= f.text_area :fee, class:"input-default", id:"fee", placeholder:"例) 200円", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
+      <label class="form-text">サークル人数</label>
+    </div>
+    <%= f.text_area :persons, class:"input-default", id:"persons", placeholder:"例) 30名程度", maxlength:"40", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <span class="indispensable">必須</span>
+      <label class="form-text">年齢層</label>
+    </div>
+    <%= f.text_area :age_range, class:"input-default", id:"age_range", placeholder:"例) 20~30歳代", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -92,16 +126,16 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
-      <label class="form-text">年齢層</label>
+      <label class="form-text">サークル目標</label>
     </div>
-    <%= f.text_area :age_range, class:"input-default", id:"age_range", placeholder:"例) 20~30歳代", maxlength:"40", autofocus: true %>
+    <%= f.text_area :purpose, class:"input-default", id:"purpose", placeholder:"例) 区の大会で入賞", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <span class="indispensable">必須</span>
-      <label class="form-text">サークル目標</label>
+      <label class="form-text">メールアドレス<br>(サークル応募者からの問い合わせ先)</label>
     </div>
-    <%= f.text_area :purpose, class:"input-default", id:"purpose", placeholder:"例) 区の大会で入賞", maxlength:"40", autofocus: true %>
+    <%= f.text_area :email, class:"input-default", id:"email", placeholder:"例) badminton@xxx.com", maxlength:"40", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -122,3 +156,4 @@
   </div>
 </div>
 <% end %>
+<%= javascript_pack_tag 'hello_vue' %>

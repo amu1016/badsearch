@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+.top-only {
+  position: fixed;
+  top: 0;
+}
+
 .top-page-header {
   width: 100vw;
   padding: 2vh 15vw;

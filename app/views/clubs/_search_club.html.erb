@@ -1,0 +1,59 @@
+
+<li class='search-list'>
+  <%= link_to club_path(club.id), class: "club-link" do %>
+    <div class="search-club-content-wrap">
+      <div class='search-club-status'>
+        <% if club.status_id == 1%>
+        <span class="status-ribbon orange"><%= club.status.name %></span>
+        <% end %>
+        <% if club.status_id == 2 %>
+        <span class="status-ribbon gray"><%= club.status.name %></span>
+        <% end %>
+      </div>
+      <div class="search-club-content-left">
+        <div class="search-club-image-content">
+          <%= image_tag club.images[0], class: "search-club-image"%>
+        </div>
+      </div>
+      <div class="search-club-content-right">
+        <div class="search-club-content-right-top">
+          <div class="search-club-name">
+            <%= club.name%>
+          </div>
+        </div>
+        <div class="search-club-place">
+          <i class="fas fa-map-marker-alt"></i>
+          <%= "#{club.prefecture.name} #{club.city.name}"%>
+        </div>
+        <div class="search-club-time">
+          <i class="far fa-clock"></i>
+          <%= club.action_time%>
+        </div>
+        <div class="search-club-content-right-bottom">
+          <div class="search-club-comment">
+            <%= club.information %>
+          </div>
+        </div>
+        <div class="search-club-icon">
+          <div class="updated-data">
+            <%=  l club.updated_at, format: :long  %>
+          </div>
+          <% if user_signed_in? && current_user.own?(club) %>
+            <div class="like-button">
+              <i class="fas fa-heart red"></i> 
+              <span><%= club.likes.count%></span>
+            </div>
+          <% else %>
+            <div id="like-button-<%= club.id %>">
+              <% if current_user&.like?(club) %>
+                <%= render partial: 'likes/unlike_button', locals: {club: club}%>
+              <% else %>
+                <%= render partial: 'likes/like_button', locals: {club: club}%>
+              <% end %>
+            </div>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+  <% end %>
+</li>

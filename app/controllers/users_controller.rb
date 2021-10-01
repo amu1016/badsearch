@@ -2,12 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @clubs = @user.like_clubs
+    @likes = @user.likes.limit(10).order("created_at DESC") 
   end
 
-  def edit
-  end
-
-  def update
-  end
 end
