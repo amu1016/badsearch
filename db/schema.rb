@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_09_29_155138) do
     t.bigint "city_id", null: false
     t.string "gym", null: false
     t.string "action_time", null: false
-    t.integer "fee"
+    t.string "fee"
     t.string "persons", null: false
     t.string "age_range", null: false
     t.string "gender_ratio", null: false
