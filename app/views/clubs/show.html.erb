@@ -125,7 +125,18 @@
           </td>
         </tr>
         <tr>
-          <th class="club-show-detail-item">経験レベル</th>
+          <th class="club-show-detail-item">
+          <div class="level-justify"">
+            <div class="level-label">
+              <label class="">経験レベル</label>
+              <i class="far fa-question-circle level-modal-open"></i>
+            </div>
+            <div class="modal level-modal">
+              <div class="modal__bg level-modal-close"></div>
+                <%= render partial: 'wants/level'%>
+            </div>
+          </div>
+          </th>
           <td class="club-show-detail-value">
             <% if @club.want.ages.size == 6  %>
               制限なし

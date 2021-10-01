@@ -30,13 +30,12 @@
   </div>
 
   <div class="form-group">
-    <div class='form-text-wrap'>
+    <div class='form-text-wrap level-label'>
       <label class="form-text">経験レベル</label>
-      <i class="far fa-question-circle js-modal-open"></i>
+      <i class="far fa-question-circle level-modal-open"></i>
     </div>
-    <div class="modal js-modal">
-      <div class="modal__bg js-modal-close">
-      </div>
+    <div class="modal level-modal">
+      <div class="modal__bg level-modal-close"></div>
         <%= render partial: 'wants/level'%>
     </div>
     <% Level.all.each do |level| %>

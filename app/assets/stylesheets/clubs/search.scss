@@ -1,4 +1,3 @@
-
 .search-form-header {
   font-size: 30px;
   font-weight: bold;
@@ -205,6 +204,9 @@
 .accordion-topic {
   width: 25%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .right-border {
