@@ -37,6 +37,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    actionview-encoded_mail_to (1.0.9)
+      rails
     active_hash (3.1.0)
       activesupport (>= 5.0.0)
     activejob (6.0.4)
@@ -295,6 +297,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
+  actionview-encoded_mail_to
   active_hash
   bootsnap (>= 1.4.2)
   byebug

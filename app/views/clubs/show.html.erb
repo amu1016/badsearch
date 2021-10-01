@@ -217,7 +217,7 @@
           <i class="far fa-comments"></i>
           <span>チャットで問い合わせる</span>
         <% end %>
-        <%= link_to "#", class: "mail-contact-link" do%>
+        <%= mail_to "#{@club.email}", encode: 'hex', class: "mail-contact-link" do%>
           <i class="far fa-envelope"></i>
           <span>メールで問い合わせる</span>
         <% end %>
