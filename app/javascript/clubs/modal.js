@@ -19,3 +19,14 @@ $(function(){
       return false;
   });
 });
+
+$(function(){
+  $('.mail-modal-open').on('click',function(){
+      $('.mail-modal').fadeIn();
+      return false;
+  });
+  $('.mail-modal-close').on('click',function(){
+      $('.mail-modal').fadeOut();
+      return false;
+  });
+});

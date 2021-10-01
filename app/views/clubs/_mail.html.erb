@@ -1,0 +1,34 @@
+  <div class='modal__content'>
+    <div class='close-btn'>
+      <%= link_to "#", class: "mail-modal-close room-link" do %>
+        <i class="fas fa-times"></i>
+      <% end %>
+    </div>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+        メールで問い合わせる
+      </h1>
+    </div>
+    <div class="room-start-text">
+    <%= "#{club.name}の運営者にメールで質問や相談をしてみましょう"%>
+    </div>
+
+    <div class="btn-content-wrap">
+      <div class="btn-content">
+        <div class='chat-start-btn'>
+        <%= mail_to "#{club.email}", encode: 'hex', class: "room-link" do%>
+          <span class="chat-start-btn-text">メール作成する</span>
+        <% end %>
+        </div>
+        <div class='back-btn'>
+        <%= link_to "#", class: "mail-modal-close room-link" do %>
+          <span class="back-btn-text">閉じる</span>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
