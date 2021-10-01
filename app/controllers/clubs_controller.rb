@@ -38,6 +38,7 @@ class ClubsController < ApplicationController
       redirect_to new_club_want_path(@club)
     else
       render :new
+      gon.prefectures = Prefecture.all.to_json only: %i[id name]
     end
   end
 
@@ -54,6 +55,7 @@ class ClubsController < ApplicationController
       redirect_to club_path
     else
       render :edit
+      gon.prefectures = Prefecture.all.to_json only: %i[id name]
     end
   end
 

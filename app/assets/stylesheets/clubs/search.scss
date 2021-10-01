@@ -157,7 +157,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px;
+  height: 130px;
+}
+
+.date-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-control-start {
+  margin-right: 8px;
+}
+
+.form-control-end {
+  margin: 8px;
+}
+
+.search-date-btn {
+  margin-top: 20px;
 }
 
 .search-accordion {
@@ -168,8 +186,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 150px;
+  height: auto;
 }
+
+.search-accordion-body {
+  width: 100%;
+}
+
+.search-detail {
+  width: 100%;
+
+}
+
+.accordion-top {
+  display: flex;
+}
+
+.accordion-topic {
+  width: 25%;
+  text-align: center;
+}
+
+.right-border {
+  border-right: 1px solid #d8d8d8;
+}
+
+.accordion-title {
+  color: rgb(54, 53, 53);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.search-check-box input{
+  margin-right: 5px;
+}
+
+.search-detail-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
 
 .search-club-contents {
   background-color: whitesmoke;
@@ -322,7 +379,6 @@
 
 
 
-
 .search-club-icon {
   display: flex;
   justify-content: flex-end;
@@ -365,4 +421,26 @@
 .club-link {
   text-decoration: none;
   color: rgb(51, 48, 48);
+}
+
+.btn-border {
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  padding: 3.5px 15px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+}
+
+.btn-border:hover {
+  color: #fff;
+  background: #000;
 }

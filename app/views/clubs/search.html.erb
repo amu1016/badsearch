@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <%= f.submit "検索" ,class:"search-btn" %>
+      <%= f.submit "検索" ,class:"btn-border" %>
     <% end %>
   </div>
 
@@ -47,21 +47,62 @@
     </div>
     <div class="date-accordion">
       <div class="date-accordion-body">
-        <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
-          <%= f.date_field :events_start_gteq, include_blank: true, class: 'form-control'%>
-          〜
-          <%= f.date_field :events_start_lteq_end_of_day, include_blank: true, class: 'form-control'%>
-          <%= f.submit "検索" ,class:"search-btn" %>
+        <%= search_form_for @q, url: search_clubs_path, class:"date-search" do |f| %>
+          <div class="search-date-form">
+            <%= f.date_field :events_start_gteq, include_blank: true, class: 'form-control-start'%>
+            〜
+            <%= f.date_field :events_start_lteq_end_of_day, include_blank: true, class: 'form-control-end'%>
+          </div>
+          <div class="search-date-btn">
+          <%= f.submit "検索" ,class:"btn-border" %>
+          </div>
         <% end %>
       </div>
     </div>
     <div class="search-accordion">
       <div class="search-accordion-body">
-        <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
-          <%= f.date_field :events_start_gteq, include_blank: true, class: 'form-control'%>
-          〜
-          <%= f.date_field :events_start_lteq_end_of_day, include_blank: true, class: 'form-control'%>
-          <%= f.submit "検索" ,class:"search-btn" %>
+        <%= search_form_for @q, url: search_clubs_path, class:"search-detail" do |f| %>
+        <div class="accordion-top">
+          <div class="accordion-topic right-border">
+            <h2 class="accordion-title">募集状況</h2>
+            <% Status.all.each do |status| %>
+              <div class="search-check-box">
+                <%= f.check_box :status_id_eq, { multiple: true, checked: true, include_hidden: false } %>
+                <label class='badge badge-secondary'><%= status.name %></label>
+              </div>
+            <% end %>
+          </div>
+          <div class="accordion-topic right-border">
+            <h2 class="accordion-title">性別</h2>
+            <% Sex.all.each do |sex| %>
+              <div class="search-check-box">
+                <%= f.check_box :wants_sex_id_eq, { multiple: false, checked: true, include_hidden: false } %>
+                <label class='badge badge-secondary'><%= sex.name %></label>
+              </div>
+            <% end %>
+          </div>
+          <div class="accordion-topic right-border">
+            <h2 class="accordion-title">年齢</h2>
+            <% Age.all.each do |age| %>
+              <div class="search-check-box">
+                <%= f.check_box :wants_age_ids_eq, { multiple: true, checked: true, include_hidden: false }, age[:id] %>
+                <label class='badge badge-secondary'><%= age.name %></label>
+              </div>
+            <% end %>
+          </div>
+          <div class="accordion-topic">
+            <h2 class="accordion-title">経験レベル</h2>
+            <% Level.all.each do |level| %>
+              <div class="search-check-box">
+                <%= f.check_box :wants_level_ids_eq, { multiple: true, checked: true, include_hidden: false }, level[:id] %>
+                <label class='badge badge-secondary'><%= level.name %></label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="search-detail-btn-wrap">
+          <%= f.submit "検索" ,class:"btn-border" %>
+        </div>
         <% end %>
       </div>
     </div>
