@@ -10,12 +10,15 @@ RUN mkdir /badsearch
 WORKDIR /badsearch
 # 作成したmyappディレクトリを作業用ディレクトリとして設定
 
-COPY Gemfile /badsearch/Gemfile
-COPY Gemfile.lock /badsearch/Gemfile.lock
+ADD Gemfile /badsearch/Gemfile
+ADD Gemfile.lock /badsearch/Gemfile.lock
 # ローカルの Gemfile と Gemfile.lock をコンテナ内のmyapp配下にコピー
 
+RUN gem install bundler
 RUN bundle install
 # コンテナ内にコピーした Gemfile の bundle install
 
-COPY . /badsearch
+ADD . /badsearch
 # ローカルのmyapp配下のファイルをコンテナ内のmyapp配下にコピー
+
+CMD ["rails", "server", "-b", "0.0.0.0"]
