@@ -63,4 +63,6 @@ Rails.application.configure do
   config.action_cable.url = "ws://localhost:3000/cable"
 
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
 end
