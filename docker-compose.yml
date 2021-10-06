@@ -1,73 +1,45 @@
 version: '3'
 
 services:
+
+  web:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/badsearch/public
+      - tmp-data:/badsearch/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - app
+
   app:
     build:
       context: .
-    env_file:
-      - ./environments/db.env
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/webapp
-      - public-data:/webapp/public
-      - tmp-data:/webapp/tmp
-      - log-data:/webapp/log
+      - .:/badsearch
+      - public-data:/badsearch/public
+      - tmp-data:/badsearch/tmp
+      - log-data:/badsearch/log
+    tty: true
+    stdin_open: true
     depends_on:
       - db
 
   db:
     image: mysql:5.6.51
     environment:
-      - ./environments/db.env
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MY_SQL: ${MYSQL_HOST}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USERNAME: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
-      - ./tmp/db:/var/lib/mysql/data
+      - db-data:./tmp/db:/var/lib/mysql/data
 
-  web:
-    build: .
-    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    volumes:
-      - .:/badsearch/
-    ports:
-      - 3000:3000
-    depends_on:
-      - db
-
-volumes:
-  mysql_data:
-
-services:
-  app:
-    build:
-      context: .
-    env_file:
-      - ./environments/db.env
-    command: bundle exec puma -C config/puma.rb
-    volumes:
-      - .:/webapp
-      - public-data:/webapp/public
-      - tmp-data:/webapp/tmp
-      - log-data:/webapp/log
-    depends_on:
-      - db
-  db:
-    image: mysql:5.7
-    env_file:
-      - ./environments/db.env
-    volumes:
-      - db-data:/var/lib/mysql
-  web:
-    build:
-      context: containers/nginx
-    volumes:
-      - public-data:/webapp/public
-      - tmp-data:/webapp/tmp
-    ports:
-      - 80:80
-    depends_on:
-      - app
 volumes:
   public-data:
   tmp-data:

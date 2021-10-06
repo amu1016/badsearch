@@ -21,4 +21,6 @@ RUN bundle install
 ADD . /badsearch
 # ローカルのmyapp配下のファイルをコンテナ内のmyapp配下にコピー
 
+RUN mkdir -p tmp/sockets
+
 CMD ["rails", "server", "-b", "0.0.0.0"]
