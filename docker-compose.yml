@@ -8,6 +8,7 @@ services:
     volumes:
       - public-data:/badsearch/public
       - tmp-data:/badsearch/tmp
+      - gem_data:/usr/local/bundle
     ports:
       - 80:80
     depends_on:
@@ -30,18 +31,23 @@ services:
   db:
     image: mysql:5.6.51
     environment:
-      MY_SQL: ${MYSQL_HOST}
+      MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USERNAME: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: "Asia/Tokyo"
+      command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     ports:
-      - "3306:3306"
+      - "4306:3306"
     volumes:
-      - db-data:./tmp/db:/var/lib/mysql/data
+      - ./containers/mysql/conf.d:/etc/mysql/conf.d
+      - db-data:/var/lib/mysql
+    restart: always
 
 volumes:
   public-data:
   tmp-data:
   log-data:
   db-data:
+  gem_data:
