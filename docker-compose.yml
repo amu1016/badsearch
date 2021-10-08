@@ -41,13 +41,19 @@ services:
     ports:
       - "4306:3306"
     volumes:
-      - ./containers/mysql/conf.d:/etc/mysql/conf.d
-      - db-data:/var/lib/mysql
+      #- ./containers/mysql/conf.d:/etc/mysql/conf.d
+      # - db-data:/var/lib/mysql
+      #- ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      # - ./db/mysql_init:/docker-entrypoint-initdb.d
+      - ./db/mysql_data:/var/lib/mysql
+      #- ./etc/mysql/conf.d:/etc/mysql/conf.d
+      #- ./var/lib/mysql:/var/lib/mysql
+      #  - ./tmp/db:/var/lib/mysql/data
     restart: always
 
 volumes:
   public-data:
   tmp-data:
   log-data:
-  db-data:
   gem_data:
+  mysql_data:
