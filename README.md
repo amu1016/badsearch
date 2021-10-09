@@ -1,3 +1,52 @@
+# Badsearch
+
+# 使用技術
+
+・Ruby　2.6.5
+・Ruby on Rails 6.0.0
+・MySQL 5.6.51
+・Nginx
+・Puma
+・AWS
+・Docker/Docker-compose
+・
+・
+・
+・
+・
+・
+・
+・
+・
+・
+
+
+
+# 機能一覧
+
+・ユーザー登録、ログイン機能(devise)
+・
+・
+・
+・
+・
+・
+・
+・
+・
+
+
+
+
+
+
+
+
+
+
+
+
+
 # テーブル設計
 
 ## users テーブル
