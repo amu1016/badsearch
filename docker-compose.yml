@@ -1,19 +1,27 @@
 version: '3'
 
 services:
-
-  web:
-    build:
-      context: containers/nginx
-    volumes:
-      - public-data:/badsearch/public
-      - tmp-data:/badsearch/tmp
-      - gem_data:/usr/local/bundle
+  db:
+    image: mysql:5.6.51
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: "Asia/Tokyo"
+      command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     ports:
-      - 80:80
-    depends_on:
-      - app
-
+      - "4306:3306"
+    volumes:
+      #- ./containers/mysql/conf.d:/etc/mysql/conf.d
+      - db-data:/var/lib/mysql
+      #- ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      # - ./db/mysql_init:/docker-entrypoint-initdb.d
+      # - ./db/mysql_data:/var/lib/mysql
+      #- ./etc/mysql/conf.d:/etc/mysql/conf.d
+      #- ./var/lib/mysql:/var/lib/mysql
+      #  - ./tmp/db:/var/lib/mysql/data
+    # restart: always
   app:
     build:
       context: .
@@ -28,32 +36,25 @@ services:
     depends_on:
       - db
 
-  db:
-    image: mysql:5.6.51
-    environment:
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USERNAME: ${MYSQL_USERNAME}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      TZ: "Asia/Tokyo"
-      command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-    ports:
-      - "4306:3306"
+  web:
+    build:
+      context: containers/nginx
     volumes:
-      #- ./containers/mysql/conf.d:/etc/mysql/conf.d
-      # - db-data:/var/lib/mysql
-      #- ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      # - ./db/mysql_init:/docker-entrypoint-initdb.d
-      - ./db/mysql_data:/var/lib/mysql
-      #- ./etc/mysql/conf.d:/etc/mysql/conf.d
-      #- ./var/lib/mysql:/var/lib/mysql
-      #  - ./tmp/db:/var/lib/mysql/data
-    restart: always
+      - public-data:/badsearch/public
+      - tmp-data:/badsearch/tmp
+      - gem_data:/usr/local/bundle
+    ports:
+      - 80:80
+    depends_on:
+      - app
+
+  
+
+  
 
 volumes:
   public-data:
   tmp-data:
   log-data:
   gem_data:
-  mysql_data:
+  db-data:
