@@ -43,8 +43,8 @@ services:
       - gem_data:/usr/local/bundle
     ports:
       - 80:80
-    depends_on:
-      - app
+    # depends_on:
+    #   - app
 
   
 
