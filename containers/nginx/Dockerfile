@@ -10,6 +10,6 @@ RUN touch /var/run/nginx.pid && \
 
 USER nginx
 
-# CMD /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+CMD /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
 
-CMD ["nginx"]
+# CMD ["nginx"]
