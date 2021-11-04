@@ -65,3 +65,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'actionview-encoded_mail_to'
 gem 'dotenv-rails'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
