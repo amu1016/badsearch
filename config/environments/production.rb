@@ -26,7 +26,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -111,6 +111,6 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = 'ws://13.113.33.209/cable'
-  config.action_cable.allowed_request_origins = [ 'http://13.113.33.209' ] 
+  config.action_cable.url = 'ws://35.72.59.220/cable'
+  config.action_cable.allowed_request_origins = [ 'http://35.72.59.220' ] 
 end
