@@ -59,4 +59,4 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
-server 'www.bad-search.com', user: 'ec2-user', roles: %w{app db web}
+server 'bad-search.com', user: 'ec2-user', roles: %w{app db web}
