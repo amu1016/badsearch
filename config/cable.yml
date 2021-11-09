@@ -7,5 +7,5 @@ test:
 production:
   adapter: redis
   port: 6379
-  url: redis://badsearch-redis-001.nav3i7.0001.apne1.cache.amazonaws.com
-  # channel_prefix: badsearch_production
+  url: redis://badsearch-redis.nav3i7.ng.0001.apne1.cache.amazonaws.com
+  channel_prefix: badsearch_production
