@@ -60,6 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'jquery-rails'
 gem 'active_hash'
+gem 'carrierwave'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'pry-rails'
@@ -76,3 +77,4 @@ group :production do
 end
 
 gem "aws-sdk-s3", require: false
+gem 'fog-aws'
