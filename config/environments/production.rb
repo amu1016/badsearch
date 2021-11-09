@@ -111,6 +111,6 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = 'wss://www.bad-search.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://www.bad-search.com' ] 
+  config.action_cable.url = 'wss://35.72.59.220/cable'
+  config.action_cable.allowed_request_origins = [ 'https://35.72.59.220' ] 
 end
