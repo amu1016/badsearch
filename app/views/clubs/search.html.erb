@@ -67,7 +67,7 @@
             <label class="accordion-title">募集状況</label>
             <% Status.all.each do |status| %>
               <div class="search-check-box">
-                <%= f.check_box :status_id_eq, { multiple: true, checked: true, include_hidden: false }, status[:id] %>
+                <%= f.check_box :status_id_eq, { multiple: true, checked: true, include_hidden: false }, status.id %>
                 <label class='badge badge-secondary'><%= status.name %></label>
               </div>
             <% end %>
