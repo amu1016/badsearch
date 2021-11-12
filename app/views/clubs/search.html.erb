@@ -76,7 +76,7 @@
             <label class="accordion-title">性別</label>
             <% Sex.all.each do |sex| %>
               <div class="search-check-box">
-                <%= f.check_box :wants_sex_id_eq, { multiple: false, checked: true, include_hidden: false } %>
+                <%= f.check_box :wants_sex_id_eq, { multiple: true, checked: true, include_hidden: false } %>
                 <label class='badge badge-secondary'><%= sex.name %></label>
               </div>
             <% end %>

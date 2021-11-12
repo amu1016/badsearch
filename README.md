@@ -33,15 +33,17 @@ Eメール：test@gmail.com
 
 # DEMO
 ## トップページ
-<img src="https://gyazo.com/d055a43da5f1541829d5b21bdc863be7">
+[![Image from Gyazo](https://i.gyazo.com/d055a43da5f1541829d5b21bdc863be7.jpg)](https://gyazo.com/d055a43da5f1541829d5b21bdc863be7)
 ペルソナは20〜30歳代に設定しているため、シンプルでモダンなデザインを意識しました。
 
 ## サークル詳細画面
+[![Image from Gyazo](https://i.gyazo.com/af701d95f4894703c633a25b3f4f277b.gif)](https://gyazo.com/af701d95f4894703c633a25b3f4f277b)
 
-
+## リアルタイムチャット機能
 [![Image from Gyazo](https://i.gyazo.com/f5087da847751b43f243595fd7d66bf3.gif)](https://gyazo.com/f5087da847751b43f243595fd7d66bf3)
-検索機能(gif)
-リアルタイムチャット機能(gif)
+
+## 検索機能
+
 カレンダー機能(gif)
 
 
