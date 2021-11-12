@@ -38,15 +38,35 @@ Eメール：test@gmail.com
 
 ## サークル詳細画面
 [![Image from Gyazo](https://i.gyazo.com/af701d95f4894703c633a25b3f4f277b.gif)](https://gyazo.com/af701d95f4894703c633a25b3f4f277b)
-
-## リアルタイムチャット機能
-[![Image from Gyazo](https://i.gyazo.com/f5087da847751b43f243595fd7d66bf3.gif)](https://gyazo.com/f5087da847751b43f243595fd7d66bf3)
+[![Image from Gyazo](https://i.gyazo.com/ca4a331654fd17fa1b49e28119d88305.gif)](https://gyazo.com/ca4a331654fd17fa1b49e28119d88305)
+サーク詳細画面では、活動内容に始まり、人数構成やレベル感、サークルの目標も確認できるように項目を儲けました。
+そのため、自分のレベルや温度感に合ったサークルであるか判断する材料が既存のWebサイトよりも多くなっており、バドミントンを始めたいユーザーにとって使いやすいものとなるよう考慮しました。レベル感については、把握しやすくするため、Level１〜５という指標を儲けました。？マークをクリックすると各レベル毎の目安を見ることができます。
 
 ## 検索機能
+### 地域で絞り込み
+[![Image from Gyazo](https://i.gyazo.com/639d9f47765b80241fa7e731593c5a59.gif)](https://gyazo.com/639d9f47765b80241fa7e731593c5a59)
 
-カレンダー機能(gif)
+### 活動予定日で絞り込み
+[![Image from Gyazo](https://i.gyazo.com/53da4dd4237fdd761cde7d16eca687a4.gif)](https://gyazo.com/53da4dd4237fdd761cde7d16eca687a4)
+ユーザーが都合の良い日程で活動できるサークルを検索できるようにしました。
+
+### 条件で絞り込み
+（本番環境の動作が直ったら追加します。）
 
 
+## カレンダー機能
+### ①
+[![Image from Gyazo](https://i.gyazo.com/e01e65c304aabd07e89e49df07c5cc97.gif)](https://gyazo.com/e01e65c304aabd07e89e49df07c5cc97)
+### ②
+[![Image from Gyazo](https://i.gyazo.com/b9a48293f6f987e236dada9262beccbc.gif)](https://gyazo.com/b9a48293f6f987e236dada9262beccbc)
+サークル運営者のみが活動予定日を追加・編集・削除することが可能となっています。  
+登録されている活動予定日から、ユーザーは絞り込むことができます。(上記の検索機能参照)
+
+## リアルタイムチャット機能
+[![Image from Gyazo](https://i.gyazo.com/3f4f8d677a590b69595d75bb8deff809.gif)](https://gyazo.com/3f4f8d677a590b69595d75bb8deff809)
+[![Image from Gyazo](https://i.gyazo.com/f5087da847751b43f243595fd7d66bf3.gif)](https://gyazo.com/f5087da847751b43f243595fd7d66bf3)
+サークル詳細画面下部の「チャットを始める」をクリックすると、ポップアップ表示後、チャットルームへ遷移します。
+本チャット機能はActionCableを使用しており、リアルタイムで双方向通信が行われ、チャットすることができます。
 
 ## 機能一覧
 - ユーザー登録、ログイン機能(devise)  
@@ -60,7 +80,7 @@ Eメール：test@gmail.com
 
 # 工夫したポイント
 - 既存のサークル検索webサイトにはない、活動日から検索することができるようにした点。  
-- サークル運営者に対して気軽に質問や相談ができるよう、問い合わせ方法を2つ(チャット、メール)用意してある点。  
+- サークル運営者に対して気軽に質問や相談ができるよう、問い合わせ方法を2つ(チャット、メール)用意した点。  
 
 # 使用技術
 
