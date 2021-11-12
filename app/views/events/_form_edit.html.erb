@@ -22,7 +22,7 @@
          <%= f.label :end,"終了時刻", {class:'control-label'}%>
          <%= f.datetime_select :end, {default: Date.today + 0.hours + 00.minutes, minute_step: 15}, class: 'form-control' %>
         </div>
-        <div class="btn-wrap">
+        <div class="event-btn-wrap">
         <%= f.submit "更新",   class: "btn btn-primary js-event-create-btn" %>
         </div>
       <% end %>
