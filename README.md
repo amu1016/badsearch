@@ -84,6 +84,9 @@ Eメール：test@gmail.com
 
 # 使用技術
 
+## インフラ構成図
+![Badsearch-figure](https://user-images.githubusercontent.com/86815544/141732513-cdab587f-0a19-48b4-a499-f785a9952cc5.png)
+
 ## バックエンド
 Ruby, Ruby on Rails
 ## フロントエンド
