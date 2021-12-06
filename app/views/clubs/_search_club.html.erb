@@ -29,6 +29,12 @@
           <i class="far fa-clock"></i>
           <%= club.action_time%>
         </div>
+        <% if club.fee.present?%>
+          <div class="search-club-fee">
+            <i class="fas fa-yen-sign"></i>
+            <%= club.fee%>
+          </div>
+        <% end %>
         <div class="search-club-content-right-bottom">
           <div class="search-club-comment">
             <%= club.information %>

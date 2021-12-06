@@ -365,7 +365,20 @@
   align-items: center;
 }
 
+.search-club-fee {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 .fa-clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.fa-yen-sign {
   display: flex;
   justify-content: center;
   align-items: center;
