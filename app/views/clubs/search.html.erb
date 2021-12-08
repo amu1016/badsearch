@@ -7,7 +7,7 @@
     地域を選択してください
   </div>
   <div class="search-place">
-<%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
+    <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
       <div class="search-form">
         <div class="search-prefecture">
           <%= f.select :prefecture_id_eq, nil, {},{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
@@ -24,7 +24,7 @@
         </div>
       </div>
       <%= f.submit "検索" ,class:"btn-border" %>
-    <%# <% end %> 
+    <% end %>
   </div>
 
   <div class="search-accordion-wrap">
@@ -47,7 +47,7 @@
     </div>
     <div class="date-accordion">
       <div class="date-accordion-body">
-        <%# <%= search_form_for @q, url: search_clubs_path, class:"date-search" do |f| %> 
+        <%= search_form_for @q, url: search_clubs_path, class:"date-search" do |f| %>
           <div class="search-date-form">
             <%= f.date_field :events_start_gteq, include_blank: true, class: 'form-control-start'%>
             〜
@@ -56,12 +56,12 @@
           <div class="search-date-btn">
           <%= f.submit "検索" ,class:"btn-border" %>
           </div>
-        <%# <% end %>
+        <% end %>
       </div>
     </div>
     <div class="search-accordion">
       <div class="search-accordion-body">
-        <%# <%= search_form_for @q, url: search_clubs_path, class:"search-detail" do |f| %>
+        <%= search_form_for @q, url: search_clubs_path, class:"search-detail" do |f| %>
         <div class="accordion-top">
           <div class="accordion-topic right-border">
             <label class="accordion-title">募集状況</label>
@@ -110,7 +110,7 @@
         <div class="search-detail-btn-wrap">
           <%= f.submit "検索" ,class:"btn-border" %>
         </div>
-<% end %>
+        <% end %>
       </div>
     </div>
   </div>
