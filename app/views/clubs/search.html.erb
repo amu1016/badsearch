@@ -85,7 +85,7 @@
             <label class="accordion-title">年齢</label>
             <% Age.all.each do |age| %>
               <div class="search-check-box">
-                <%= f.check_box :wants_ages_name_cont, { multiple: true, checked: false, include_hidden: false }, age[:name] %>
+                <%= f.check_box :wants_ages_id_cont, { multiple: true, checked: false, include_hidden: false }, age[:id] %>
                 <label class='badge badge-secondary'><%= age.name %></label>
               </div>
             <% end %>
@@ -101,7 +101,7 @@
             </div>
             <% Level.all.each do |level| %>
               <div class="search-check-box">
-                <%= f.check_box :wants_levels_name_cont, { multiple: true, checked: false, include_hidden: false }, level[:name] %>
+                <%= f.check_box :wants_levels_id_cont, { multiple: true, checked: false, include_hidden: false }, level[:id] %>
                 <label class='badge badge-secondary'><%= level.name %></label>
               </div>
             <% end %>
