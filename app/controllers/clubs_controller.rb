@@ -24,7 +24,7 @@ class ClubsController < ApplicationController
         @city = City.find(city_id)
         @cities.push(@city)
       end
-      @cities_id = revive_active_record(@cities)
+      # @cities_id = revive_active_record(@cities).id
     end
     
   end
@@ -87,9 +87,9 @@ class ClubsController < ApplicationController
     # params.require(:q).permit(:wants_sex_ids_eq_any, :wants_age_ids_eq_any, :wants_level_ids_eq_any)
   # end
 
-  def revive_active_record(arr)
-    arr.first.class.where(id: arr.map(&:id))
-  end
+  # def revive_active_record(arr)
+  #   arr.first.class.where(id: arr.map(&:id))
+  # end
 
 
 end
