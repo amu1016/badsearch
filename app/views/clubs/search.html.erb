@@ -54,8 +54,11 @@
             <%= f.date_field :events_start_lteq_end_of_day, include_blank: true, class: 'form-control-end'%>
           </div>
           <div class="search-date-btn">
-          <% if @q.present? %>
-            <%= f.hidden_field value: params[:q] %>
+          <% if @prefecture.present? %>
+            <%= f.hidden_field :prefecture_id_eq, value: @q.prefecture_id_eq %>
+            <% if @cities.present? %>
+              <%= f.hidden_field value: @q.city_id_eq_any %>
+            <% end %>
           <% end %>
           <%= f.submit "検索" ,class:"btn-border" %>
           </div>
@@ -111,8 +114,11 @@
           </div>
         </div>
         <div class="search-detail-btn-wrap">
-          <% if @q.present? %>
-            <%= f.hidden_field value: params[:q] %>
+          <% if @prefecture.present? %>
+            <%= f.hidden_field :prefecture_id_eq, value: @q.prefecture_id_eq %>
+            <% if @cities.present? %>
+              <%= f.hidden_field value: @q.city_id_eq_any %>
+            <% end %>
           <% end %>
           <%= f.submit "検索" ,class:"btn-border" %>
         </div>
