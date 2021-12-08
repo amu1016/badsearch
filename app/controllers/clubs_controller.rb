@@ -12,7 +12,7 @@ class ClubsController < ApplicationController
 
   def search
     gon.prefectures = Prefecture.all.to_json only: %i[id name]
-    @q = Club.ransack(search_params)
+    @q = Club.ransack(params[:q])
     @clubs_result = @q.result(distinct: true)
     @clubs = @clubs_result.page(params[:page])
     if @q.prefecture_id_eq.present?
@@ -81,9 +81,9 @@ class ClubsController < ApplicationController
     redirect_to club_path(current_user.club) if user_signed_in? &&  current_user.club.present?
   end
 
-  def search_params
-    params.require(:q).permit(:wants_sex_ids_eq_any, :wants_age_ids_eq_any, :wants_level_ids_eq_any)
-  end
+  # def search_params
+    # params.require(:q).permit(:wants_sex_ids_eq_any, :wants_age_ids_eq_any, :wants_level_ids_eq_any)
+  # end
 
 
 end
