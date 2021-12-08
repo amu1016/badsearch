@@ -18,11 +18,10 @@ class ClubsController < ApplicationController
     if @q.prefecture_id_eq.present?
       @prefecture = Prefecture.find(@q.prefecture_id_eq)
     end
-    
+    @cities = []
     if @q.city_id_eq_any.present?
       @q.city_id_eq_any.each do |city_id|
         @city = City.find(city_id)
-        @cities = []
         @cities.push(@city)
       end
       @cities_id = revive_active_record(@cities)
