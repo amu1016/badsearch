@@ -57,7 +57,7 @@
           <% if @prefecture.present? %>
             <%= f.hidden_field :prefecture_id_eq, value: @q.prefecture_id_eq %>
             <% if @cities.present? %>
-              <%= f.hidden_field :city_id_eq_any, value: @cities.ids %>
+              <%= f.hidden_field :city_id_eq_any, value: @q.city_id_eq_any %>
             <% end %>
           <% end %>
           <%= f.submit "検索" ,class:"btn-border" %>
@@ -117,7 +117,7 @@
           <% if @prefecture.present? %>
             <%= f.hidden_field :prefecture_id_eq, value: @q.prefecture_id_eq %>
             <% if @cities.present? %>
-              <%= f.hidden_field :city_id_eq_any, value: @cities.ids %>
+              <%= f.hidden_field :city_id_eq_any, value: @q.city_id_eq_any %>
             <% end %>
           <% end %>
           <%= f.submit "検索" ,class:"btn-border" %>
