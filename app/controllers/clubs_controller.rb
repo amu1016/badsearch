@@ -13,7 +13,7 @@ class ClubsController < ApplicationController
   def search
     gon.prefectures = Prefecture.all.to_json only: %i[id name]
     @q = Club.ransack(params[:q])
-    @clubs_result = @q.result(distinct: true).includes(:wants, :wants_ages, :wants_levels, :ages, :levels) 
+    @clubs_result = @q.result(distinct: true).includes(:wants, :wants_ages, :wants_levels, :ages, :levels).references(:wants, :wants_ages, :wants_levels, :ages, :levels)
     @clubs = @clubs_result.page(params[:page])
     if @q.prefecture_id_eq.present?
       @prefecture = Prefecture.find(@q.prefecture_id_eq)
