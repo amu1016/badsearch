@@ -24,7 +24,7 @@ class ClubsController < ApplicationController
         @city = City.find(city_id)
         @cities.push(@city)
       end
-      @cities_id = revive_active_record(@q.city_id_eq_any)
+      @cities_id = revive_active_record(@cities)
     end
     
   end
