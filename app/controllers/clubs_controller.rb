@@ -19,8 +19,8 @@ class ClubsController < ApplicationController
       @prefecture = Prefecture.find(@q.prefecture_id_eq)
     end
     @cities = []
-    if @q.city_id_eq_any.present?
-      @q.city_id_eq_any.each do |city_id|
+    if @q.city_ids_eq_any.present?
+      @q.city_ids_eq_any.each do |city_id|
         @city = City.find(city_id)
         @cities.push(@city)
       end
