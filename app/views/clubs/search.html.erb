@@ -200,11 +200,11 @@
       <div class="date-tag">
         <div class="prefecture-tag">指定した日時：</div>
         <% if @q.events_start_gteq.present? %>
-          <span><%= "#{@q.events_start_gteq}"%></span>
+          <span><%= l @q.events_start_gteq, format: :short %></span>
         <% end %>
         <span>〜</span>
         <% if @q.events_start_lteq_end_of_day.present? %>
-          <span><%= "#{@q.events_start_lteq_end_of_day}"%></span>
+          <span><%= l @q.events_start_lteq_end_of_day, format: :short %></span>
         <% end %>
       </div>
       <% end %>
@@ -213,25 +213,24 @@
       <%# 絞り込んだ条件 %>
       <% if @q.status_id_eq_any.present? || @q.want_sex_id_eq_any.present? || @q.want_ages_name_eq_any.present? || @q.want_levels_name_eq_any.present? %>
       <div class="terms-tag">
-        <div class="tag-design">
         <% if @q.status_id_eq_any.present? %>
           <% @q.status_id_eq_any.each do |status_id| %>
-            <%= Status.find(status_id).name %>
+            <span class="tag-design"><%= Status.find(status_id).name %></span>
           <% end %>
         <% end %>
         <% if @q.want_sex_id_eq_any.present? %>
           <% @q.want_sex_id_eq_any.each do |sex_id| %>
-            <%= Sex.find(sex_id).name %>
+            <span class="tag-design"><%= Sex.find(sex_id).name %></span>
           <% end %>
         <% end %>
         <% if @q.want_ages_name_eq_any.present? %>
           <% @q.want_ages_name_eq_any.each do |age_name| %>
-            <%= age_name %>
+            <span class="tag-design"><%= age_name %></span>
           <% end %>
         <% end %>
         <% if @q.want_levels_name_eq_any.present? %>
           <% @q.want_levels_name_eq_any.each do |level_name| %>
-            <%= level_name %>
+            <span class="tag-design"><%= level_name %></span>
           <% end %>
         <% end %>
       </div>
