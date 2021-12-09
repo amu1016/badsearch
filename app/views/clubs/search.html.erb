@@ -215,12 +215,12 @@
       <div class="terms-tag">
         <% if @q.status_id_eq_any.present? %>
           <% @q.status_id_eq_any.each do |status_id| %>
-            <%= status_id %>
+            <%= Status.find(status_id).name %>
           <% end %>
         <% end %>
         <% if @q.want_sex_id_eq_any.present? %>
           <% @q.want_sex_id_eq_any.each do |sex_id| %>
-            <%= sex_id %>
+            <%= Sex.find(sex_id).name %>
           <% end %>
         <% end %>
         <% if @q.want_ages_name_eq_any.present? %>
