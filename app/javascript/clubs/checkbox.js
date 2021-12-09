@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
       for (var i = 0; i < parameters.length; i++) {
         var elementId = parameters[i].replace("=", "_");
         var checkTargets = document.getElementById(elementId)
-        checkTargets.cheked = true;
+        checkTargets.checked = true;
       };
 
       
