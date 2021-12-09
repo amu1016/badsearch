@@ -58,7 +58,7 @@
             <%= f.hidden_field :prefecture_id_eq, value: @q.prefecture_id_eq %>
             <% if @q.city_id_eq_any.present? %>
               <% @cities.each do |city| %>
-                <input type="hidden" v-bind="city" :value= "city.id" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
+                <input type="hidden" v-bind="city" :value= "#{city.id}" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
               <% end %>
             <% end %>
           <% end %>
@@ -120,7 +120,7 @@
             <%= f.hidden_field :prefecture_id_eq, value: @q.prefecture_id_eq %>
             <% if @q.city_id_eq_any.present? %>
               <% @cities.each do |city| %>
-                <input type="hidden" v-bind="city" :value= "city.id" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
+                <input type="hidden" v-bind="city" :value= "#{city.id}" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
               <% end %>
             <% end %>
           <% end %>
