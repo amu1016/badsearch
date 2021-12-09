@@ -231,11 +231,11 @@
       <div class="date-tag">
         <div class="prefecture-tag">指定した日時：</div>
         <% if @q.events_start_gteq.present? %>
-          <span><%= l @q.events_start_gteq, format: :short %></span>
+          <span><%= l @q.events_start_gteq, format: :YMS %></span>
         <% end %>
         <span class="scope">〜</span>
         <% if @q.events_start_lteq_end_of_day.present? %>
-          <span><%= l @q.events_start_lteq_end_of_day, format: :short %></span>
+          <span><%= l @q.events_start_lteq_end_of_day, format: :YMS %></span>
         <% end %>
       </div>
       <% end %>
