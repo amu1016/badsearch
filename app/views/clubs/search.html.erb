@@ -23,6 +23,37 @@
           </div>
         </div>
       </div>
+
+      <%# 日時条件保持 %>
+      <% if @q.events_start_gteq.present? %>
+        <%= f.hidden_field :events_start_gteq, value: @q.events_start_gteq %>
+      <% end %>
+      <% if @q.events_start_lteq_end_of_day.present? %>
+        <%= f.hidden_field :events_start_lteq_end_of_day, value: @q.events_start_lteq_end_of_day %>
+      <% end %>
+
+      <%# 絞り込み条件保持 %>
+      <% if @q.status_id_eq_any.present? %>
+        <% @q.status_id_eq_any.each do |status_id| %>
+          <%= hidden_field_tag 'q[status_id_eq_any][]', status_id %>
+        <% end %>
+      <% end %>
+      <% if @q.want_sex_id_eq_any.present? %>
+        <% @q.want_sex_id_eq_any.each do |sex_id| %>
+          <%= hidden_field_tag 'q[want_sex_id_eq_any][]', sex_id %>
+        <% end %>
+      <% end %>
+      <% if @q.want_ages_name_eq_any.present? %>
+        <% @q.want_ages_name_eq_any.each do |age_name| %>
+          <%= hidden_field_tag 'q[want_ages_name_eq_any][]', age_name %>
+        <% end %>
+      <% end %>
+      <% if @q.want_levels_name_eq_any.present? %>
+        <% @q.want_levels_name_eq_any.each do |level_name| %>
+          <%= hidden_field_tag 'q[want_levels_name_eq_any][]', level_name %>
+        <% end %>
+      <% end %>
+
       <%= f.submit "検索" ,class:"btn-border" %>
     <% end %>
   </div>
