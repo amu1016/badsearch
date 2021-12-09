@@ -215,7 +215,7 @@
       <div class="terms-tag">
         <% if @q.status_id_eq_any.present? %>
           <% @q.status_id_eq_any.each do |status_id| %>
-            <%= Status.find(status_id).name %>
+            <%= Status.find(status_id + 1).name %>
           <% end %>
         <% end %>
         <% if @q.want_sex_id_eq_any.present? %>
