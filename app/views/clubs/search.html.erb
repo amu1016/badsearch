@@ -57,9 +57,7 @@
           <% if @prefecture.present? %>
             <%= f.hidden_field :prefecture_id_eq, value: @q.prefecture_id_eq %>
             <% if @cities.present? %>
-              <% @cities.each do |city| %>
-                <input type="hidden" v-bind="city" :value="<%= city.id %>" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
-              <% end %>
+              <input type="hidden" v-bind="city" :value="<%= @q.city_id_eq_any %>" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
             <% end %>
           <% end %>
           <%= f.submit "検索" ,class:"btn-border" %>
@@ -119,9 +117,7 @@
           <% if @prefecture.present? %>
             <%= f.hidden_field :prefecture_id_eq, value: @q.prefecture_id_eq %>
             <% if @cities.present? %>
-              <% @cities.each do |city| %>
-                <input type="hidden" v-bind="city" :value="<%= city.id %>" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
-              <% end %>
+              <input type="hidden" v-bind="city" :value="<%= @q.city_id_eq_any %>" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
             <% end %>
           <% end %>
           <%= f.submit "検索" ,class:"btn-border" %>
