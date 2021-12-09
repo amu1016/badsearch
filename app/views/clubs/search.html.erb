@@ -170,86 +170,87 @@
   </div>
 
 
-<div class='search-club-contents'>
-  <h2 class='search-club-content-title'>検索結果</h2>
-  <div class="search-tag-wrap">
-    <%# 選択中の地域 %>
-    <div class="place-tag">
-      <% if @prefecture.present? %>
-      <div class="prefecture-tag"><%= "選択中の地域：#{@prefecture.name} "%></div>
-      <i class="fas fa-chevron-right"></i>
-        <% if @cities.size == 0%>
-          <span> 全域</span>
-        <% elsif @cities.size == 1%>
-          <span><%= "#{@cities[0].name}"%></span>
-        <% elsif @cities.size == 2%>
-          <span><%= "#{@cities[0].name}、#{@cities[1].name}"%></span>
-        <% elsif @cities.size == 3%>
-          <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
-        <% elsif @cities.size > 3%>
-          <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
-          <span class="ctiy-more"><i class="fas fa-ellipsis-h"></i></span>
+  <div class='search-club-contents'>
+    <h2 class='search-club-content-title'>検索結果</h2>
+    <div class="search-tag-wrap">
+      <%# 選択中の地域 %>
+      <div class="place-tag">
+        <% if @prefecture.present? %>
+        <div class="prefecture-tag"><%= "選択中の地域：#{@prefecture.name} "%></div>
+        <i class="fas fa-chevron-right"></i>
+          <% if @cities.size == 0%>
+            <span> 全域</span>
+          <% elsif @cities.size == 1%>
+            <span><%= "#{@cities[0].name}"%></span>
+          <% elsif @cities.size == 2%>
+            <span><%= "#{@cities[0].name}、#{@cities[1].name}"%></span>
+          <% elsif @cities.size == 3%>
+            <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
+          <% elsif @cities.size > 3%>
+            <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
+            <span class="ctiy-more"><i class="fas fa-ellipsis-h"></i></span>
+          <% end %>
+        <% else %>
+        <span>選択中の地域：全国</span>
         <% end %>
-      <% else %>
-      <span>選択中の地域：全国</span>
+      </div>
+
+      <%# 指定した日時 %>
+      <% if @q.events_start_gteq.present? || @q.events_start_lteq_end_of_day.present? %>
+      <div class="date-tag">
+        <div class="prefecture-tag">指定した日時：</div>
+        <% if @q.events_start_gteq.present? %>
+          <span><%= "#{@q.events_start_gteq}"%></span>
+        <% end %>
+        <span>〜</span>
+        <% if @q.events_start_lteq_end_of_day.present? %>
+          <span><%= "#{@q.events_start_lteq_end_of_day}"%></span>
+        <% end %>
+      </div>
+      <% end %>
+
+
+      <%# 絞り込んだ条件 %>
+      <% if @q.status_name_eq_any.present? || @q.want_sex_name_eq_any.present? || @q.want_ages_name_eq_any.present? || @q.want_levels_name_eq_any.present? %>
+      <div class="terms-tag">
+        <% if @q.status_name_eq_any.present? %>
+          <% @q.status_name_eq_any.each do |status_name| %>
+            <%= status_name %>
+          <% end %>
+        <% end %>
+        <% if @q.want_sex_name_eq_any.present? %>
+          <% @q.want_sex_name_eq_any.each do |sex_name| %>
+            <%= sex_name %>
+          <% end %>
+        <% end %>
+        <% if @q.want_ages_name_eq_any.present? %>
+          <% @q.want_ages_name_eq_any.each do |age_name| %>
+            <%= age_name %>
+          <% end %>
+        <% end %>
+        <% if @q.want_levels_name_eq_any.present? %>
+          <% @q.want_levels_name_eq_any.each do |level_name| %>
+            <%= level_name %>
+          <% end %>
+        <% end %>
+      </div>
       <% end %>
     </div>
 
-    <%# 指定した日時 %>
-    <% if @q.events_start_gteq.present? || @q.events_start_lteq_end_of_day.present? %>
-    <div class="date-tag">
-      <div class="prefecture-tag"><%= "指定した日時："%></div>
-      <% if @q.events_start_gteq.present? %>
-        <span><%= "#{@q.events_start_gteq}"%></span>
+    <% if @clubs.present? %>
+    <ul class='search-club-lists'>
+      <% @clubs.each do |club| %>
+        <%= render partial: 'clubs/search_club' , locals: { club: club } %>
       <% end %>
-      <span>〜</span>
-      <% if @q.events_start_lteq_end_of_day.present? %>
-        <span><%= "#{@q.events_start_lteq_end_of_day}"%></span>
-      <% end %>
+    </ul>
+    <% else %>
+    <div class="search-no-result">
+      <div class="no-result-text">
+        条件に一致するサークルがありません
+      </div>
     </div>
     <% end %>
-
-
-    <%# 絞り込んだ条件 %>
-    <% if @q.status_name_eq_any.present? || @q.want_sex_name_eq_any.present? || @q.want_ages_name_eq_any.present? || @q.want_levels_name_eq_any.present? %>
-    <div class="terms-tag">
-      <% if @q.status_name_eq_any.present? %>
-        <% @q.status_name_eq_any.each do |status_name| %>
-          <%= status_name %>
-        <% end %>
-      <% end %>
-      <% if @q.want_sex_name_eq_any.present? %>
-        <% @q.want_sex_name_eq_any.each do |sex_name| %>
-          <%= sex_name %>
-        <% end %>
-      <% end %>
-      <% if @q.want_ages_name_eq_any.present? %>
-        <% @q.want_ages_name_eq_any.each do |age_name| %>
-          <%= age_name %>
-        <% end %>
-      <% end %>
-      <% if @q.want_levels_name_eq_any.present? %>
-        <% @q.want_levels_name_eq_any.each do |level_name| %>
-          <%= level_name%>
-        <% end %>
-      <% end %>
-    </div>
   </div>
-
-  <% if @clubs.present? %>
-  <ul class='search-club-lists'>
-    <% @clubs.each do |club| %>
-      <%= render partial: 'clubs/search_club' , locals: { club: club } %>
-    <% end %>
-  </ul>
-  <% else %>
-  <div class="search-no-result">
-    <div class="no-result-text">
-      条件に一致するサークルがありません
-    </div>
-  </div>
-  <% end %>
-</div>
 
 <%= paginate @clubs %>
 
