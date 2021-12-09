@@ -68,14 +68,14 @@
           <% end %>
 
           <%# 絞り込み条件保持 %>
-          <% if @q.status_id_eq_any.present? %>
-            <% @q.status_id_eq_any.each do |status_id| %>
-              <%= hidden_field_tag 'q[status_id_eq_any][]', status_id %>
+          <% if @q.status_name_eq_any.present? %>
+            <% @q.status_name_eq_any.each do |status_name| %>
+              <%= hidden_field_tag 'q[status_name_eq_any][]', status_name %>
             <% end %>
           <% end %>
-          <% if @q.want_sex_id_eq_any.present? %>
-            <% @q.want_sex_id_eq_any.each do |sex_id| %>
-              <%= hidden_field_tag 'q[want_sex_id_eq_any][]', sex_id %>
+          <% if @q.want_sex_name_eq_any.present? %>
+            <% @q.want_sex_name_eq_any.each do |sex_name| %>
+              <%= hidden_field_tag 'q[want_sex_name_eq_any][]', sex_name %>
             <% end %>
           <% end %>
           <% if @q.want_ages_name_eq_any.present? %>
@@ -102,7 +102,7 @@
             <label class="accordion-title">募集状況</label>
             <% Status.all.each do |status| %>
               <div class="search-check-box">
-                <%= f.check_box :status_id_eq_any, { multiple: true, checked: false, include_hidden: false }, status[:id] %>
+                <%= f.check_box :status_name_eq_any, { multiple: true, checked: false, include_hidden: false }, status[:name] %>
                 <label class='badge badge-secondary'><%= status.name %></label>
               </div>
             <% end %>
@@ -111,7 +111,7 @@
             <label class="accordion-title">性別</label>
             <% Sex.all.each do |sex| %>
               <div class="search-check-box">
-                <%= f.check_box :want_sex_id_eq_any, { multiple: true, checked: false, include_hidden: false }, sex[:id] %>
+                <%= f.check_box :want_sex_name_eq_any, { multiple: true, checked: false, include_hidden: false }, sex[:name] %>
                 <label class='badge badge-secondary'><%= sex.name %></label>
               </div>
             <% end %>
@@ -173,6 +173,7 @@
 <div class='search-club-contents'>
   <h2 class='search-club-content-title'>検索結果</h2>
   <div class="search-tag-wrap">
+    <%# 選択中の地域 %>
     <div class="place-tag">
       <% if @prefecture.present? %>
       <div class="prefecture-tag"><%= "選択中の地域：#{@prefecture.name} "%></div>
@@ -193,9 +194,46 @@
       <span>選択中の地域：全国</span>
       <% end %>
     </div>
-    <%# 検索条件
-    <div class="terms-tag"></div> 
-    %>
+
+    <%# 指定した日時 %>
+    <% if @q.events_start_gteq.present? || @q.events_start_lteq_end_of_day.present? %>
+    <div class="date-tag">
+      <div class="prefecture-tag"><%= "指定した日時："%></div>
+      <% if @q.events_start_gteq.present? %>
+        <span><%= "#{@q.events_start_gteq}"%></span>
+      <% end %>
+      <span>〜</span>
+      <% if @q.events_start_lteq_end_of_day.present? %>
+        <span><%= "#{@q.events_start_lteq_end_of_day}"%></span>
+      <% end %>
+    </div>
+    <% end %>
+
+
+    <%# 絞り込んだ条件 %>
+    <% if @q.status_name_eq_any.present? || @q.want_sex_name_eq_any.present? || @q.want_ages_name_eq_any.present? || @q.want_levels_name_eq_any.present? %>
+    <div class="terms-tag">
+      <% if @q.status_name_eq_any.present? %>
+        <% @q.status_name_eq_any.each do |status_name| %>
+          <%= status_name %>
+        <% end %>
+      <% end %>
+      <% if @q.want_sex_name_eq_any.present? %>
+        <% @q.want_sex_name_eq_any.each do |sex_name| %>
+          <%= sex_name %>
+        <% end %>
+      <% end %>
+      <% if @q.want_ages_name_eq_any.present? %>
+        <% @q.want_ages_name_eq_any.each do |age_name| %>
+          <%= age_name %>
+        <% end %>
+      <% end %>
+      <% if @q.want_levels_name_eq_any.present? %>
+        <% @q.want_levels_name_eq_any.each do |level_name| %>
+          <%= level_name%>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <% if @clubs.present? %>
