@@ -213,6 +213,7 @@
       <%# 絞り込んだ条件 %>
       <% if @q.status_id_eq_any.present? || @q.want_sex_id_eq_any.present? || @q.want_ages_name_eq_any.present? || @q.want_levels_name_eq_any.present? %>
       <div class="terms-tag">
+        <div class="tag-design">
         <% if @q.status_id_eq_any.present? %>
           <% @q.status_id_eq_any.each do |status_id| %>
             <%= Status.find(status_id).name %>
