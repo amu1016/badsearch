@@ -80,7 +80,7 @@
           <% end %>
           <% if @q.want_ages_name_eq_any.present? %>
             <% @q.want_ages_name_eq_any.each do |age_name| %>
-              <%= hidden_field_tag 'q[want_ages_name_eq_any][]', sex_name %>
+              <%= hidden_field_tag 'q[want_ages_name_eq_any][]', age_name %>
             <% end %>
           <% end %>
           <% if @q.want_levels_name_eq_any.present? %>
