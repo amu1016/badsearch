@@ -206,12 +206,10 @@
     <div class="search-tag-wrap">
       <%# 選択中の地域 %>
       <div class="place-tag">
-        <% if @prefecture.present? %>
+        <% if @prefecture.present? && @q.city_id_eq_any.present? %>
         <div class="prefecture-tag"><%= "選択中の地域：#{@prefecture.name} "%></div>
         <i class="fas fa-chevron-right"></i>
-          <% if @cities.size == 0%>
-            <span> 全域</span>
-          <% elsif @cities.size == 1%>
+          <% if @cities.size == 1%>
             <span><%= "#{@cities[0].name}"%></span>
           <% elsif @cities.size == 2%>
             <span><%= "#{@cities[0].name}、#{@cities[1].name}"%></span>
@@ -221,6 +219,10 @@
             <span><%= "#{@cities[0].name}、#{@cities[1].name}、#{@cities[2].name}"%></span>
             <span class="ctiy-more"><i class="fas fa-ellipsis-h"></i></span>
           <% end %>
+        <% elsif @prefecture.present? %>
+          <div class="prefecture-tag"><%= "選択中の地域：#{@prefecture.name} "%></div>
+          <i class="fas fa-chevron-right"></i>
+          <span> 全域</span>
         <% else %>
         <span>選択中の地域：全国</span>
         <% end %>
