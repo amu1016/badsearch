@@ -32,6 +32,7 @@
       <div class="search-accordion-label-left">
         <%= "検索結果：#{@clubs.count} 件"%>
       </div>
+      <% if @prefecture.present? %>
       <div class="search-accordion-label-right">
         <div class="date-sort hover-action">
           <i class="far fa-calendar-alt"></i>
@@ -44,6 +45,7 @@
           <i class="fas fa-angle-down search-down"></i>
         </div>
       </div>
+      <% end %>
     </div>
     <div class="date-accordion">
       <div class="date-accordion-body">
