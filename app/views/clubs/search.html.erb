@@ -22,6 +22,7 @@
               <label for="q_city_id">{{city.name}}</label>
             </div>
           </div>
+        </div>
         <% else %>
         <div class="search-prefecture">
           <%= f.select :prefecture_id_eq, nil, {},{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
