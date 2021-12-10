@@ -12,7 +12,7 @@
         <% if @prefecture.present? %>
         <div class="search-prefecture">
           <%= f.select :prefecture_id_eq, nil, {},{'v-model': 'selected', '@change': 'getCities(selectedPrefecture)' } do %>
-            <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id" v-bind:value="selected" >
+            <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id" v-bind:value="{ id: #{@prefecture.id} }" >
               {{prefecture.name}}
             </option>
           <% end %>
