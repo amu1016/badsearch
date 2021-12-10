@@ -29,7 +29,7 @@ class ClubsController < ApplicationController
       end
       # @cities_id = revive_active_record(@cities).id
     end
-    # role_ids = params[:role_ids].split(' ').map(&:to_i)
+
     
   end
 
