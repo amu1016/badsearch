@@ -30,29 +30,24 @@ if( document.getElementsByClassName('prefecture-city')){
 })
 };
 
+document.addEventListener('DOMContentLoaded', function(){
   var selection = document.getElementById('q_prefecture_id_eq')
   if(selection.selected){
     var indexId = selection.selectedIndex
     var prefectureId = indexId + 1
+    axios
+      .post('/set_cities', {
+        id: prefectureId
+      })
+      .then((response) => {
+        var returnCities = response.data
+      })
+
     new Vue({
     el: '.prefecture-city',
     data: {
-      selectedPref: `${prefectureId}`,
-      cities: [], 
-      prefectures: JSON.parse(gon.prefectures)
+      cities: returnCities, 
     },
-    
-    watch: {
-      getCities: function(prefecture) {
-        axios
-          .post('/set_cities', {
-            id: prefecture
-          })
-          .then((response) => {
-            this.cities = response.data
-          })
-        },
-        immediate: true
-    }
   })
   }
+});

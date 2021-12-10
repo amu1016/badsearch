@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function(){
             id: paramValue
           })
           .then((response) => {
-            cities = response.data
+            var cities = response.data
           })
       };
 
