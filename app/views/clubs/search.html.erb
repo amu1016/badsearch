@@ -9,6 +9,20 @@
   <div class="search-place">
     <%= search_form_for @q, url: search_clubs_path, class: 'prefecture-city' do |f| %>
       <div class="search-form">
+        <% if @prefecture.present? %>
+        <div class="search-prefecture">
+          <%= f.select :prefecture_id_eq, nil, {},{'v-model': '@prefecture.id', '@change': 'getCities(@prefecture.id)'} do %>
+            <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
+              {{prefecture.name}}
+            </option>
+          <% end %>
+          <div class="city-lists-content" >
+            <div class="city-list" v-for="city in cities" :key="city.name" :value="city.id">
+              <input type="checkbox" v-bind="city" :value="city.id" name="q[city_id_eq_any][]" id="q_city_id_eq_any_id">
+              <label for="q_city_id">{{city.name}}</label>
+            </div>
+          </div>
+        <% else %>
         <div class="search-prefecture">
           <%= f.select :prefecture_id_eq, nil, {},{'v-model': 'selectedPref', '@change': 'getCities(selectedPref)'} do %>
             <option v-for="prefecture in prefectures" :key="prefecture.name" :value="prefecture.id">
