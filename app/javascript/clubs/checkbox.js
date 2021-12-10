@@ -11,6 +11,22 @@ document.addEventListener('DOMContentLoaded', function(){
       var paramValue = element[1];
       queryObject[paramName] = paramValue;
 
+      // 都道府県
+      if (paramName === "q[prefecture_id_eq]") {
+        var elementId = paramName.replace("[", "_");
+        elementId = elementId.replace("]", "");
+        var selectTargets = document.getElementById(elementId);
+        selectTargets.options[paramValue - 1].selected = true;
+      };
+
+      // 市区町村
+      // if (paramName === "q[city_id_eq_any][]") {
+      //   var elementId = parameters[i].replace("[", "_");
+      //   elementId = elementId.replace("][]=", "_");
+      //   var checkTargets = document.getElementById(elementId);
+      //   checkTargets.checked = true;
+      // };
+
       // チェックボックス保持
       if (paramName === "q[status_id_eq_any][]") {
         var elementId = parameters[i].replace("[", "_");
