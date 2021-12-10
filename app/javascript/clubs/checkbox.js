@@ -1,3 +1,10 @@
+import axios from 'axios';
+
+axios.defaults.headers.common = {
+  'X-Requested-With': 'XMLHttpRequest',
+  'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+};
+
 document.addEventListener('DOMContentLoaded', function(){
   var queryString = window.location.search;
   var queryObject = new Object();
@@ -18,6 +25,13 @@ document.addEventListener('DOMContentLoaded', function(){
         var selectTargets = document.getElementById(elementId);
         selectTargets.options[paramValue - 1].selected = true;
         // selectTargets.addEventListener('change', Sample.default.methods.getCities());
+        axios
+          .post('/set_cities', {
+            id: paramValue
+          })
+          .then((response) => {
+            cities = response.data
+          })
       };
 
       // 市区町村
