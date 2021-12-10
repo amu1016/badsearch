@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function(){
       };
       if (paramName === "q[want_levels_name_eq_any][]") {
         var elementId = parameters[i].replace("[", "_");
-        elementId = elementId.replace("][]=", "_");
+        elementId = elementId.replace("][]=L", "_l");
         var checkTargets = document.getElementById(elementId);
         checkTargets.checked = true;
       };
