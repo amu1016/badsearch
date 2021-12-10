@@ -25,13 +25,13 @@ document.addEventListener('DOMContentLoaded', function(){
         var selectTargets = document.getElementById(elementId);
         selectTargets.options[paramValue - 1].selected = true;
         // selectTargets.addEventListener('change', Sample.default.methods.getCities());
-        axios
-          .post('/set_cities', {
-            id: paramValue
-          })
-          .then((response) => {
-            var cities = response.data
-          })
+        // axios
+        //   .post('/set_cities', {
+        //     id: paramValue
+        //   })
+        //   .then((response) => {
+        //     var cities = response.data
+        //   })
       };
 
       // 市区町村

@@ -40,14 +40,20 @@ document.addEventListener('DOMContentLoaded', function(){
         id: prefectureId
       })
       .then((response) => {
-        var returnCities = response.data
+        var resultCities = response.data
       })
-
     new Vue({
     el: '.prefecture-city',
     data: {
-      cities: returnCities, 
+      cities: [] 
     },
-  })
+    methods: {
+      setCities : function(){
+        this.cities = response.data
+    }
+  }
+  });
+
+  
   }
 });
