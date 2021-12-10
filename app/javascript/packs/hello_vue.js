@@ -8,7 +8,7 @@ axios.defaults.headers.common = {
 };
 
 if( document.getElementsByClassName('prefecture-city')){
-  var prefectureSelect = new Vue({
+  new Vue({
   el: '.prefecture-city',
   data: {
     selectedPref: '',
@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', function(){
     },
     
     methods: {
-      getCities: function(prefectureId) {
+      getCities: function(prefecture) {
         axios
           .post('/set_cities', {
-            id: prefectureId
+            id: prefecture
           })
           .then((response) => {
             this.cities = response.data
