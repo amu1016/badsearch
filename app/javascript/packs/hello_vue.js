@@ -15,15 +15,18 @@ if( document.getElementsByClassName('prefecture-city')){
     cities: [], 
     prefectures: JSON.parse(gon.prefectures)
   },
-  methods: {
-    getCities: function(prefecture) {
-      axios
-        .post('/set_cities', {
-          id: prefecture
-        })
-        .then((response) => {
-          this.cities = response.data
-        })
+  
+  export default{
+    methods: {
+      getCities: function(prefecture) {
+        axios
+          .post('/set_cities', {
+            id: prefecture
+          })
+          .then((response) => {
+            this.cities = response.data
+          })
+      }
     }
   }
 })

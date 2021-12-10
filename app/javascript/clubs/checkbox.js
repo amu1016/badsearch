@@ -1,3 +1,6 @@
+import Sample from '../packs/hello_vue';
+
+
 document.addEventListener('DOMContentLoaded', function(){
   var queryString = window.location.search;
   var queryObject = new Object();
@@ -17,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
         elementId = elementId.replace("]", "");
         var selectTargets = document.getElementById(elementId);
         selectTargets.options[paramValue - 1].selected = true;
+        Sample.default.methods.getCities()
       };
 
       // 市区町村
