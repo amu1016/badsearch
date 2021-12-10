@@ -8,7 +8,7 @@ axios.defaults.headers.common = {
 };
 
 if( document.getElementsByClassName('prefecture-city')){
-  new Vue({
+  var prefectureSelect = new Vue({
   el: '.prefecture-city',
   data: {
     selectedPref: '',
@@ -32,26 +32,30 @@ if( document.getElementsByClassName('prefecture-city')){
 
 document.addEventListener('DOMContentLoaded', function(){
   var selection = document.getElementById('q_prefecture_id_eq')
-  if(  selection.addEventListener('change')){
-    new Vue({
-    el: '.prefecture-city',
-    data: {
-      selectedPref: '',
-      cities: [], 
-      prefectures: JSON.parse(gon.prefectures)
-    },
+  if(selection){
+    var indexId = selection.selectedIndex
+    var prefectureId = indexId + 1
+    prefectureSelect.methods.getCities.function(prefectureId)
+
+  //   new Vue({
+  //   el: '.prefecture-city',
+  //   data: {
+  //     selectedPref: '',
+  //     cities: [], 
+  //     prefectures: JSON.parse(gon.prefectures)
+  //   },
     
-    methods: {
-      getCities: function(prefecture) {
-        axios
-          .post('/set_cities', {
-            id: prefecture
-          })
-          .then((response) => {
-            this.cities = response.data
-          })
-      }
-    }
-  })
-  };
+  //   methods: {
+  //     getCities: function(prefectureId) {
+  //       axios
+  //         .post('/set_cities', {
+  //           id: prefecture
+  //         })
+  //         .then((response) => {
+  //           this.cities = response.data
+  //         })
+  //     }
+  //   }
+  // })
+  }
 });
