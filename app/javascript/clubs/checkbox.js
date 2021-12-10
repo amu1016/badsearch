@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+window.addEventListener('DOMContentLoaded', function(){
   var queryString = window.location.search;
   var queryObject = new Object();
   if(queryString){
