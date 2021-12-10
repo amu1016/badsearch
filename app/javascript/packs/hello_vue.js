@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
     new Vue({
     el: '.prefecture-city',
     data: {
-      selectedPref: prefectureId,
+      selectedPref: `${prefectureId}`,
       cities: [], 
       prefectures: JSON.parse(gon.prefectures)
     },
