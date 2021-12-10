@@ -30,7 +30,6 @@ if( document.getElementsByClassName('prefecture-city')){
 })
 };
 
-document.addEventListener('DOMContentLoaded', function(){
   var selection = document.getElementById('q_prefecture_id_eq')
   if(selection.selected){
     var indexId = selection.selectedIndex
@@ -56,4 +55,3 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   })
   }
-});
