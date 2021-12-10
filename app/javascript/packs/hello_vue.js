@@ -42,7 +42,7 @@ if( document.getElementsByClassName('prefecture-city')){
       prefectures: JSON.parse(gon.prefectures)
     },
     
-    methods: {
+    watch: {
       getCities: function(prefecture) {
         axios
           .post('/set_cities', {
@@ -51,7 +51,8 @@ if( document.getElementsByClassName('prefecture-city')){
           .then((response) => {
             this.cities = response.data
           })
-      }
+        },
+        immediate: true
     }
   })
   }
