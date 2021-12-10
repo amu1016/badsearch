@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
         elementId = elementId.replace("]", "");
         var selectTargets = document.getElementById(elementId);
         selectTargets.options[paramValue - 1].selected = true;
-        selectTargets.addEventListener('change', Sample.default.methods.getCities());
+        // selectTargets.addEventListener('change', Sample.default.methods.getCities());
       };
 
       // 市区町村
