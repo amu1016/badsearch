@@ -30,8 +30,7 @@ if( document.getElementsByClassName('prefecture-city')){
 })
 };
 
-var selection = document.getElementById('q_prefecture_id_eq')
-if( selection.addEventListener('change')){
+if( selectTargets.addEventListener('change')){
   new Vue({
   el: '.prefecture-city',
   data: {

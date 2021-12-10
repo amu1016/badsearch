@@ -1,6 +1,3 @@
-import * as Sample from '../packs/hello_vue';
-
-
 document.addEventListener('DOMContentLoaded', function(){
   var queryString = window.location.search;
   var queryObject = new Object();
@@ -59,6 +56,5 @@ document.addEventListener('DOMContentLoaded', function(){
     };
   };
 });
-
 
 
