@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if (paramName === "q[city_id_eq_any][]") {
         var elementId = parameters[i].replace("[", "_");
         elementId = elementId.replace("][]=", "_");
-        var checkTargets = document.getElementById(elementId);
+        var checkTargets = document.getElementById(elementId).getAttribute(paramValue);
         checkTargets.checked = true;
       };
 
