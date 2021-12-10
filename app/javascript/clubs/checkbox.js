@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(){
-  alert("こんにちは")
   var queryString = window.location.search;
   var queryObject = new Object();
   if(queryString){
