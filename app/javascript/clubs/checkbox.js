@@ -39,10 +39,11 @@ document.addEventListener('DOMContentLoaded', function(){
         var elementId = parameters[i].replace("[", "_");
         elementId = elementId.replace("][]=", "_");
         var checkTargets = document.getElementById(elementId);
-        for (var j = 0; j < checkTargets.length; j++)
-        if (checkTargets[j].value === paramValue) {
-          checkTargets[j].checked = true;
-          break;
+        for (var j = 0; j < checkTargets.length; j++){
+          if (checkTargets[j].value === paramValue) {
+            checkTargets[j].checked = true;
+            break;
+          };
         };
       };
 
