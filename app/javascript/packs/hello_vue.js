@@ -8,7 +8,7 @@ axios.defaults.headers.common = {
 };
 
 if( document.getElementsByClassName('prefecture-city')){
-  new Vue({
+  var prefectureVue = new Vue({
   el: '.prefecture-city',
   data: {
     selectedPref: '',

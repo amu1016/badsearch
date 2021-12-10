@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function(){
       };
 
       // 市区町村
-      // if (paramName === "q[city_id_eq_any][]") {
-      //   var elementId = parameters[i].replace("[", "_");
-      //   elementId = elementId.replace("][]=", "_");
-      //   var checkTargets = document.getElementById(elementId);
-      //   checkTargets.checked = true;
-      // };
+      if (paramName === "q[city_id_eq_any][]") {
+        var elementId = parameters[i].replace("[", "_");
+        elementId = elementId.replace("][]=", "_");
+        var checkTargets = document.getElementById(elementId);
+        checkTargets.checked = true;
+      };
 
       // チェックボックス保持
       if (paramName === "q[status_id_eq_any][]") {
