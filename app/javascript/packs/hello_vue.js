@@ -36,26 +36,25 @@ document.addEventListener('DOMContentLoaded', function(){
     var indexId = selection.selectedIndex
     var prefectureId = indexId + 1
     prefectureSelect.methods.getCities.function(prefectureId)
-
-  //   new Vue({
-  //   el: '.prefecture-city',
-  //   data: {
-  //     selectedPref: '',
-  //     cities: [], 
-  //     prefectures: JSON.parse(gon.prefectures)
-  //   },
+    new Vue({
+    el: '.prefecture-city',
+    data: {
+      selectedPref: '',
+      cities: [], 
+      prefectures: JSON.parse(gon.prefectures)
+    },
     
-  //   methods: {
-  //     getCities: function(prefectureId) {
-  //       axios
-  //         .post('/set_cities', {
-  //           id: prefecture
-  //         })
-  //         .then((response) => {
-  //           this.cities = response.data
-  //         })
-  //     }
-  //   }
-  // })
+    methods: {
+      getCities: function(prefectureId) {
+        axios
+          .post('/set_cities', {
+            id: prefectureId
+          })
+          .then((response) => {
+            this.cities = response.data
+          })
+      }
+    }
+  })
   }
 });
