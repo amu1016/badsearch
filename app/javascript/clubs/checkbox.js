@@ -19,20 +19,20 @@ document.addEventListener('DOMContentLoaded', function(){
       queryObject[paramName] = paramValue;
 
       // 都道府県
-      if (paramName === "q[prefecture_id_eq]") {
-        var elementId = paramName.replace("[", "_");
-        elementId = elementId.replace("]", "");
-        var selectTargets = document.getElementById(elementId);
-        selectTargets.options[paramValue - 1].selected = true;
-        // selectTargets.addEventListener('change', Sample.default.methods.getCities());
-        // axios
-        //   .post('/set_cities', {
-        //     id: paramValue
-        //   })
-        //   .then((response) => {
-        //     var cities = response.data
-        //   })
-      };
+      // if (paramName === "q[prefecture_id_eq]") {
+      //   var elementId = paramName.replace("[", "_");
+      //   elementId = elementId.replace("]", "");
+      //   var selectTargets = document.getElementById(elementId);
+      //   selectTargets.options[paramValue - 1].selected = true;
+      //   // selectTargets.addEventListener('change', Sample.default.methods.getCities());
+      //   // axios
+      //   //   .post('/set_cities', {
+      //   //     id: paramValue
+      //   //   })
+      //   //   .then((response) => {
+      //   //     var cities = response.data
+      //   //   })
+      // };
 
       // 市区町村
       if (paramName === "q[city_id_eq_any][]") {
