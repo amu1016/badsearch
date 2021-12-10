@@ -8,7 +8,7 @@ axios.defaults.headers.common = {
 };
 
 if( document.getElementsByClassName('prefecture-city')){
-  var prefectureVue = new Vue({
+  new Vue({
   el: '.prefecture-city',
   data: {
     selectedPref: '',
@@ -16,18 +16,31 @@ if( document.getElementsByClassName('prefecture-city')){
     prefectures: JSON.parse(gon.prefectures)
   },
   
-  export default{
-    methods: {
-      getCities: function(prefecture) {
-        axios
-          .post('/set_cities', {
-            id: prefecture
-          })
-          .then((response) => {
-            this.cities = response.data
-          })
-      }
+  methods: {
+    getCities: function(prefecture) {
+      axios
+        .post('/set_cities', {
+          id: prefecture
+        })
+        .then((response) => {
+          this.cities = response.data
+        })
     }
   }
 })
+};
+
+
+export default {
+  methods: {
+    getCities: function(prefecture) {
+      axios
+        .post('/set_cities', {
+          id: prefecture
+        })
+        .then((response) => {
+          this.cities = response.data
+        })
+    }
+  },
 };
