@@ -38,8 +38,12 @@ document.addEventListener('DOMContentLoaded', function(){
       if (paramName === "q[city_id_eq_any][]") {
         var elementId = parameters[i].replace("[", "_");
         elementId = elementId.replace("][]=", "_");
-        var checkTargets = document.getElementById(elementId).getAttribute(paramValue);
-        checkTargets.checked = true;
+        var checkTargets = document.getElementById(elementId);
+        for (var j = 0; j < checkTargets.length; j++)
+        if (checkTargets[j].value === paramValue) {
+          checkTargets[j].checked = true;
+          break;
+        };
       };
 
       // チェックボックス保持
