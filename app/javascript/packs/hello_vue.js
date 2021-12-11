@@ -12,10 +12,11 @@ if( document.getElementsByClassName('prefecture-city')){
   if(selection.selected){
     var indexId = selection.selectedIndex
     var prefectureId = indexId + 1
+    var prefId = { id: prefectureId }
     new Vue({
       el: '.prefecture-city',
       data: {
-        selectedPref: `${prefectureId}`,
+        selectedPref: prefId,
         cities: [], 
         prefectures: JSON.parse(gon.prefectures)
       },
