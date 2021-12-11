@@ -7,7 +7,6 @@ axios.defaults.headers.common = {
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 };
 
-if( document.getElementsByClassName('prefecture-city')){
   var selection = document.getElementById('q_prefecture_id_eq')
   if(selection.selected){
     var indexId = selection.selectedIndex
@@ -54,4 +53,3 @@ if( document.getElementsByClassName('prefecture-city')){
       }
     })
   }
-};
