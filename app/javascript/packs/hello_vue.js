@@ -77,12 +77,11 @@ document.addEventListener('DOMContentLoaded', function(){
       };
 
       if (paramNameVue === "q[city_id_eq_any][]") {
-        var elementIdVue = paramNameVue.replace("[", "_");
-        elementIdVue = elementIdVue.replace("][]", "_id");
-        var checkTargetsVue = document.getElementById(elementIdVue);
-        for (var j = 0; j < checkTargetsVue.length; j++){
-          if (checkTargetsVue[j].value === paramValueVue) {
-            checkTargetsVue[j].checked = true;
+        var cityList = document.getElementsByClassName('city-list')
+        for (var j = 0; j < cityList.length; j++){
+          var checkTargetsVue = cityList[j].firstElementChild
+          if (checkTargetsVue.value === paramValueVue) {
+            checkTargetsVue.checked = true;
             break;
           };
         };
@@ -90,8 +89,6 @@ document.addEventListener('DOMContentLoaded', function(){
     };
   }
 })
-
-
 
 // if( document.getElementsByClassName('prefecture-city')){
 //   var selection = document.getElementById('q_prefecture_id_eq')
