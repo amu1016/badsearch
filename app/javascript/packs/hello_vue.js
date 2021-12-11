@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function(){
         prefectures: JSON.parse(gon.prefectures)
       },
       
-      watch: {
+      methods: {
         getCities: function(prefecture) {
           axios
             .post('/set_cities', {
