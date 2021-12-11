@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var indexId = selection.selectedIndex
     var prefectureId = indexId + 1
     vm.selectedPref = prefectureId
+    vm.getCities(prefectureId)
   }
 })
 
