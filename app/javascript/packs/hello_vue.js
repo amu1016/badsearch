@@ -72,17 +72,17 @@ document.addEventListener('DOMContentLoaded', function(){
         elementIdVue = elementIdVue.replace("]", "");
         var selectTargetsVue = document.getElementById(elementIdVue);
         selectTargetsVue.options[paramValueVue - 1].selected = true;
-        vm.selectedPref = selectTargetsVue
-        vm.getCities(selectTargetsVue)
+        vm.selectedPref = paramValueVue
+        vm.getCities(paramValueVue)
       };
 
-      if (paramName === "q[city_id_eq_any][]") {
-        var elementId = parameters[i].replace("[", "_");
-        elementId = elementId.replace("][]=", "_");
-        var checkTargets = document.getElementById(elementId);
-        for (var j = 0; j < checkTargets.length; j++){
-          if (checkTargets[j].value === paramValue) {
-            checkTargets[j].checked = true;
+      if (paramNameVue === "q[city_id_eq_any][]") {
+        var elementIdVue = parametersVue[i].replace("[", "_");
+        elementIdVue = elementIdVue.replace("][]=", "_");
+        var checkTargetsVue = document.getElementById(elementIdVue);
+        for (var j = 0; j < checkTargetsVue.length; j++){
+          if (checkTargetsVue[j].value === paramValueVue) {
+            checkTargetsVue[j].checked = true;
             break;
           };
         };
