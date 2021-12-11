@@ -16,7 +16,7 @@ if( document.getElementsByClassName('prefecture-city')){
     new Vue({
       el: '.prefecture-city',
       data: {
-        selectedPref: prefId,
+        selectedPref: `${prefId}`,
         cities: [], 
         prefectures: JSON.parse(gon.prefectures)
       },
