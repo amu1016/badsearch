@@ -76,16 +76,16 @@ document.addEventListener('DOMContentLoaded', function(){
         vm.getCities(paramValueVue)
       };
 
-      if (paramNameVue === "q[city_id_eq_any][]") {
-        var cityList = document.getElementsByClassName('city-list')
-        for (var j = 0; j < cityList.length; j++){
-          var checkTargetsVue = cityList[j].firstElementChild
-          if (checkTargetsVue.value === `${paramValueVue}`) {
-            checkTargetsVue.checked = true;
-            break;
-          };
-        };
-      };
+      // if (paramNameVue === "q[city_id_eq_any][]") {
+      //   var cityList = document.getElementsByClassName('city-list')
+      //   for (var j = 0; j < cityList.length; j++){
+      //     var checkTargetsVue = cityList[j].firstElementChild
+      //     if (checkTargetsVue.value === `${paramValueVue}`) {
+      //       checkTargetsVue.checked = true;
+      //       break;
+      //     };
+      //   };
+      // };
     };
   }
 })
