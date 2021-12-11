@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function(){
       };
     };
   };
-  var cityListsContent = document.getElementsByClassName('city-lists-content')[0];
+  var cityListsContent = document.getElementsByClassName('search-prefecture')[0];
   if (cityListsContent){
     var mo = new MutationObserver(function() {
       alert('divの中身が変更されたよ');
