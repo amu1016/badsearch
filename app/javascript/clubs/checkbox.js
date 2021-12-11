@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 
-var cityListsContent = getElementsByClassName('city-lists-content')
+var cityListsContent = document.getElementsByClassName('city-lists-content')
 var mo = new MutationObserver(function() {
   var queryString = window.location.search;
   var queryObject = new Object();
