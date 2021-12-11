@@ -70,7 +70,9 @@ document.addEventListener('DOMContentLoaded', function(){
       };
     });
     var config = {
-      childList: true
+      childList: true,
+      attributes: true,
+      characterData: true,
     };
     mo.observe(cityListsContent, config);
   };
