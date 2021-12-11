@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var elementIdVue = paramNameVue.replace("[", "_");
         elementIdVue = elementIdVue.replace("]", "");
         var selectTargetsVue = document.getElementById(elementIdVue);
-        selectTargetsVue.options[paramValue.Vue - 1].selected = true;
+        selectTargetsVue.options[paramValueVue - 1].selected = true;
       };
     };
     var selection = document.getElementById('q_prefecture_id_eq')
