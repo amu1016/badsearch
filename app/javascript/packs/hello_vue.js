@@ -72,13 +72,22 @@ document.addEventListener('DOMContentLoaded', function(){
         elementIdVue = elementIdVue.replace("]", "");
         var selectTargetsVue = document.getElementById(elementIdVue);
         selectTargetsVue.options[paramValueVue - 1].selected = true;
+        vm.selectedPref = selectTargetsVue
+        vm.getCities(selectTargetsVue)
+      };
+
+      if (paramName === "q[city_id_eq_any][]") {
+        var elementId = parameters[i].replace("[", "_");
+        elementId = elementId.replace("][]=", "_");
+        var checkTargets = document.getElementById(elementId);
+        for (var j = 0; j < checkTargets.length; j++){
+          if (checkTargets[j].value === paramValue) {
+            checkTargets[j].checked = true;
+            break;
+          };
+        };
       };
     };
-    var selection = document.getElementById('q_prefecture_id_eq')
-    var indexId = selection.selectedIndex
-    var prefectureId = indexId + 1
-    vm.selectedPref = prefectureId
-    vm.getCities(prefectureId)
   }
 })
 
