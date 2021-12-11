@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
       if (paramNameVue === "q[city_id_eq_any][]") {
         var elementIdVue = parametersVue[i].replace("[", "_");
-        elementIdVue = elementIdVue.replace("][]=", "_");
+        elementIdVue = elementIdVue.replace("][]=", "_id");
         var checkTargetsVue = document.getElementById(elementIdVue);
         for (var j = 0; j < checkTargetsVue.length; j++){
           if (checkTargetsVue[j].value === paramValueVue) {
