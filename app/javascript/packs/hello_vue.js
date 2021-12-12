@@ -52,12 +52,27 @@ document.addEventListener('DOMContentLoaded', function(){
               this.cities = response.data
             })
             .then(function(){
-              var cityList = document.getElementsByClassName('city-list')
-              for (var j = 0; j < cityList.length; j++){
-                var checkTargetsVue = cityList[j].firstElementChild
-                if (checkTargetsVue.value === '482') {
-                  checkTargetsVue.checked = true;
-                  break;
+              var queryStringVue = window.location.search;
+              var queryObjectVue = new Object();
+              if(queryStringVue){
+                queryStringVue = queryStringVue.substring(1);
+                var decodeParametersVue = decodeURIComponent(queryStringVue);
+                var parametersVue = decodeParametersVue.split('&');
+                for (var i = 0; i < parametersVue.length; i++) {
+                  var elementVue = parametersVue[i].split('=');
+                  var paramNameVue = elementVue[0];
+                  var paramValueVue = elementVue[1];
+                  queryObjectVue[paramNameVue] = paramValueVue;
+                  if (paramNameVue === "q[city_id_eq_any][]") {
+                    var cityList = document.getElementsByClassName('city-list')
+                    for (var j = 0; j < cityList.length; j++){
+                      var checkTargetsVue = cityList[j].firstElementChild
+                      if (checkTargetsVue.value === `${paramValueVue}`) {
+                        checkTargetsVue.checked = true;
+                        break;
+                      };
+                    };
+                  };
                 };
               };
             })
@@ -86,17 +101,6 @@ document.addEventListener('DOMContentLoaded', function(){
         vm.getCities(paramValueVue);
         // var x = await vm.getCities(paramValueVue);
         // console.log(x);
-      };
-
-      if (paramNameVue === "q[city_id_eq_any][]") {
-        var cityList = document.getElementsByClassName('city-list')
-        for (var j = 0; j < cityList.length; j++){
-          var checkTargetsVue = cityList[j].firstElementChild
-          if (checkTargetsVue.value === `${paramValueVue}`) {
-            checkTargetsVue.checked = true;
-            break;
-          };
-        };
       };
     };
   }
