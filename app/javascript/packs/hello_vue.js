@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
       },
       
       methods: {
-        getCities: async function(prefecture) {
+        getCities: function(prefecture) {
           axios
             .post('/set_cities', {
               id: prefecture
@@ -74,7 +74,10 @@ document.addEventListener('DOMContentLoaded', function(){
         selectTargetsVue.options[paramValueVue - 1].selected = true;
         vm.selectedPref = paramValueVue
         vm.getCities(paramValueVue)
-        await vm.getCities(paramValueVue)
+        async function f1() {
+          var x = await vm.getCities(paramValueVue);
+          console.log(x);
+        };
       };
 
       if (paramNameVue === "q[city_id_eq_any][]") {
