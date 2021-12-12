@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function(){
         selectTargetsVue.options[paramValueVue - 1].selected = true;
         vm.selectedPref = paramValueVue;
         vm.getCities(paramValueVue);
-        var x = await vm.getCities(paramValueVue);
-        console.log(x);
+        // var x = await vm.getCities(paramValueVue);
+        // console.log(x);
       };
 
       if (paramNameVue === "q[city_id_eq_any][]") {
