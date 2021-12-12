@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function(){
         var selectTargetsVue = document.getElementById(elementIdVue);
         selectTargetsVue.options[paramValueVue - 1].selected = true;
         vm.selectedPref = paramValueVue
-        vm.getCities(paramValueVue)
         async function f1() {
           var x = await vm.getCities(paramValueVue);
           console.log(x);
