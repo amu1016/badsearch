@@ -72,11 +72,10 @@ document.addEventListener('DOMContentLoaded', function(){
         elementIdVue = elementIdVue.replace("]", "");
         var selectTargetsVue = document.getElementById(elementIdVue);
         selectTargetsVue.options[paramValueVue - 1].selected = true;
-        vm.selectedPref = paramValueVue
-        async function f1() {
-          var x = await vm.getCities(paramValueVue);
-          console.log(x);
-        };
+        vm.selectedPref = paramValueVue;
+        vm.getCities(paramValueVue);
+        var x = await vm.getCities(paramValueVue);
+        console.log(x);
       };
 
       if (paramNameVue === "q[city_id_eq_any][]") {
