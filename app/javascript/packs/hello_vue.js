@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function(){
             })
             .then((response) => {
               this.cities = response.data
+            })
+            .then(function(){
               var cityList = document.getElementsByClassName('city-list')
               for (var j = 0; j < cityList.length; j++){
                 var checkTargetsVue = cityList[j].firstElementChild
