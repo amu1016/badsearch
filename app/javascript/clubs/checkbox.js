@@ -39,43 +39,6 @@ document.addEventListener('DOMContentLoaded', function(){
       };
     };
   };
-  var cityListsContent = document.getElementsByClassName('search-prefecture')[0];
-  if (cityListsContent){
-    var mo = new MutationObserver(function() {
-      alert('divの中身が変更されたよ');
-      var queryString = window.location.search;
-      var queryObject = new Object();
-      if(queryString){
-        queryString = queryString.substring(1);
-        var decodeParameters = decodeURIComponent(queryString);
-        var parameters = decodeParameters.split('&');
-        for (var i = 0; i < parameters.length; i++) {
-          var element = parameters[i].split('=');
-          var paramName = element[0];
-          var paramValue = element[1];
-          queryObject[paramName] = paramValue;
-    
-    
-          if (paramName === "q[city_id_eq_any][]") {
-            var cityList = document.getElementsByClassName('city-list')
-            for (var j = 0; j < cityList.length; j++){
-              var checkTargets = cityList[j].firstElementChild
-              if (checkTargets.value === `${paramValue}`) {
-                checkTargets.checked = true;
-                break;
-              };
-            };
-          };
-        };
-      };
-    });
-    var config = {
-      childList: true,
-      attributes: true,
-      characterData: true,
-    };
-    mo.observe(cityListsContent, config);
-  };
 });
 
 
